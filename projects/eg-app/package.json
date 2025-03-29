@@ -1,0 +1,13 @@
+{
+  "name": "ngx-eg-app",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@ionic/angular": "^8.5.2"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
