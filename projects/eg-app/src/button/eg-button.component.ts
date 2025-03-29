@@ -7,6 +7,6 @@ import { IonButton } from '@ionic/angular/standalone';
   templateUrl: './eg-button.component.html',
   styleUrl: './eg-button.component.scss'
 })
-export class EgButton extends IonButton {
+export class EgButton {
 
 }

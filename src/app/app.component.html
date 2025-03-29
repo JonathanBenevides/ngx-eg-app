@@ -1,5 +1,11 @@
 <ion-app>
   <main class="main">
+    Ngx Eg App
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input type="email" formControlName="email">
+      <input type="password" formControlName="pass">
+      <eg-button type="submit">Default</eg-button>
+    </form>
     <router-outlet />
   </main>
 </ion-app>
