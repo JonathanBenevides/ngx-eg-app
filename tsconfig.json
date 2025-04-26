@@ -8,8 +8,8 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "lib": [
-        "./dist/lib"
+      "ngx-eg-app": [
+        "./dist/eg-app"
       ]
     },
     "noImplicitReturns": true,

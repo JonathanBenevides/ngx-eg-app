@@ -1,0 +1,12 @@
+:host ::ng-deep ion-toolbar {
+    --background: aliceblue;
+}
+
+ion-header {
+    z-index: 0;
+    position: absolute;
+}
+
+ion-title {
+    margin-left: 150px;
+}

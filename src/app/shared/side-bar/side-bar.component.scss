@@ -1,0 +1,15 @@
+aside {
+    background: aliceblue;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    width: 150px;
+
+    nav {
+        display: grid;
+        a {
+            text-align: center;
+            padding: 5px;
+        }
+    }
+}

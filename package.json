@@ -3,19 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 6201",
+    "start": "ng serve --host 192.168.0.11 --port 6201",
     "build": "ng build",
     "build:lib": "ng build ngx-eg-app --configuration production",
     "publish": "ng build ngx-eg-app --configuration production && cd dist/eg-app && npm publish",
-    "watch": "ng build --watch --configuration development",
+    "watch:lib": "ng build ngx-eg-app --configuration production --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^19.2.10",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
     "@angular/forms": "^19.2.0",
+    "@angular/material": "^19.2.10",
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
