@@ -4,11 +4,11 @@
     <custom-eg-input [id]="'name'" [label]="'name'" [hint]="'name'" [errorMessage]="'errorMessage'" [placeholder]="'name'" formControlName="name"></custom-eg-input>
     <button type="submit" [disabled]="!form.valid" (click)="submit()">Default</button>
 </form> -->
-<form [formGroup]="form2">
+<form [formGroup]="form2" (ngSubmit)="submit()">
     <default-eg-input [label]="'pass'" [hint]="'pass'" [placeholder]="'pass'" [errorMessage]="'errorMessage'" [buttonAction]="['searchAction', 'togglePasswordAction', 'clearAction', 'copyAction']" [type]="'password'" formControlName="pass"></default-eg-input>
     <default-eg-input [label]="'email'" [hint]="'email'" [placeholder]="'email'" [errorMessage]="{email: 'email invalido'}" [type]="'email'" formControlName="email"></default-eg-input>
-    <default-eg-input [label]="'name'" [hint]="'name'" [placeholder]="'name'" [errorMessage]="{minlength: 'Minimo de 5 caracteres', maxlength: 'Maximo de 10 caracteres'}" [type]="'url'" formControlName="name"></default-eg-input>
-    <button type="submit" [disabled]="!form2.valid" (click)="submit()">Default</button>
+    <default-eg-input [label]="'name'" [hint]="'name'" [placeholder]="'name'" [errorMessage]="{minlength: 'Minimo de 5 caracteres', maxlength: 'Maximo de 10 caracteres', required: 'campo inválido'}" [type]="'url'" formControlName="name"></default-eg-input>
+    <eg-button type="reset" [label]="'Botao'"></eg-button>
 </form>
 
 <!-- <form [formGroup]="form3">

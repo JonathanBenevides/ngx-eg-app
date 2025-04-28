@@ -1,13 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { DefaultEgInput } from 'ngx-eg-app';
+import { DefaultEgInput, EgButton } from 'ngx-eg-app';
 
 @Component({
   selector: 'app-eg-input',
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, DefaultEgInput, CommonModule, FormsModule],
+  imports: [FormsModule, ReactiveFormsModule, DefaultEgInput, EgButton],
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss'
 })

@@ -1,0 +1,52 @@
+$sm-icon: 1rem; // 16px
+$md-icon: 1.25rem; // 20px
+$margin: .5rem; // 8px
+
+$sm-button: 1.6875rem; // 27px
+$md-button: 2.25rem; // 36px
+$lg-button: 3.5rem; // 56px
+
+ion-button {
+    text-transform: unset;
+}
+
+.right {
+    margin-left: $margin;
+}
+
+.left {
+    margin-right: $margin;
+}
+
+.small-icon {
+    font-size: $sm-icon !important;
+    width: $sm-icon !important;
+    height: $sm-icon !important;
+}
+
+.default-icon {
+    font-size: $md-icon !important;
+    width: $md-icon !important;
+    height: $md-icon !important;
+}
+
+.small-button {
+    min-width: $sm-button;
+    min-height: $sm-button;
+}
+
+.default-button {
+    min-width: $md-button;
+    min-height: $md-button;
+}
+
+.large-button {
+    min-width: $lg-button;
+    min-height: $lg-button;
+}
+
+.small-button::part(native),
+.default-button::part(native),
+.large-button::part(native) {
+    padding: 0 !important;
+}

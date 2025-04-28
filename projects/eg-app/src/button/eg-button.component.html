@@ -1,3 +1,17 @@
-<ion-button>
-    <ng-content></ng-content>
+<ion-button
+    [type]="type"
+    [fill]="fill"
+    [size]="size"
+    [shape]="shape"
+    [disabled]="disabled"
+    [ngClass]="size+label+'-button'"
+    [attr.aria-label]="label || ariaLabel"
+>
+    @if (icon && iconSide === 'left') {
+        <mat-icon [ngClass]="[label ? iconSide : '', size + '-icon']" [attr.aria-hidden]="true">{{icon}}</mat-icon>
+    }
+    {{ label }}
+    @if (icon && iconSide === 'right') {
+        <mat-icon [ngClass]="[label ? iconSide : '', size + '-icon']" [attr.aria-hidden]="true">{{icon}}</mat-icon>
+    }
 </ion-button>
