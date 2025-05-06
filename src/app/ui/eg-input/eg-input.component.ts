@@ -1,14 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DefaultEgInput, EgButton } from 'ngx-eg-app';
+import { NgxEgInput, NgxEgButton } from 'ngx-eg-app';
 
 @Component({
   selector: 'app-eg-input',
-  imports: [FormsModule, ReactiveFormsModule, DefaultEgInput, EgButton],
+  imports: [FormsModule, ReactiveFormsModule, NgxEgInput, NgxEgButton],
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss'
 })
-export class EgInputComponent {
+export class EgInputComponent implements OnInit {
+  
   private readonly fb = inject(FormBuilder);
   public form!: FormGroup;
   public form2!: FormGroup;

@@ -1,90 +1,109 @@
-import { CommonModule, NgClass } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Component, forwardRef, Host, Injector, Input, OnChanges, Optional, SimpleChanges, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonIcon, IonInput } from '@ionic/angular/standalone';
-import { noop } from 'rxjs';
-
-import { addIcons } from 'ionicons';
-import { eye, lockClosed, eyeOff, close } from 'ionicons/icons';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
+import { first, fromEvent, noop } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { AppearanceType, InputType, ButtonActionType } from '../shared/type/eg-input.type';
+import { EgInputModule } from '../shared/module/eg-input.module';
+import { ButtonIcon, UpdateMode } from '../shared/enum/eg-input.enum';
+import { EgInputStateMatcher } from '../shared/class/eg-input.class';
+import { ButtonAction } from '../shared/interface/eg-input.interface';
 
 @Component({
-  imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, IonButton, CommonModule],
-  selector: 'eg-input',
+  imports: [EgInputModule],
+  selector: 'ngx-eg-input',
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => EgInput),
-      multi: true
-    }
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EgInput implements ControlValueAccessor, AfterViewInit, OnChanges {
+export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
 
-  public disabled = false;
-  public showButton = false;
-  public control!: AbstractControl;
-  @Input() public id = '';
-  @Input() public required = false;
-  @Input() public formControlName!: string;
-  @Input() public label = '';
-  @Input('value') public _value = '';
-  @Input() public type = 'text';
-  @Input() public placeholder = '';
-  @Input() public labelPlacement: 'stacked' | 'floating' = 'floating';
-  @Input() public fill: 'outline' | 'solid' = 'solid';
   @Input() public hint = '';
-  @Input() public ableShowPasswordButton = false;
-  @Input() public ableSearchPasswordButton = false;
-  @Input() public ableCopyButton = false;
-  @Input() public ableCleanButton = false;
-  @Input() public startIcon = '';
-  @Input() public endIcon = '';
+  @Input() public label = '';
+  @Input() public maxlength = '';
+  @Input() public iconSuffix = '';
+  @Input() public placeholder = '';
+  @Input() public type: InputType = 'text';
+  @Input() public appearance: AppearanceType = "fill";
+  @Input() public buttonAction: ButtonActionType[] = [];
+  @Input() public set id(_id: string) {
+    this._id = _id;
+  }
+  @Input() public set errorMessage(_errorMessage: string | {[key: string]: string}) {
+    this._errorMessage = _errorMessage;
+  };
 
-  @ViewChild('ionInputConponent') ionInputConponent!: IonInput
+  @Output() public search = new EventEmitter<string>();
 
-  
-  public get value() {
-    return this._value;
+  @ViewChild('input', { static: true }) inputElement!: ElementRef<HTMLInputElement>;
+
+  public _id = '';
+  public value = '';
+  public touched = false;
+  public disabled = false;
+  public required = false;
+  public actions: ButtonAction[] = [];
+  public error!: EgInputStateMatcher;
+  private subscription$ = new Subscription();
+  public _errorMessage: string | {[key: string]: string} = '';
+
+  get id(): string {
+    return `input-${this._id || this.label}`;
   }
 
-  public set value(val) {
-    this._value = val;
-    this.onChange(val);
-    this.onTouch();
+  public visibilityOnClearButton(action: ButtonActionType): boolean {
+    return action !== 'clearAction' ? true : !!this.control?.value?.length || !!this.value?.length;
+  }
+
+  get control(): AbstractControl {
+    return this.ngControl.control!;
+  }
+
+  get input(): HTMLInputElement {
+    return this.inputElement.nativeElement;
+  }
+
+  get errorMessage(): string {
+    if (typeof this._errorMessage === 'string') {
+      return this._errorMessage;
+    }
+    const key = Object.keys(this.control?.errors! || [])[0]?.toLowerCase();
+    return this._errorMessage[key];
   }
 
   constructor(
-    @Optional() @Host() private readonly injector: Injector,
-    private readonly cdr: ChangeDetectorRef
+    @Optional() @Self() private ngControl: NgControl,
+    private readonly clipboard: Clipboard
   ) {
-    addIcons({ eye, lockClosed, eyeOff, close });
-  }
-
-  public ngOnChanges(): void {
-    this.showButton = this.ableShowPasswordButton || this.ableCleanButton || this.ableCopyButton || this.ableSearchPasswordButton;
-    if (this.ableShowPasswordButton) {
-      this.changePasswordBehavior();
-    }
-    if (this.ableCleanButton) {
-      this.endIcon = 'close';
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
     }
   }
 
-  public ngAfterViewInit(): void {
-    this.control = this.injector.get(NgControl).control as AbstractControl<FormControl>;
-    this.required = this.control.hasValidator(Validators.required);
-    this.detectChanges();
+  public ngOnChanges(changes: SimpleChanges): void {
+    this.createButtons(changes);
   }
 
-  public onChange(value: string) {
-    this.detectChanges()
-  };
+  public ngOnInit(): void {
+    this.setInputValue();
+    this.setRequiredInput();
+    this.setControlValueRegardingToUpdateType();
+    this.setErrorMatcher();
+    this.setTouched();
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
+  }
 
   public onTouch: () => void = noop;
+  public onChange: (value: string) => void = noop;
 
-  public registerOnChange(fn: (value: string) => void): void {
+  public writeValue(value: string): void {
+    this.inputElement.nativeElement.value = value;
+  }
+
+  public registerOnChange(fn: () => void): void {
     this.onChange = fn;
   }
 
@@ -96,34 +115,69 @@ export class EgInput implements ControlValueAccessor, AfterViewInit, OnChanges {
     this.disabled = isDisabled;
   }
 
-  public writeValue(value: string): void {
-    this.value = value;
+  private setControlValueRegardingToUpdateType(): void {
+    const event = fromEvent(this.input, this.control?.updateOn === UpdateMode.blur ? UpdateMode.blur : 'input');
+    this.subscription$.add(event.subscribe(() => this.control?.setValue(this.input.value)));
   }
 
-  public detectChanges(): void {
-    this.cdr.detectChanges();
+  private setInputValue(): void {
+    this.value = this.control.value;
   }
 
-  public buttonClick(): void {
-    if (this.ableShowPasswordButton) {
-      this.changePasswordBehavior();
+  private setRequiredInput(): void {
+    this.required = this.ngControl.control?.hasValidator(Validators.required) as boolean;
+  }
+
+  private setErrorMatcher(): void {
+    this.error = new EgInputStateMatcher(this.control);
+  }
+
+  private setTouched(): void {
+    this.subscription$.add(
+      fromEvent(this.input, 'blur')
+        .pipe(first())
+        .subscribe(() => this.control.markAsTouched())
+    );
+  }
+
+  private createButtons(changes: SimpleChanges): void {
+    const buttonAction: ButtonActionType[] = changes['buttonAction']?.currentValue;
+    if (!!buttonAction?.length) {
+      buttonAction.forEach((action: ButtonActionType) => {
+        this.actions.push({
+          action,
+          icon: ButtonIcon[action as keyof typeof ButtonIcon],
+          click: (event: Event) => [
+            this[action as keyof typeof ButtonIcon](),
+            action !== 'clearAction' ? this.avoidFocusOnInput(event) : null
+          ]
+        });
+      });
     }
-    if (this.ableCleanButton) {
-      this.cleanInput();
-    }
   }
 
-  private cleanInput(): void {
-    this.control?.reset();
+  private togglePasswordAction(): void {
+    const passwordButtonIndex = this.actions.findIndex((action: ButtonAction) => action.action === 'togglePasswordAction');
+    const isVisible = this.actions[passwordButtonIndex].icon === ButtonIcon.togglePasswordAction;
+    this.actions[passwordButtonIndex].icon = isVisible ? `${ButtonIcon.togglePasswordAction}_off` : ButtonIcon.togglePasswordAction;
+    this.type = isVisible ? 'text' : 'password';
   }
 
-  private changePasswordBehavior(): void {
-    if (this.endIcon === 'eye') {
-      this.endIcon = 'eye-off';
-      this.type = 'text';
-    } else {
-      this.endIcon = 'eye';
-      this.type = 'password';
-    }
+  private searchAction(): void {
+    this.search.emit(this.value);
+  }
+
+  private copyAction(): void {
+    this.clipboard.copy(this.value);
+  }
+
+  private clearAction(): void {
+    this.value = '';
+    this.control.setValue('');
+  }
+
+  private avoidFocusOnInput(event: Event): void {
+    event?.stopPropagation();
+    event?.preventDefault();
   }
 }

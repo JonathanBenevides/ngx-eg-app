@@ -1,7 +1,7 @@
 <aside>
     <nav>
-        <a routerLink="/home">Home</a>
-        <a routerLink="/input">Input</a>
-        <a routerLink="/button">Button</a>
+        @for (route of routes; track route) {
+            <a routerLink="{{route.route}}">{{route.label}}</a>
+        }
     </nav>
 </aside>

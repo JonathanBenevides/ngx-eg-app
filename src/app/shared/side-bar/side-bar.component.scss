@@ -10,6 +10,9 @@ aside {
         a {
             text-align: center;
             padding: 5px;
+            &::first-letter {
+                text-transform: uppercase;
+            }
         }
     }
 }

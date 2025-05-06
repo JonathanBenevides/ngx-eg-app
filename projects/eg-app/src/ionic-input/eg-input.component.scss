@@ -1,0 +1,19 @@
+:host(eg-input) ::ng-deep .required .input-wrapper .label-text-wrapper .label-text::after {
+    content: '*';
+}
+
+:host {
+    ion-item {
+        --inner-padding-end: unset;
+        --padding-start: unset;
+        --border-color: transparent;
+    }
+
+    ::ng-deep {
+        ion-input {
+            div {
+                height: 20px;
+            }
+        }
+    }
+}

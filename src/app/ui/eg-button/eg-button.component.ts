@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { EgButton } from 'ngx-eg-app';
+import { NgxEgButton } from 'ngx-eg-app';
 
 @Component({
   selector: 'app-eg-button',
-  imports: [EgButton],
+  imports: [NgxEgButton],
   templateUrl: './eg-button.component.html',
   styleUrl: './eg-button.component.scss'
 })
-export class EgButtonComponent {
-
-}
+export class EgButtonComponent {}

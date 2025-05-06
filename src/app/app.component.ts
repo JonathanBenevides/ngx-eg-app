@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { IonApp
-  
- } from '@ionic/angular/standalone';
-import { HeaderComponent } from './shared/header/header.component';
-import { SideBarComponent } from './shared/side-bar/side-bar.component';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { IonApp, IonContent } from '@ionic/angular/standalone';
+import { NgxEgHeader, NgxEgMenu } from 'ngx-eg-app';
 
 @Component({
   selector: 'app-root',
-  imports: [IonApp, RouterOutlet, HeaderComponent, SideBarComponent],
+  imports: [IonApp, RouterOutlet, NgxEgMenu, NgxEgHeader, IonContent, RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss'  
 })
 export class AppComponent {
-
+  links = [
+    { name: 'home', route: '/'},
+    { name: 'button', route: '/button'},
+    { name: 'header', route: '/header'},
+    { name: 'input', route: '/input'},
+  ]
 }

@@ -1,19 +1,16 @@
-:host(eg-input) ::ng-deep .required .input-wrapper .label-text-wrapper .label-text::after {
+.required:after {
     content: '*';
 }
 
-:host {
-    ion-item {
-        --inner-padding-end: unset;
-        --padding-start: unset;
-        --border-color: transparent;
-    }
+.button-actions {
+    margin-top: -15px;
+    padding-left: 4px;
+}
 
-    ::ng-deep {
-        ion-input {
-            div {
-                height: 20px;
-            }
-        }
-    }
+mat-form-field {
+    width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-form-field-infix {
+    display: flex;
 }

@@ -3,5 +3,7 @@
  */
 
 export * from './button/eg-button.component';
-export * from './default-input/eg-input.component';
+export * from './input/eg-input.component';
+export * from './header/eg-header.component';
+export * from './menu/eg-menu.component';
 

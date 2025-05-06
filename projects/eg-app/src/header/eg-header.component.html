@@ -1,0 +1,27 @@
+<ion-header id="menu">
+    <ion-toolbar>
+        @if (hasMenuButton || hasBackButton) {
+            <ion-buttons slot="start">
+                @if (hasBackButton) {
+                    <ion-back-button role="link" default-href="#"></ion-back-button>
+                }
+                @if (hasMenuButton) {
+                    <ion-menu-button></ion-menu-button>
+                }
+            </ion-buttons>
+        }
+        <ion-title>{{title}}</ion-title>
+        @if (!!actions.length) {
+            <ion-buttons slot="end">
+                @for (action of actions; track action) {
+                    <ion-button role="link" [attr.aria-label]="action?.ariaLabel" (click)="action?.click($event)">
+                        <mat-icon [attr.aria-hidden]="true">{{action.icon}}</mat-icon>
+                    </ion-button>
+                }
+            </ion-buttons>
+        }
+    </ion-toolbar>
+    @if (isLoading) {
+        <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    }
+</ion-header>

@@ -1,8 +1,8 @@
-import { ButtonAction } from "../type/eg-input.type";
+import { ButtonActionType } from "../type/eg-input.type";
 
-export interface InputAction {
+export interface ButtonAction {
     icon: string,
-    action: ButtonAction,
+    action: ButtonActionType,
     click: Function,
     ariaLabel?: string
 }

@@ -1,29 +1,36 @@
-<ion-input [ngClass]="{ 'required': required }" [type]="type" [label]="label" [placeholder]="placeholder"
-    [labelPlacement]="labelPlacement" [fill]="fill" [helperText]="hint" [(ngModel)]="value" [required]="required"
-    errorText="Invalid email" [clearOnEdit]="false" (ionBlur)="detectChanges()" [disabled]="disabled" #ionInputConponent>
-    <ng-container *ngTemplateOutlet="startIconContainer"></ng-container>
-    <ng-container *ngTemplateOutlet="endButtonContainer"></ng-container>
-</ion-input>
-
-<ng-template #startIconContainer>
-    @if(startIcon) {
-    <ng-container *ngTemplateOutlet="iconContainer; context: { icon: startIcon}"></ng-container>
-    }
-</ng-template>
-
-<ng-template #endButtonContainer>
-    @if (showButton) {
-    <ion-button (click)="buttonClick()" fill="clear" slot="end" aria-label="Show/hide">
-        @if (ableShowPasswordButton) {
-        <ng-container *ngTemplateOutlet="iconContainer; context: { icon: endIcon }"></ng-container>
+<mat-form-field [appearance]="appearance">
+    <mat-label [ngClass]="{ 'required': required }">{{ label }}</mat-label>
+    <input
+        matInput
+        [id]="id"
+        [type]="type"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [errorStateMatcher]="error"
+        [(ngModel)]="value"
+        #input
+        [maxlength]="maxlength"
+    />
+    @if (!!buttonAction.length) {
+        <div class="button-actions">
+            @for (action of actions; track action) {
+                <button
+                    mat-icon-button
+                    matSuffix
+                    [style.visibility]="visibilityOnClearButton(action.action) ? 'visible' : 'hidden'"
+                    (click)="action?.click($event)"
+                    [attr.aria-label]="action?.ariaLabel"
+                    [attr.aria-hidden]="!visibilityOnClearButton(action.action)"
+                >
+                    <mat-icon>{{action.icon}}</mat-icon>
+                </button>
+            }
+        </div>
+    } @else {
+        @if (iconSuffix) {
+            <mat-icon matSuffix>{{iconSuffix}}</mat-icon>
         }
-        @if (ableCleanButton) {
-        <ng-container *ngTemplateOutlet="iconContainer; context: { icon: endIcon }"></ng-container>
-        }
-    </ion-button>
     }
-</ng-template>
-
-<ng-template #iconContainer let-icon="icon">
-    <ion-icon slot="start" [name]="icon" aria-hidden="true"></ion-icon>
-</ng-template>
+    <mat-hint>{{ hint }}</mat-hint>
+    <mat-error>{{ errorMessage }}</mat-error>
+</mat-form-field>

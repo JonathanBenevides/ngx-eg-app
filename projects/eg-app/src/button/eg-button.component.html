@@ -6,6 +6,7 @@
     [disabled]="disabled"
     [ngClass]="size+label+'-button'"
     [attr.aria-label]="label || ariaLabel"
+    [expand]="expand"
 >
     @if (icon && iconSide === 'left') {
         <mat-icon [ngClass]="[label ? iconSide : '', size + '-icon']" [attr.aria-hidden]="true">{{icon}}</mat-icon>
