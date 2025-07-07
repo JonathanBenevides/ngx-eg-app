@@ -3,6 +3,7 @@ import { HomeComponent } from './ui/home/home.component';
 import { EgButtonComponent } from './ui/eg-button/eg-button.component';
 import { EgInputComponent } from './ui/eg-input/eg-input.component';
 import { EgHeaderComponent } from './ui/eg-header/eg-header.component';
+import { EgCheckboxComponent } from './ui/eg-checkbox/eg-checkbox.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,9 @@ export const routes: Routes = [
     {
         component: EgInputComponent,
         path: 'input'
+    },
+    {
+        component: EgCheckboxComponent,
+        path: 'checkbox'
     }
 ];

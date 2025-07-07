@@ -15,5 +15,6 @@ export class AppComponent {
     { name: 'button', route: '/button'},
     { name: 'header', route: '/header'},
     { name: 'input', route: '/input'},
+    { name: 'checkbox', route: '/checkbox'},
   ]
 }
