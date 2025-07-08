@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NgxEgCheckBoxComponent } from 'ngx-eg-app';
+import { NgxEgCheckBox } from 'ngx-eg-app';
 
 @Component({
   selector: 'app-checkbox',
-  imports: [NgxEgCheckBoxComponent, ReactiveFormsModule],
+  imports: [NgxEgCheckBox, ReactiveFormsModule],
   templateUrl: './eg-checkbox.component.html',
   styleUrl: './eg-checkbox.component.scss'
 })

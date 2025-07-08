@@ -3,9 +3,10 @@
     [fill]="fill"
     [size]="size"
     [shape]="shape"
-    [disabled]="disabled"
     [ngClass]="size+label+'-button'"
-    [attr.aria-label]="label || ariaLabel"
+    [class.disabled]="disabled"
+    [attr.aria-label]="ariaLabel || label"
+    [attr.aria-disabled]="disabled"
     [expand]="expand"
 >
     @if (icon && iconSide === 'left') {

@@ -7,3 +7,4 @@ export * from './input/eg-input.component';
 export * from './header/eg-header.component';
 export * from './menu/eg-menu.component';
 export * from './check-box/eg-check-box.component';
+export * from './utils/validators';

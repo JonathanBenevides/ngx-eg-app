@@ -50,3 +50,9 @@ ion-button {
 .large-button::part(native) {
     padding: 0 !important;
 }
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
