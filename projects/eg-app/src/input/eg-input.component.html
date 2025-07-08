@@ -20,7 +20,7 @@
                     [style.visibility]="visibilityOnClearButton(action.action) ? 'visible' : 'hidden'"
                     (click)="action?.click($event)"
                     [attr.aria-label]="action?.ariaLabel"
-                    [attr.aria-hidden]="!visibilityOnClearButton(action.action)"
+                    [attr.tabindex]="action.action === 'togglePasswordAction' ? -1 : null"
                 >
                     <mat-icon>{{action.icon}}</mat-icon>
                 </button>

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, Optional, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
-import { IonCheckbox } from '@ionic/angular/standalone';
+import { IonCheckbox, IonLabel } from '@ionic/angular/standalone';
 import { noop } from 'rxjs';
 
 @Component({
   selector: 'ngx-eg-checkbox',
-  imports: [IonCheckbox, ReactiveFormsModule],
+  imports: [IonCheckbox, ReactiveFormsModule, IonLabel],
   templateUrl: './eg-check-box.component.html',
   styleUrl: './eg-check-box.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
