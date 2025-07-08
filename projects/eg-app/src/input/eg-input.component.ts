@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { first, fromEvent, noop } from 'rxjs';
 import { Subscription } from 'rxjs';
@@ -73,7 +73,8 @@ export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
 
   constructor(
     @Optional() @Self() private ngControl: NgControl,
-    private readonly clipboard: Clipboard
+    private readonly clipboard: Clipboard,
+    private readonly cdr: ChangeDetectorRef
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -101,6 +102,7 @@ export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
 
   public writeValue(value: string): void {
     this.inputElement.nativeElement.value = value;
+    this.cdr.markForCheck();
   }
 
   public registerOnChange(fn: () => void): void {

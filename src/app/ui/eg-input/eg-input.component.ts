@@ -42,5 +42,9 @@ export class EgInputComponent implements OnInit {
   search() {
     console.log(this.form2.value)
   }
+  clear() {
+    this.form2.reset()
+    this.form2.markAllAsTouched()
+  }
 
 }

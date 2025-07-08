@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, Optional, Self } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IonCheckbox, IonLabel } from '@ionic/angular/standalone';
 import { noop } from 'rxjs';
@@ -29,7 +29,10 @@ export class NgxEgCheckBox implements ControlValueAccessor {
     return `checkbox-${this._id || this.label.replaceAll(' ', '-')}`;
   }
 
-  constructor(@Optional() @Self() private ngControl: NgControl) {
+  constructor(
+    @Optional() @Self() private ngControl: NgControl,
+    private readonly cdr: ChangeDetectorRef
+  ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
@@ -40,6 +43,7 @@ export class NgxEgCheckBox implements ControlValueAccessor {
 
   public writeValue(value: boolean): void {
     this.value = value;
+    this.cdr.markForCheck();
   }
 
   public registerOnChange(fn: () => void): void {
