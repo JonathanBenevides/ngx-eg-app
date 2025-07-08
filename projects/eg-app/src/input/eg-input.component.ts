@@ -48,7 +48,7 @@ export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
   public _errorMessage: string | {[key: string]: string} = '';
 
   get id(): string {
-    return `input-${this._id || this.label}`;
+    return `input-${this._id || this.label.replaceAll(' ', '-')}`;
   }
 
   public visibilityOnClearButton(action: ButtonActionType): boolean {

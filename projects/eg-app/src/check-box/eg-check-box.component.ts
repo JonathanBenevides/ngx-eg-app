@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, Optional, Self, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IonCheckbox, IonLabel } from '@ionic/angular/standalone';
 import { noop } from 'rxjs';
@@ -21,8 +21,13 @@ export class NgxEgCheckBox implements ControlValueAccessor {
   @Input() labelPlacement: 'start' | 'end' = 'end';
   @Input({ required: true }) label: string = '';
   @Input() errorText: string = '';
+  @Input() public set id(_id: string) {
+    this._id = _id;
+  }
 
-  @ViewChild('input', { static: true }) checkBoxElement!: ElementRef<HTMLElement>;
+  get id(): string {
+    return `checkbox-${this._id || this.label.replaceAll(' ', '-')}`;
+  }
 
   constructor(@Optional() @Self() private ngControl: NgControl) {
     if (this.ngControl) {

@@ -1,7 +1,10 @@
-<ion-checkbox
-    [checked]="value"
-    [disabled]="disabled"
-    (ionChange)="handleChange($event)"
-    [labelPlacement]="labelPlacement"
-    [errorText]="errorText"
-><ion-label>{{ label }}</ion-label></ion-checkbox>
+@if(label) {
+    <ion-checkbox
+        [id]="id"
+        [checked]="value"
+        [disabled]="disabled"
+        (ionChange)="handleChange($event)"
+        [labelPlacement]="labelPlacement"
+        [errorText]="errorText"
+    >{{ label }}</ion-checkbox>
+}
