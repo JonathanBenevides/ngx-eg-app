@@ -1,0 +1,14 @@
+ion-toast.warning::part(message) {
+  color: black !important;
+}
+
+ion-toast.success::part(container) {
+  background: #149b14 !important;
+  border-radius: 4px;
+}
+
+ion-toast.generic::part(message) {
+  letter-spacing: .5px;
+  color: white;
+  font-weight: 500;
+}

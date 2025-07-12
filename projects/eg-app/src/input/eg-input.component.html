@@ -10,6 +10,7 @@
         [(ngModel)]="value"
         #input
         [maxlength]="maxlength"
+        [attr.autocomplete]="autocomplete"
     />
     @if (!!buttonAction.length) {
         <div class="button-actions">

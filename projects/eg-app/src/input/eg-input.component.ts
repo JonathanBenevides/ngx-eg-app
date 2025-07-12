@@ -23,6 +23,7 @@ export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
   @Input() public maxlength = '';
   @Input() public iconSuffix = '';
   @Input() public placeholder = '';
+  @Input() public autocomplete = false;
   @Input() public type: InputType = 'text';
   @Input() public appearance: AppearanceType = "fill";
   @Input() public buttonAction: ButtonActionType[] = [];
