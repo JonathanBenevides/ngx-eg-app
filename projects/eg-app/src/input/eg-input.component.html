@@ -22,6 +22,7 @@
                     (click)="action?.click($event)"
                     [attr.aria-label]="action?.ariaLabel"
                     [attr.tabindex]="action.action === 'togglePasswordAction' ? -1 : null"
+                    type="button"
                 >
                     <mat-icon>{{action.icon}}</mat-icon>
                 </button>

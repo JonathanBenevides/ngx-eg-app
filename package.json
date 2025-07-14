@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@ionic/angular": "^8.5.2",
+    "ngx-eg-app": "file:dist/eg-app/ngx-eg-app-0.6.0.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
