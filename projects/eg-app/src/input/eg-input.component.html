@@ -1,14 +1,14 @@
 <mat-form-field [appearance]="appearance">
     <mat-label [ngClass]="{ 'required': required }">{{ label }}</mat-label>
     <input
+        #input
         matInput
-        [id]="id"
+        [id]="_id | pipeId:label:'input'"
         [type]="type"
         [placeholder]="placeholder"
         [disabled]="disabled"
         [errorStateMatcher]="error"
         [(ngModel)]="value"
-        #input
         [maxlength]="maxlength"
         [attr.autocomplete]="autocomplete"
     />

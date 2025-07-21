@@ -1,3 +1,6 @@
-<form [formGroup]="form">
-    <ngx-eg-checkbox [label]="label" formControlName="check"></ngx-eg-checkbox>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ngx-eg-checkbox [label]="'Minha label'" formControlName="check" [errorMessage]="'deu ruim'"></ngx-eg-checkbox>
+    <br>
+    <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="onClear()"></ngx-eg-button>
+    <ngx-eg-button [type]="'submit'" [label]="'Submeter'" [disabled]="form.invalid"></ngx-eg-button>
 </form>

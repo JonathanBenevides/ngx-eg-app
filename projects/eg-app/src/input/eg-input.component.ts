@@ -3,14 +3,14 @@ import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@a
 import { first, fromEvent, noop } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { AppearanceType, InputType, ButtonActionType } from '../shared/type/eg-input.type';
-import { EgInputModule } from '../shared/module/eg-input.module';
+import { InputAppearance, InputType, ButtonActionType } from '../shared/type/eg-input.type';
+import { IMPORTS } from '../shared/module/eg-input.module';
 import { ButtonIcon, UpdateMode } from '../shared/enum/eg-input.enum';
 import { EgInputStateMatcher } from '../shared/class/eg-input.class';
 import { ButtonAction } from '../shared/interface/eg-input.interface';
 
 @Component({
-  imports: [EgInputModule],
+  imports: IMPORTS,
   selector: 'ngx-eg-input',
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss',
@@ -25,7 +25,7 @@ export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
   @Input() public placeholder = '';
   @Input() public autocomplete = false;
   @Input() public type: InputType = 'text';
-  @Input() public appearance: AppearanceType = "fill";
+  @Input() public appearance: InputAppearance = "fill";
   @Input() public buttonAction: ButtonActionType[] = [];
   @Input() public set id(_id: string) {
     this._id = _id;
@@ -47,10 +47,6 @@ export class NgxEgInput implements ControlValueAccessor, OnDestroy, OnChanges {
   public error!: EgInputStateMatcher;
   private subscription$ = new Subscription();
   public _errorMessage: string | {[key: string]: string} = '';
-
-  get id(): string {
-    return `input-${this._id || this.label.replaceAll(' ', '-')}`;
-  }
 
   public visibilityOnClearButton(action: ButtonActionType): boolean {
     return action !== 'clearAction' ? true : !!this.control?.value?.length || !!this.value?.length;

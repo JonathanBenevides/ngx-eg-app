@@ -5,6 +5,7 @@ import { EgInputComponent } from './ui/eg-input/eg-input.component';
 import { EgHeaderComponent } from './ui/eg-header/eg-header.component';
 import { EgCheckboxComponent } from './ui/eg-checkbox/eg-checkbox.component';
 import { EgToastComponent } from './ui/eg-toast/eg-toast.component';
+import { EgSelectComponent } from './ui/eg-select/eg-select.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +36,9 @@ export const routes: Routes = [
     {
         component: EgToastComponent,
         path: 'toast'
+    },
+    {
+        component: EgSelectComponent,
+        path: 'select'
     }
 ];

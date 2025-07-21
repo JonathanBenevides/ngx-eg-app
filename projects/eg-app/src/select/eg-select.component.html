@@ -1,0 +1,27 @@
+<ion-select
+    [id]="_id | pipeId:label:'select'"
+    [attr.aria-label]="ariaLabel || label"
+    interface="popover"
+    [fill]="appearance"
+    [label]="label"
+    [placeholder]="placeholder"
+    label-placement="floating"
+    [value]="value"
+    [ngClass]="{'error': showError}"
+    (ionChange)="handleChage($event)"
+    (ionDismiss)="onTouch()"
+    (ionCancel)="onTouch()"
+    >
+        @for (option of options; track option) {
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+        }
+</ion-select>
+@if(showError) {
+    <ion-note
+      slot="error"
+      color="danger"
+      class="ion-padding-start"
+    >
+      {{ _errorMessage }}
+    </ion-note>
+}

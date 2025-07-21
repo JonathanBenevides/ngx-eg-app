@@ -1,24 +1,33 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgCheckBox } from 'ngx-eg-app';
-import { Subscription } from 'rxjs';
+import { NgxEgButton, NgxSelect, Select } from 'ngx-eg-app';
 import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-checkbox',
-  imports: [NgxEgCheckBox, NgxEgButton, ReactiveFormsModule],
-  templateUrl: './eg-checkbox.component.html',
-  styleUrl: './eg-checkbox.component.scss',
+  selector: 'app-eg-select',
+  imports: [NgxSelect, ReactiveFormsModule, NgxEgButton],
+  templateUrl: './eg-select.component.html',
+  styleUrl: './eg-select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EgCheckboxComponent implements ObservableForm, DefaultForm {
+export class EgSelectComponent implements ObservableForm, DefaultForm {
 
   public form: FormGroup<any>;
+
+  public options: Select[] = [
+    { label: 'Option 1', value: 'string' },
+    { label: 'Option 2', value: 'string2' },
+    { label: 'Option 3', value: 'string3' },
+    { label: 'Option 5', value: 'string5' },
+    { label: 'Option 4', value: 'string4' },
+  ];
+
   public subscription: Subscription = new Subscription();
 
   constructor(private readonly fb: FormBuilder) {
     this.form = this.fb.group({
-      check: new FormControl(null, Validators.requiredTrue)
+      option: new FormControl(null, Validators.required)
     });
     this.formChanges();
   }
@@ -34,13 +43,12 @@ export class EgCheckboxComponent implements ObservableForm, DefaultForm {
   }
 
   public onSubmit(): void {
-    this.form.get('check')!.markAsTouched();
-    console.log(this.form.get('check'))
+    this.form.get('option')!.markAsTouched();
+    console.log(this.form.get('option'))
   }
 
   public onClear(): void {
     this.form.reset();
-    console.log(this.form.get('check'))
+    console.log(this.form.get('option'))
   }
 }
-

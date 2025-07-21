@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ngx-eg-select formControlName="option" [options]="options" [label]="'Minha Label'"
+        [errorMessage]="'deu ruim'"></ngx-eg-select>
+    <br>
+    <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="onClear()"></ngx-eg-button>
+    <ngx-eg-button [type]="'submit'" [label]="'Submit'"></ngx-eg-button>
+</form>

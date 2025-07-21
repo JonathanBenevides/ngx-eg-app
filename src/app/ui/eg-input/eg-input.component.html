@@ -4,6 +4,12 @@
     <custom-eg-input [id]="'name'" [label]="'name'" [hint]="'name'" [errorMessage]="'errorMessage'" [placeholder]="'name'" formControlName="name"></custom-eg-input>
     <button type="submit" [disabled]="!form.valid" (click)="submit()">Default</button>
 </form> -->
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <ngx-eg-input [label]="'email'" [hint]="'email'" [placeholder]="'email'" [errorMessage]="{email: 'email invalido'}" [type]="'email'" formControlName="email"></ngx-eg-input>
+    <ngx-eg-input [label]="'name'" [hint]="'name'" [placeholder]="'name'" [type]="'text'" formControlName="name"></ngx-eg-input>
+    <ngx-eg-button [fill]="'outline'" [label]="'Limpar'" (click)="clear()"></ngx-eg-button>
+    <ngx-eg-button [type]="'submit'" [label]="'Submeter'"></ngx-eg-button>
+</form>
 <form [formGroup]="form2" (ngSubmit)="submit()">
     <ngx-eg-input maxlength="15" [label]="'pass'" [hint]="'pass'" [placeholder]="'pass'" [errorMessage]="'errorMessage'" [buttonAction]="['searchAction', 'togglePasswordAction', 'clearAction', 'copyAction']" [type]="'password'" formControlName="pass"></ngx-eg-input>
     <ngx-eg-input [label]="'email'" [hint]="'email'" [placeholder]="'email'" [errorMessage]="{email: 'email invalido'}" [type]="'email'" formControlName="email"></ngx-eg-input>
