@@ -1,0 +1,12 @@
+.control {
+    display: grid;
+    &__error {
+        height: 20px;
+        &-checkbox {
+            padding-left: 34.5px;
+        }
+        &-select {
+            padding-left: 16px;
+        }
+    }
+}

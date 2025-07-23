@@ -1,29 +1,60 @@
-<ion-input [ngClass]="{ 'required': required }" [type]="type" [label]="label" [placeholder]="placeholder"
-    [labelPlacement]="labelPlacement" [fill]="fill" [helperText]="hint" [(ngModel)]="value" [required]="required"
-    errorText="Invalid email" [clearOnEdit]="false" (ionBlur)="detectChanges()" [disabled]="disabled" #ionInputConponent>
-    <ng-container *ngTemplateOutlet="startIconContainer"></ng-container>
-    <ng-container *ngTemplateOutlet="endButtonContainer"></ng-container>
+<ion-input
+        #ionInput
+        [id]="_id | pipeId:label:'input'"
+        [fill]="fill"
+        [type]="type"
+        [label]="label"
+        [(ngModel)]="value"
+        [disabled]="disabled"
+        [maxlength]="maxlength"
+        [placeholder]="placeholder"
+        [labelPlacement]="labelPlacement"
+        [attr.autocomplete]="autocomplete"
+        [ngClass]="{ 'error': showError }"
+        (ionBlur)="onBlur($event)"
+        (ionInput)="handleChange($event)"
+        (ionChange)="handleChange($event)"
+    >
+    <ng-container *ngTemplateOutlet="prefixIconContainer"></ng-container>
+    <ng-container *ngTemplateOutlet="buttonAcionContainer"></ng-container>
+    <ng-container *ngTemplateOutlet="suffixIconContainer"></ng-container>
 </ion-input>
+<div class="input-error">
+    @if(showError) {
+    <ion-note color="danger" class="error">
+        {{ errorMessage }}
+    </ion-note>
+    }
+    @if(!showError) {
+    <ion-note>{{ hint }}</ion-note>
+    }
+</div>
 
-<ng-template #startIconContainer>
-    @if(startIcon) {
-    <ng-container *ngTemplateOutlet="iconContainer; context: { icon: startIcon}"></ng-container>
+<ng-template #prefixIconContainer>
+    @if(prefixIcon) {
+        <ion-icon slot="start" [name]="prefixIcon" aria-hidden="true"></ion-icon>
     }
 </ng-template>
 
-<ng-template #endButtonContainer>
-    @if (showButton) {
-    <ion-button (click)="buttonClick()" fill="clear" slot="end" aria-label="Show/hide">
-        @if (ableShowPasswordButton) {
-        <ng-container *ngTemplateOutlet="iconContainer; context: { icon: endIcon }"></ng-container>
-        }
-        @if (ableCleanButton) {
-        <ng-container *ngTemplateOutlet="iconContainer; context: { icon: endIcon }"></ng-container>
-        }
-    </ion-button>
+<ng-template #suffixIconContainer>
+    @if (suffixIcon && !actions.length) {
+        <ion-icon slot="end" [name]="suffixIcon" aria-hidden="true"></ion-icon>
     }
 </ng-template>
 
-<ng-template #iconContainer let-icon="icon">
-    <ion-icon slot="start" [name]="icon" aria-hidden="true"></ion-icon>
+<ng-template #buttonAcionContainer>
+    @if (actions.length) {
+        @for (action of actions; track action) {
+            <ion-button
+                slot="end"
+                fill="clear"
+                type="button"
+                [attr.aria-label]="action?.ariaLabel"
+                [style.visibility]="visibilityOnClearButton(action.action) ? 'visible' : 'hidden'"
+                (click)="action?.click($event)"
+            >
+                <ion-icon slot="icon-only" [name]="action.icon" aria-hidden="true"></ion-icon>
+            </ion-button>
+        }
+    }
 </ng-template>

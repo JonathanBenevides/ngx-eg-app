@@ -10,8 +10,8 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
     @Input() public set id(_id: string) {
         this._id = _id;
     }
-    @Input() public set errorMessage(value: string) {
-        this._errorMessage = value;
+    @Input() public set errorMessage(_errorMessage: string | { [key: string]: string }) {
+        this._errorMessage = _errorMessage;
     }
 
     public _id = '';
@@ -24,13 +24,21 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
     public get hasErrors(): boolean {
         return !!this.ngControl?.errors;
     }
-    
+
     public get isTouched(): boolean {
         return !!this.ngControl?.touched;
     }
-    
+
     public get showError(): boolean {
         return this.hasErrors && this.isTouched;
+    }
+
+    public get errorMessage(): string {
+        if (typeof this._errorMessage === 'string') {
+            return this._errorMessage;
+        }
+        const key = Object.keys(this.ngControl.control?.errors! || [])[0]?.toLowerCase();
+        return this._errorMessage[key];
     }
 
     constructor(

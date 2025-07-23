@@ -1,20 +1,11 @@
 @if(label) {
-    <div>
-      <ion-checkbox
-          [id]="_id | pipeId:label:'checkbox'"
-          [checked]="value"
-          [disabled]="disabled"
-          (ionChange)="handleChange($event)"
-          [labelPlacement]="labelPlacement"
-      >{{ label }}</ion-checkbox>
-      @if(showError) {
-        <ion-note
-          slot="error"
-          color="danger"
-          class="error"
-        >
-          {{ _errorMessage }}
-        </ion-note>
-      }
-    </div>
+  <form-control-wrapper [showError]="showError" [errorMessage]="errorMessage" [class]="'checkbox'">
+    <ion-checkbox
+      [id]="_id | pipeId:label:'checkbox'"
+      [checked]="value"
+      [disabled]="disabled"
+      (ionChange)="handleChange($event)"
+      [labelPlacement]="labelPlacement"
+    >{{ label }}</ion-checkbox>
+  </form-control-wrapper>
 }

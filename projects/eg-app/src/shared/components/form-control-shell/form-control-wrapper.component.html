@@ -1,0 +1,14 @@
+<div class="control">
+    <ng-content></ng-content>
+    <div class="control__error">
+        @if(showError) {
+            <ion-note
+              slot="error"
+              color="danger"
+              class="control__error-{{class}}"
+            >
+                {{ errorMessage }}
+            </ion-note>
+        }
+    </div>
+</div>

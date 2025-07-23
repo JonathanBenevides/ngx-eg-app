@@ -1,26 +1,9 @@
-<!-- <form [formGroup]="form">
-    <custom-eg-input [id]="'pass'" [label]="'pass'" [hint]="'pass'" [errorMessage]="'errorMessage'" [placeholder]="'pass'" formControlName="pass"></custom-eg-input>
-    <custom-eg-input [id]="'email'" [label]="'email'" [hint]="'email'" [errorMessage]="'errorMessage'" [placeholder]="'email'" formControlName="email"></custom-eg-input>
-    <custom-eg-input [id]="'name'" [label]="'name'" [hint]="'name'" [errorMessage]="'errorMessage'" [placeholder]="'name'" formControlName="name"></custom-eg-input>
-    <button type="submit" [disabled]="!form.valid" (click)="submit()">Default</button>
-</form> -->
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <ngx-eg-input [label]="'email'" [hint]="'email'" [placeholder]="'email'" [errorMessage]="{email: 'email invalido'}" [type]="'email'" formControlName="email"></ngx-eg-input>
-    <ngx-eg-input [label]="'name'" [hint]="'name'" [placeholder]="'name'" [type]="'text'" formControlName="name"></ngx-eg-input>
-    <ngx-eg-button [fill]="'outline'" [label]="'Limpar'" (click)="clear()"></ngx-eg-button>
-    <ngx-eg-button [type]="'submit'" [label]="'Submeter'"></ngx-eg-button>
-</form>
-<form [formGroup]="form2" (ngSubmit)="submit()">
-    <ngx-eg-input maxlength="15" [label]="'pass'" [hint]="'pass'" [placeholder]="'pass'" [errorMessage]="'errorMessage'" [buttonAction]="['searchAction', 'togglePasswordAction', 'clearAction', 'copyAction']" [type]="'password'" formControlName="pass"></ngx-eg-input>
-    <ngx-eg-input [label]="'email'" [hint]="'email'" [placeholder]="'email'" [errorMessage]="{email: 'email invalido'}" [type]="'email'" formControlName="email"></ngx-eg-input>
-    <ngx-eg-input [label]="'name'" [hint]="'name'" [placeholder]="'name'" [errorMessage]="{minlength: 'Minimo de 5 caracteres', maxlength: 'Maximo de 10 caracteres', required: 'campo inválido'}" [type]="'url'" formControlName="name"></ngx-eg-input>
-    <ngx-eg-button [fill]="'outline'" [label]="'Limpar'" (click)="clear()"></ngx-eg-button>
-    <ngx-eg-button [type]="'submit'" [label]="'Submeter'"></ngx-eg-button>
+    <ngx-eg-input [label]="'pass'" [hint]="'hint'" [errorMessage]="'errorMessage'" [suffixIcon]="'eye'" [buttonAction]="['clearAction', 'togglePasswordAction', 'searchAction', 'copyAction']" formControlName="pass"></ngx-eg-input>
+    <ngx-eg-input  [label]="'email'" [hint]="'hint'" [errorMessage]="{pattern: 'email invalido', required: 'campo inválido'}" [buttonAction]="'clearAction'" formControlName="email"></ngx-eg-input>
+    <ngx-eg-input [label]="'name'" [prefixIcon]="'eye-off-outline'" [suffixIcon]="'eye'" [hint]="'hint'" [errorMessage]="'errorMessage'" formControlName="name"></ngx-eg-input>
 </form>
 
-<!-- <form [formGroup]="form3">
-    <ngx-eg-input [id]="'pass'" [label]="'pass'" [hint]="'pass'" [placeholder]="'pass'" formControlName="pass"></eg-input>
-    <eg-input [id]="'email'" [label]="'email'" [hint]="'email'" [placeholder]="'email'" formControlName="email"></eg-input>
-    <eg-input [id]="'name'" [label]="'name'" [hint]="'name'" [placeholder]="'name'" formControlName="name"></eg-input>
-    <button type="submit" [disabled]="!form3.valid" (click)="submit()">Default</button>
-</form> -->
+<ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="clear()"></ngx-eg-button>
+<ngx-eg-button [type]="'submit'" [label]="'Submit'" (click)="submit()"></ngx-eg-button>
+

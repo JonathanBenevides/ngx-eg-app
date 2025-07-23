@@ -28,7 +28,7 @@ export class NgxSelect extends EgControlValueAccessor {
     this.cdr.markForCheck();
   }
 
-  public handleChage({ detail: { value } }: CustomEvent<Pick<Select, 'value'>>): void {
+  public handleChange({ detail: { value } }: CustomEvent<Pick<Select, 'value'>>): void {
     const selectedOption = this.options.find(({ value: _value }) => _value === value)!;
     this.value = selectedOption.value;
     this.onChange(selectedOption);

@@ -1,7 +1,7 @@
 export enum ButtonIcon {
-    togglePasswordAction = 'visibility',
-    searchAction = 'search',
-    copyAction = 'content_copy',
+    togglePasswordAction = 'eye-outline',
+    searchAction = 'search-outline',
+    copyAction = 'copy-outline',
     clearAction = 'close'
 }
 

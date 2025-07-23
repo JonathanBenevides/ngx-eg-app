@@ -1,5 +1,6 @@
 :host(eg-input) ::ng-deep .required .input-wrapper .label-text-wrapper .label-text::after {
     content: '*';
+    margin-left: 1px;
 }
 
 :host {
@@ -16,4 +17,19 @@
             }
         }
     }
+}
+
+ion-input ion-button {
+    margin-bottom: 1rem;
+}
+
+.input-error {
+    height: 20px;
+    padding-left: 1rem;
+}
+
+.error {
+    --highlight-color: var(--ion-color-danger);
+    --border-color: var(--ion-color-danger) !important;
+    color: var(--ion-color-danger);
 }
