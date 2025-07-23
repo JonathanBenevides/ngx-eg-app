@@ -18,5 +18,6 @@ export class AppComponent {
     { name: 'checkbox', route: '/checkbox'},
     { name: 'toast', route: '/toast'},
     { name: 'select', route: '/select'},
+    { name: 'form', route: '/form'},
   ]
 }

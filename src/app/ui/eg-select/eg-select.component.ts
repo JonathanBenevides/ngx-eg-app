@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxSelect, Select } from 'ngx-eg-app';
+import { NgxEgButton, NgxEgSelect, Select } from 'ngx-eg-app';
 import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-eg-select',
-  imports: [NgxSelect, ReactiveFormsModule, NgxEgButton],
+  imports: [NgxEgSelect, ReactiveFormsModule, NgxEgButton],
   templateUrl: './eg-select.component.html',
   styleUrl: './eg-select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

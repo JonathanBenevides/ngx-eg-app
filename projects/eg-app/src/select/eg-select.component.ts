@@ -12,7 +12,7 @@ import { IMPORTS } from '../shared/module/eg-select.module';
   styleUrl: './eg-select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxSelect extends EgControlValueAccessor {
+export class NgxEgSelect extends EgControlValueAccessor {
 
   @Input() public placeholder = '';
   @Input() public ariaLabel = '';
