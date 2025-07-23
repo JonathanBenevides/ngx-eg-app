@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { noop } from 'rxjs';
-import { EgControlValueAccessor } from '../shared/class/eg-control-value-accessor.class';
-import { IMPORTS } from '../shared/module/eg-checkbox.module';
+import { IMPORTS } from '../../../shared/module/eg-checkbox.module';
+import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 
 @Component({
   selector: 'ngx-eg-checkbox',

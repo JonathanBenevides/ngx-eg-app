@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular/standalone';
-import { ToastConfig, ToastType } from '../type/eg-toast.type';
+import { ToastConfig, ToastType } from '../types/eg-toast.type';
 
 enum ToastThemes {
   success = 'success',

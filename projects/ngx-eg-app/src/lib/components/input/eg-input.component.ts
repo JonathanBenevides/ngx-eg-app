@@ -6,11 +6,11 @@ import { noop, Subscription } from 'rxjs';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { addIcons } from 'ionicons';
 import { eye, eyeOff, eyeOffOutline, searchOutline, copyOutline, eyeOutline, close } from 'ionicons/icons';
-import { EgControlValueAccessor } from '../shared/class/eg-control-value-accessor.class';
-import { ButtonAction } from '../shared/interface/eg-input.interface';
-import { ButtonActionType, InputType } from '../shared/type/eg-input.type';
-import { ButtonIcon, UpdateMode } from '../shared/enum/eg-input.enum';
-import { IdPipe } from '../shared/pipes/id/id.pipe';
+import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
+import { IdPipe } from '../../../shared/pipes/id/id.pipe';
+import { ButtonAction } from '../../../shared/interface/eg-input.interface';
+import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
+import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
 
 @Component({
   imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdPipe, IonNote, IonButton],

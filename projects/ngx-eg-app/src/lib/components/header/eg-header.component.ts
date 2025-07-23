@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { EgHeaderModule } from '../shared/module/eg-header.module';
-import { ButtonAction } from '../shared/interface/eg-input.interface';
+import { EgHeaderModule } from '../../../shared/module/eg-header.module';
+import { ButtonAction } from '../../../shared/interface/eg-input.interface';
 
 @Component({
   selector: 'ngx-eg-header',

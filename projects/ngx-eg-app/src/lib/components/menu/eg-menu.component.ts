@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EgMenuModule } from '../shared/module/eg-menu.module';
+import { EgMenuModule } from '../../../shared/module/base.module';
 
 @Component({
   selector: 'ngx-eg-menu',

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Select } from '../shared/interface/eg-select.interface';
-import { SelectAppearance } from '../shared/type/eg-input.type';
 import { noop } from 'rxjs';
-import { EgControlValueAccessor } from '../shared/class/eg-control-value-accessor.class';
-import { IMPORTS } from '../shared/module/eg-select.module';
+import { IMPORTS } from '../../../shared/module/eg-select.module';
+import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
+import { SelectAppearance } from '../../../shared/type/eg-input.type';
+import { Select } from '../../interfaces/eg-select.interface';
 
 @Component({
   selector: 'ngx-eg-select',

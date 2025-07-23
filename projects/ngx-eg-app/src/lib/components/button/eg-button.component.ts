@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { ButtonFill, ButtonShape, ButtonSize, ButtonType } from '../shared/type/eg-button.type';
-import { IMPORTS } from '../shared/module/eg-button.module';
+import { IMPORTS } from '../../../shared/module/eg-button.module';
+import { ButtonFill, ButtonShape, ButtonSize, ButtonType } from '../../../shared/type/eg-button.type';
 
 @Component({
   imports: IMPORTS,

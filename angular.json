@@ -11,15 +11,15 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "projects/tutorial",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/eg-manager",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "outputPath": "dist/eg-tutorial",
+            "index": "projects/tutorial/index.html",
+            "browser": "projects/tutorial/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -28,11 +28,11 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src"
+                "input": "projects/tutorial"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/tutorial/styles.scss"
             ],
             "scripts": []
           },
@@ -87,11 +87,11 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src"
+                "input": "projects/tutorial"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/tutorial/styles.scss"
             ],
             "scripts": []
           }
@@ -100,21 +100,21 @@
     },
     "ngx-eg-app": {
       "projectType": "library",
-      "root": "projects/eg-app",
-      "sourceRoot": "projects/eg-app/src",
+      "root": "projects/ngx-eg-app",
+      "sourceRoot": "projects/ngx-eg-app/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/eg-app/ng-package.json"
+            "project": "projects/ngx-eg-app/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/eg-app/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-eg-app/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/eg-app/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-eg-app/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -122,7 +122,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/eg-app/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-eg-app/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
