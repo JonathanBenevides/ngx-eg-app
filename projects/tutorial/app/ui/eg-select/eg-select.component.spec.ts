@@ -10,7 +10,7 @@ describe('EgSelectComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EgSelectComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgSelectComponent);
     component = fixture.componentInstance;

@@ -9,7 +9,8 @@
     "build:lib": "ng build ngx-eg-app --configuration production",
     "publish": "ng build ngx-eg-app --configuration production && cd dist/eg-app && npm publish",
     "watch:lib": "ng build ngx-eg-app --configuration production --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "npx eslint . --ext .ts -c eslint.config.mjs --fix"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +24,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@ionic/angular": "^8.5.2",
-    "ngx-eg-app": "file:dist/eg-app/ngx-eg-app-0.6.0.tgz",
+    "ngx-eg-app": "file:dist/ngx-eg-app/ngx-eg-app-0.10.0.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -32,7 +33,10 @@
     "@angular-devkit/build-angular": "^19.2.5",
     "@angular/cli": "^19.2.3",
     "@angular/compiler-cli": "^19.2.0",
+    "@stylistic/eslint-plugin": "^5.1.0",
     "@types/jasmine": "~5.1.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-import": "^2.32.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -40,6 +44,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.2.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.35.1"
   }
 }

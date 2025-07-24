@@ -10,7 +10,7 @@ describe('EgToastComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EgToastComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgToastComponent);
     component = fixture.componentInstance;

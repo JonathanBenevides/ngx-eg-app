@@ -1,16 +1,17 @@
+import { Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
-import { noop, Subscription } from 'rxjs';
-import { Clipboard } from '@angular/cdk/clipboard';
 import { addIcons } from 'ionicons';
-import { eye, eyeOff, eyeOffOutline, searchOutline, copyOutline, eyeOutline, close } from 'ionicons/icons';
+import { close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline } from 'ionicons/icons';
+import { noop, Subscription } from 'rxjs';
+
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
-import { IdPipe } from '../../../shared/pipes/id/id.pipe';
-import { ButtonAction } from '../../../shared/interface/eg-input.interface';
-import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
 import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
+import { ButtonAction } from '../../../shared/interface/eg-input.interface';
+import { IdPipe } from '../../../shared/pipes/id/id.pipe';
+import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
 
 @Component({
   imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdPipe, IonNote, IonButton],
@@ -40,11 +41,11 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
 
   @Output() public search = new EventEmitter<string>();
 
-  @ViewChild('ionInput', { static: false }) ionInput!: IonInput;
+  @ViewChild('ionInput', { static: false }) public ionInput!: IonInput;
 
   public override value = '';
   public actions: ButtonAction[] = [];
-  private subscription$ = new Subscription();
+  private readonly subscription$ = new Subscription();
 
   public get control(): AbstractControl {
     return this.ngControl.control!;
@@ -55,7 +56,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     private readonly clipboard: Clipboard,
     protected override readonly cdr: ChangeDetectorRef
   ) {
-    super(ngControl, cdr)
+    super(ngControl, cdr);
     addIcons({ eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline, copyOutline, close });
   }
 
@@ -88,7 +89,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
 
   public handleChange({ detail: { value } }: CustomEvent): void {
     if (this.control?.updateOn === UpdateMode.change) {
-      this.control?.setValue(value)
+      this.control?.setValue(value);
       this.chageValueRoutine(value);
     }
   }
@@ -114,8 +115,8 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
         return {
           action,
           icon: ButtonIcon[action as keyof typeof ButtonIcon],
-          click: () => this[action as keyof typeof ButtonIcon]()
-        }
+          click: (): void => this[action as keyof typeof ButtonIcon]()
+        };
       });
     }
   }

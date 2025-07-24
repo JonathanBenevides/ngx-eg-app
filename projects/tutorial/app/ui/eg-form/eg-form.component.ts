@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
-import { Subscription } from 'rxjs';
 import { NgxEgButton, NgxEgCheckBox, NgxEgInput, NgxEgSelect, REQ_EMAIL, REQ_NAME, REQ_NUMBER } from 'ngx-eg-app';
+import { Subscription } from 'rxjs';
+
+import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
+
+const SIX = 6;
 
 function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -10,9 +13,9 @@ function passwordMatchValidator(): ValidatorFn {
     const confirmPassword = control.get('confirmPassword');
     if (password && confirmPassword && password.value !== confirmPassword.value) {
       const error = { passwordMismatch: true };
-      confirmPassword.setErrors(error)
+      confirmPassword.setErrors(error);
       return error;
-    } 
+    }
     return null;
   };
 }
@@ -24,14 +27,14 @@ function passwordMatchValidator(): ValidatorFn {
   styleUrl: './eg-form.component.scss'
 })
 export class EgFormComponent implements ObservableForm, DefaultForm {
-  form: FormGroup;
-  genderOptions = [
+  public form: FormGroup;
+  public genderOptions = [
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' }
   ];
-  subscription: Subscription = new Subscription();
+  public subscription: Subscription = new Subscription();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder) {
     this.form = this.fb.group({
       firstName: ['', REQ_NAME],
       lastName: ['', REQ_NAME],
@@ -39,32 +42,34 @@ export class EgFormComponent implements ObservableForm, DefaultForm {
       birthDate: ['', Validators.required],
       email: ['', REQ_EMAIL],
       phoneNumber: ['', REQ_NUMBER],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(SIX)]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
     }, { validators: passwordMatchValidator() });
   }
 
-  onClear(): void {
-    this.form.reset()
+  public onClear(): void {
+    this.form.reset();
   }
 
-  formChanges(): void {
+  public formChanges(): void {
+    this.subscription.add(
+      this.form.valueChanges.subscribe(console.log)
+    );
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
-  openTerms(event: Event): void {
+  public openTerms(event: Event): void {
     event.preventDefault();
     alert('Display Terms of Use (modal or separate page)');
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.form.valid) {
       console.log(this.form.value);
-      // Handle form submission (e.g., send to API)
     }
   }
 }

@@ -8,9 +8,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './side-bar.component.scss'
 })
 export class SideBarComponent {
-  routes = [
-    { route: 'input', label: 'input'},
-    { route: 'button', label: 'button'},
-    { route: 'header', label: 'header'},
-  ]
+  public routes = [
+    { route: 'input', label: 'input' },
+    { route: 'button', label: 'button' },
+    { route: 'header', label: 'header' }
+  ];
 }

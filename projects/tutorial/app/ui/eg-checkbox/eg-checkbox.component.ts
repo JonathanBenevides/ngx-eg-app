@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxEgButton, NgxEgCheckBox } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
+
 import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
 
 @Component({
@@ -13,7 +14,7 @@ import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.
 })
 export class EgCheckboxComponent implements ObservableForm, DefaultForm {
 
-  public form: FormGroup<any>;
+  public form: FormGroup;
   public subscription: Subscription = new Subscription();
 
   constructor(private readonly fb: FormBuilder) {
@@ -35,12 +36,12 @@ export class EgCheckboxComponent implements ObservableForm, DefaultForm {
 
   public onSubmit(): void {
     this.form.get('check')!.markAsTouched();
-    console.log(this.form.get('check'))
+    console.log(this.form.get('check'));
   }
 
   public onClear(): void {
     this.form.reset();
-    console.log(this.form.get('check'))
+    console.log(this.form.get('check'));
   }
 }
 

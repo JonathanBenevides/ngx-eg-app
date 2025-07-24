@@ -12,7 +12,7 @@ export class EgToastComponent {
 
   constructor(private readonly toast: NgxEgToastService) { }
 
-  show() {
-    this.toast.show({ message: 'Minha mensagem aqui', type: 'info' })
+  public show(): void {
+    this.toast.show({ message: 'Minha mensagem aqui', type: 'info' });
   }
 }

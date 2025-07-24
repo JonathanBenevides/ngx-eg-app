@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { noop } from 'rxjs';
-import { IMPORTS } from '../../../shared/module/eg-checkbox.module';
+
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
+import { IMPORTS } from '../../../shared/module/eg-checkbox.module';
 
 @Component({
   selector: 'ngx-eg-checkbox',
@@ -12,8 +13,8 @@ import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-a
 })
 export class NgxEgCheckBox extends EgControlValueAccessor {
 
-  @Input() labelPlacement: 'start' | 'end' = 'end';
-  
+  @Input() public labelPlacement: 'start' | 'end' = 'end';
+
   public override value: boolean = false;
 
   public override onChange: (value: boolean) => void = noop;

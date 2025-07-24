@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular/standalone';
+
 import { ToastConfig, ToastType } from '../types/eg-toast.type';
+import { FIVE_SECONDS, ZERO } from '../utils/magic-number';
 
 enum ToastThemes {
   success = 'success',
@@ -14,7 +16,7 @@ export class NgxEgToastService {
 
   constructor(private readonly toastController: ToastController) { }
 
-  async show(config: ToastConfig): Promise<void> {
+  public async show(config: ToastConfig): Promise<void> {
     const { message, duration, id, position, type, cssClass, header } = config;
     const className = this.getClass(cssClass, type);
     const toast = await this.toastController.create({
@@ -22,11 +24,11 @@ export class NgxEgToastService {
       header,
       cssClass: className,
       swipeGesture: 'vertical',
-      duration: duration || 5000,
+      duration: duration || FIVE_SECONDS,
       keyboardClose: true,
       position: position || 'bottom',
       color: type === 'info' ? 'primary' : type,
-      id: id || message.split(' ').map(word => word.charAt(0).toLowerCase()).join('') + '-toast'
+      id: id || message.split(' ').map(word => word.charAt(ZERO).toLowerCase()).join('') + '-toast'
     });
     await toast.present();
   }

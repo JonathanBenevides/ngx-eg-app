@@ -10,7 +10,7 @@ describe('EgFormComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EgFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgFormComponent);
     component = fixture.componentInstance;

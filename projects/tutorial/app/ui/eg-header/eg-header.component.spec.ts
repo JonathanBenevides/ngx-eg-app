@@ -10,7 +10,7 @@ describe('EgHeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EgHeaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgHeaderComponent);
     component = fixture.componentInstance;

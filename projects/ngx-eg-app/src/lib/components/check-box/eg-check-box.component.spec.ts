@@ -10,7 +10,7 @@ describe('NgxEgCheckBoxComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NgxEgCheckBoxComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(NgxEgCheckBoxComponent);
     component = fixture.componentInstance;

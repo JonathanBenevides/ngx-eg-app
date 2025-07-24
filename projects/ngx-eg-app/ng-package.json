@@ -9,9 +9,9 @@
   },
   "assets": [
     {
-      "input": "src/styles",
+      "input": "src/lib/styles",
       "glob": "**/*.scss",
-      "output": "styles"
+      "output": "lib/styles"
     }
   ]
 }

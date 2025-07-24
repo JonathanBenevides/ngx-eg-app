@@ -10,7 +10,7 @@ describe('EgButtonComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EgButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgButtonComponent);
     component = fixture.componentInstance;

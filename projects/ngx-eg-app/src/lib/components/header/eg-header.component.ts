@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { EgHeaderModule } from '../../../shared/module/eg-header.module';
+
 import { ButtonAction } from '../../../shared/interface/eg-input.interface';
+import { EgHeaderModule } from '../../../shared/module/eg-header.module';
 
 @Component({
   selector: 'ngx-eg-header',
@@ -11,10 +12,10 @@ import { ButtonAction } from '../../../shared/interface/eg-input.interface';
 })
 export class NgxEgHeader {
 
-  @Input() title = '';
-  @Input() isLoading = false;
-  @Input() menuAriaLabel = '';
-  @Input() hasBackButton = false;
-  @Input() hasMenuButton = false;
-  @Input() actions: ButtonAction[] = [];
+  @Input() public title = '';
+  @Input() public isLoading = false;
+  @Input() public menuAriaLabel = '';
+  @Input() public hasBackButton = false;
+  @Input() public hasMenuButton = false;
+  @Input() public actions: ButtonAction[] = [];
 }

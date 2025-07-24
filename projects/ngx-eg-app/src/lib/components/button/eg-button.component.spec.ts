@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { EgButton } from './eg-button.component';
 
 describe('EgButton', () => {
@@ -9,7 +10,7 @@ describe('EgButton', () => {
     await TestBed.configureTestingModule({
       imports: [EgButton]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgButton);
     component = fixture.componentInstance;

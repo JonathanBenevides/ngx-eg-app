@@ -10,7 +10,7 @@ describe('FormControlShellComponent', () => {
     await TestBed.configureTestingModule({
       imports: [FormControlShellComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FormControlShellComponent);
     component = fixture.componentInstance;

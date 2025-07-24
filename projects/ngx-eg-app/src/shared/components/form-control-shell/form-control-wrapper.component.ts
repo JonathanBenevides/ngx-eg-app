@@ -11,7 +11,7 @@ import { IonNote } from '@ionic/angular/standalone';
 })
 export class FormControlWrapperComponent {
 
-  @Input() errorMessage: string | { [key: string]: string } = ''
-  @Input() showError = false
-  @Input() class = ''
+  @Input() public errorMessage: string | { [key: string]: string } = '';
+  @Input() public showError = false;
+  @Input() public class = '';
 }

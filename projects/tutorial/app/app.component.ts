@@ -7,17 +7,17 @@ import { NgxEgHeader, NgxEgMenu } from 'ngx-eg-app';
   selector: 'app-root',
   imports: [IonApp, RouterOutlet, NgxEgMenu, NgxEgHeader, IonContent, RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'  
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  links = [
-    { name: 'home', route: '/'},
-    { name: 'button', route: '/button'},
-    { name: 'header', route: '/header'},
-    { name: 'input', route: '/input'},
-    { name: 'checkbox', route: '/checkbox'},
-    { name: 'toast', route: '/toast'},
-    { name: 'select', route: '/select'},
-    { name: 'form', route: '/form'},
-  ]
+  public links = [
+    { name: 'home', route: '/' },
+    { name: 'button', route: '/button' },
+    { name: 'header', route: '/header' },
+    { name: 'input', route: '/input' },
+    { name: 'checkbox', route: '/checkbox' },
+    { name: 'toast', route: '/toast' },
+    { name: 'select', route: '/select' },
+    { name: 'form', route: '/form' }
+  ];
 }

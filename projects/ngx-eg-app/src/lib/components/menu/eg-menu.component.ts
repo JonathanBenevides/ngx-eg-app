@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { EgMenuModule } from '../../../shared/module/base.module';
 
 @Component({
@@ -8,5 +9,5 @@ import { EgMenuModule } from '../../../shared/module/base.module';
   styleUrl: './eg-menu.component.scss'
 })
 export class NgxEgMenu {
-  @Input() title = '';
+  @Input() public title = '';
 }

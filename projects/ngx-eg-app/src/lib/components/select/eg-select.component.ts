@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { noop } from 'rxjs';
-import { IMPORTS } from '../../../shared/module/eg-select.module';
+
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
+import { IMPORTS } from '../../../shared/module/eg-select.module';
 import { SelectAppearance } from '../../../shared/type/eg-input.type';
 import { Select } from '../../interfaces/eg-select.interface';
 
@@ -16,7 +17,7 @@ export class NgxEgSelect extends EgControlValueAccessor {
 
   @Input() public placeholder = '';
   @Input() public ariaLabel = '';
-  @Input() public appearance: SelectAppearance = "solid";
+  @Input() public appearance: SelectAppearance = 'solid';
   @Input({ required: true }) public options: Select[] = [];
 
   public override value: string | number = '';

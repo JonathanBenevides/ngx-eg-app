@@ -10,7 +10,7 @@ describe('EgInputComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EgInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EgInputComponent);
     component = fixture.componentInstance;
