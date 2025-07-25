@@ -7,6 +7,7 @@ const ZERO = 0;
 @Directive()
 export abstract class EgControlValueAccessor implements ControlValueAccessor {
 
+  @Input() public hint: string = '';
   @Input({ required: true }) public label: string = '';
 
   @Input() public set id(_id: string) {

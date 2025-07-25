@@ -9,8 +9,9 @@
         [maxlength]="maxlength"
         [placeholder]="placeholder"
         [labelPlacement]="labelPlacement"
+        [attr.aria-describedby]="_id | pipeId:label:'alert'"
         [attr.autocomplete]="autocomplete"
-        [ngClass]="{ 'error': showError }"
+        [ngClass]="{ 'input-error': showError }"
         (ionBlur)="onBlur($event)"
         (ionInput)="handleChange($event)"
         (ionChange)="handleChange($event)"
@@ -19,15 +20,10 @@
     <ng-container *ngTemplateOutlet="buttonAcionContainer"></ng-container>
     <ng-container *ngTemplateOutlet="suffixIconContainer"></ng-container>
 </ion-input>
-<div class="input-error">
-    @if(showError) {
-    <ion-note color="danger" class="error">
-        {{ errorMessage }}
+<div class="input-alert">
+    <ion-note [ngClass]="{ 'input-alert-hint': !showError }" [id]="_id | pipeId:label:'alert'" [color]="showError ? 'danger' : 'default'">
+        {{ showError ? errorMessage : hint }}
     </ion-note>
-    }
-    @if(!showError) {
-    <ion-note>{{ hint }}</ion-note>
-    }
 </div>
 
 <ng-template #prefixIconContainer>
@@ -49,6 +45,7 @@
                 slot="end"
                 fill="clear"
                 type="button"
+                [ngClass]="{ 'input-error-icon': showError }"
                 [attr.aria-label]="action?.ariaLabel"
                 [style.visibility]="visibilityOnClearButton(action.action) ? 'visible' : 'hidden'"
                 (click)="action?.click($event)"

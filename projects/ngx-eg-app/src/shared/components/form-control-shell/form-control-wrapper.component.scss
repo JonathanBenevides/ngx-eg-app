@@ -1,12 +1,16 @@
 .control {
     display: grid;
-    &__error {
-        height: 20px;
-        &-checkbox {
-            padding-left: 34.5px;
-        }
-        &-select {
-            padding-left: 16px;
-        }
+    &__error,
+    &__error-checkbox {
+        height: 18.54px;
+        margin-top: -18.54px;
+        padding-left: 16px;
     }
+    &__error-checkbox {
+        padding-left: 34.5px;
+    }
+}
+
+ion-note {
+    font-size: 12px;
 }

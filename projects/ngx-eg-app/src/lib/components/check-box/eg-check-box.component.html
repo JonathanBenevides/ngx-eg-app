@@ -1,11 +1,18 @@
 @if(label) {
-  <form-control-wrapper [showError]="showError" [errorMessage]="errorMessage" [class]="'checkbox'">
+  <form-control-wrapper
+    [id]="_id"
+    [label]="label"
+    [class]="'checkbox'"
+    [showError]="showError"
+    [errorMessage]="errorMessage"
+    >
     <ion-checkbox
       [id]="_id | pipeId:label:'checkbox'"
       [checked]="value"
       [disabled]="disabled"
-      (ionChange)="handleChange($event)"
+      [helperText]="hint"
       [labelPlacement]="labelPlacement"
+      (ionChange)="handleChange($event)"
     >{{ label }}</ion-checkbox>
   </form-control-wrapper>
 }

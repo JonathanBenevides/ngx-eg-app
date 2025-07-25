@@ -22,7 +22,6 @@ import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type'
 })
 export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnInit {
 
-  @Input() public hint = '';
   @Input() public prefixIcon = '';
   @Input() public suffixIcon = '';
   @Input() public maxlength = null;

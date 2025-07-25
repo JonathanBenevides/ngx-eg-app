@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <ngx-eg-checkbox [label]="'Minha label'" formControlName="check" [errorMessage]="'deu ruim'"></ngx-eg-checkbox>
+    <ngx-eg-checkbox [label]="'Aceitar termos e condições'" formControlName="check" [errorMessage]="'Aceite os termos e condições'" [hint]="'aceite os termos'"></ngx-eg-checkbox>
     <br>
     <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="onClear()"></ngx-eg-button>
     <ngx-eg-button [type]="'submit'" [label]="'Submeter'" [disabled]="form.invalid"></ngx-eg-button>

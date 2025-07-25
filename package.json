@@ -7,7 +7,7 @@
     "start:lan": "ng serve --host 192.168.0.11 --port 6201",
     "build": "ng build",
     "build:lib": "ng build ngx-eg-app --configuration production",
-    "publish": "ng build ngx-eg-app --configuration production && cd dist/eg-app && npm publish",
+    "publish": "ng build ngx-eg-app --configuration production && cd dist/ngx-eg-app && npm publish",
     "watch:lib": "ng build ngx-eg-app --configuration production --watch --configuration development",
     "test": "ng test",
     "lint": "npx eslint . --ext .ts -c eslint.config.mjs --fix"
@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@ionic/angular": "^8.5.2",
-    "ngx-eg-app": "file:dist/ngx-eg-app/ngx-eg-app-0.10.0.tgz",
+    "ngx-eg-app": "file:dist/ngx-eg-app/ngx-eg-app-0.11.0.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

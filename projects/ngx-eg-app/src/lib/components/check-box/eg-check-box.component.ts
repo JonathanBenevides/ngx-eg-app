@@ -19,7 +19,7 @@ export class NgxEgCheckBox extends EgControlValueAccessor {
 
   public override onChange: (value: boolean) => void = noop;
 
-  public override writeValue(value: boolean): void {
+  public override writeValue(value: boolean = false): void {
     this.value = value;
     this.cdr.markForCheck();
   }

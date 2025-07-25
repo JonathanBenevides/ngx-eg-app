@@ -1,9 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <ngx-eg-input [label]="'pass'" [hint]="'hint'" [errorMessage]="'errorMessage'" [suffixIcon]="'eye'" [buttonAction]="['clearAction', 'togglePasswordAction', 'searchAction', 'copyAction']" formControlName="pass"></ngx-eg-input>
-    <ngx-eg-input  [label]="'email'" [hint]="'hint'" [errorMessage]="{pattern: 'email invalido', required: 'campo inválido'}" [buttonAction]="'clearAction'" formControlName="email"></ngx-eg-input>
-    <ngx-eg-input [label]="'name'" [prefixIcon]="'eye-off-outline'" [suffixIcon]="'eye'" [hint]="'hint'" [errorMessage]="'errorMessage'" formControlName="name"></ngx-eg-input>
+    <ngx-eg-input [label]="'Nome'" [hint]="'Seu nome'" [errorMessage]="'campo obrigatório'" formControlName="name"></ngx-eg-input>
+    <ngx-eg-input  [label]="'Email'" [hint]="'Seu email registrado'" [errorMessage]="{pattern: 'email invalido', required: 'campo obrigatório'}" [buttonAction]="'clearAction'" formControlName="email"></ngx-eg-input>
+    <ngx-eg-input [label]="'Senha'" [hint]="'Senha numérica'" [prefixIcon]="'eye-off-outline'" [errorMessage]="'campo obrigatório'" [buttonAction]="'togglePasswordAction'" formControlName="pass"></ngx-eg-input>
+    <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="clear()"></ngx-eg-button>
+    <ngx-eg-button [type]="'submit'" [label]="'Submit'" (click)="submit()"></ngx-eg-button>
 </form>
 
-<ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="clear()"></ngx-eg-button>
-<ngx-eg-button [type]="'submit'" [label]="'Submit'" (click)="submit()"></ngx-eg-button>
 
