@@ -12,3 +12,4 @@ export * from './lib/components/select/eg-select.component';
 export * from './lib/components/check-box/eg-check-box.component';
 export * from './lib/interfaces/eg-select.interface';
 export * from './lib/types/eg-toast.type';
+export * from './lib/pipes/id-generator/id-generator.pipe';

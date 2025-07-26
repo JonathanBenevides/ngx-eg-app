@@ -3,7 +3,7 @@
     <div [ngClass]="class ? 'control__error-'+class : 'control__error'">
         <ion-note
             role="alert"
-            [id]="id | pipeId:label:'alert'"
+            [id]="(id || label) | idGenerator:'alert'"
             color="danger"
         >
             {{ showError ? errorMessage : '' }}

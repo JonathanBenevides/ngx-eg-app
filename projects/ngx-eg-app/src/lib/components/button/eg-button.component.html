@@ -1,5 +1,5 @@
 <ion-button
-    [id]="id | pipeId:label:'button'"
+    [id]="(id || label) | idGenerator:'button'"
     [type]="type"
     [fill]="fill"
     [size]="size"

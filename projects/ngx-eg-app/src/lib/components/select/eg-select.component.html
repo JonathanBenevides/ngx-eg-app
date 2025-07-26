@@ -5,7 +5,7 @@
   [errorMessage]="errorMessage"
   >
   <ion-select
-      [id]="_id | pipeId:label:'select'"
+      [id]="(_id || label) | idGenerator:'select'"
       [value]="value"
       [label]="label"
       [fill]="appearance"
@@ -15,7 +15,7 @@
       [ngClass]="{'error': showError}"
       [helperText]="hint"
       [attr.aria-label]="ariaLabel || label"
-      [attr.aria-describedby]="_id | pipeId:label:'alert'"
+      [attr.aria-describedby]="(_id || label) | idGenerator:'alert'"
       (ionCancel)="onTouch()"
       (ionDismiss)="onTouch()"
       (ionChange)="handleChange($event)"

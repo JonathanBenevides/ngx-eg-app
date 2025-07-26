@@ -7,7 +7,7 @@
     [errorMessage]="errorMessage"
     >
     <ion-checkbox
-      [id]="_id | pipeId:label:'checkbox'"
+      [id]="(_id || label) | idGenerator:'checkbox'"
       [checked]="value"
       [disabled]="disabled"
       [helperText]="hint"

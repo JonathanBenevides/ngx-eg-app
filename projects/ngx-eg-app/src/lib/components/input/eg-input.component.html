@@ -1,6 +1,6 @@
 <ion-input
         #ionInput
-        [id]="_id | pipeId:label:'input'"
+        [id]="(_id || label) | idGenerator:'input'"
         [fill]="fill"
         [type]="type"
         [label]="label"
@@ -9,7 +9,7 @@
         [maxlength]="maxlength"
         [placeholder]="placeholder"
         [labelPlacement]="labelPlacement"
-        [attr.aria-describedby]="_id | pipeId:label:'alert'"
+        [attr.aria-describedby]="(_id || label) | idGenerator:'alert'"
         [attr.autocomplete]="autocomplete"
         [ngClass]="{ 'input-error': showError }"
         (ionBlur)="onBlur($event)"
@@ -21,7 +21,7 @@
     <ng-container *ngTemplateOutlet="suffixIconContainer"></ng-container>
 </ion-input>
 <div class="input-alert">
-    <ion-note [ngClass]="{ 'input-alert-hint': !showError }" [id]="_id | pipeId:label:'alert'" [color]="showError ? 'danger' : 'default'">
+    <ion-note [ngClass]="{ 'input-alert-hint': !showError }" [id]="(_id || label) | idGenerator:'alert'" [color]="showError ? 'danger' : 'default'">
         {{ showError ? errorMessage : hint }}
     </ion-note>
 </div>

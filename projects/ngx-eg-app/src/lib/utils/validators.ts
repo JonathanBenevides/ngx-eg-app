@@ -1,5 +1,5 @@
-import { Validators } from '@angular/forms';
-
+import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import moment from 'moment';
 import { FIVE, MAX_NUMBER, ONE, TWO, ZERO } from './magic-number';
 
 const regex = new RegExp(
@@ -12,4 +12,11 @@ export const REQ_LETTERS = [Validators.required, Validators.pattern('^[a-zA-Zà-
 export const REQ_NUMBER = [Validators.required, Validators.pattern('^[0-9]+$')];
 export const REQ_NAME = [...REQ_LETTERS, Validators.minLength(TWO)];
 export const REQ_ADDRESS_NUMBER = [...REQ_NUMBER, Validators.minLength(ONE), Validators.maxLength(FIVE), Validators.min(ZERO), Validators.max(MAX_NUMBER)];
+
+export function VALID_DATE(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    return moment(control.value).isValid() ? null : { invalidDate: true }
+  }
+}
+
 

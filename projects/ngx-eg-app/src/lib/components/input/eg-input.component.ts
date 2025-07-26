@@ -10,11 +10,11 @@ import { noop, Subscription } from 'rxjs';
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
 import { ButtonAction } from '../../../shared/interface/eg-input.interface';
-import { IdPipe } from '../../../shared/pipes/id/id.pipe';
 import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
+import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
 
 @Component({
-  imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdPipe, IonNote, IonButton],
+  imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdGenerator, IonNote, IonButton],
   selector: 'ngx-eg-input',
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss',

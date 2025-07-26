@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IonNote } from '@ionic/angular/standalone';
 
-import { IdPipe } from '../../pipes/id/id.pipe';
+import { IdGenerator } from '../../../lib/pipes/id-generator/id-generator.pipe';
 
 @Component({
   selector: 'form-control-wrapper',
-  imports: [IonNote, IdPipe, CommonModule],
+  imports: [IonNote, IdGenerator, CommonModule],
   templateUrl: './form-control-wrapper.component.html',
   styleUrl: './form-control-wrapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -14,7 +14,6 @@ import { IdPipe } from '../../pipes/id/id.pipe';
 export class FormControlWrapperComponent implements OnChanges {
 
   @Input() public id = ''; // caso o ID seja personalizado, passe-o para a acessibilidade funcionar corretamente
-  @Input() public hint = '';
   @Input() public class = '';
   @Input() public label = '';
   @Input() public showError = false;
@@ -38,6 +37,6 @@ export class FormControlWrapperComponent implements OnChanges {
       if (hint) {
         hint.style.visibility = this.showError ? 'hidden' : 'unset';
       }
-    })
+    });
   }
 }
