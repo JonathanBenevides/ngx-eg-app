@@ -37,9 +37,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
   @Input() public fill: 'outline' | 'solid' = 'solid';
   @Input() public labelPlacement: 'stacked' | 'floating' = 'floating';
   @Input() public set mask(_mask: string) {
-    this._mask = {
-      mask: this.getMaskPattern(_mask)
-    };
+    this._mask = { mask: this.toMask(_mask) };
   };
   @Input() public set buttonAction(actions: ButtonActionType | ButtonActionType[] | null) {
     this.createButtons(actions);
@@ -88,16 +86,21 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     if (localName === 'ion-button') {
       return;
     }
+
+    const unmasked = this._mask ? this.unMask(value) : value;
+
     if (this.control?.updateOn === UpdateMode.blur) {
-      this.control?.setValue(value);
+      this.control?.setValue(unmasked);
     }
-    this.chageValueRoutine(value);
+    this.chageValueRoutine(value, unmasked);
   }
 
   public handleChange({ detail: { value } }: CustomEvent): void {
+    const unmasked = this._mask ? this.unMask(value) : value;
+
     if (this.control?.updateOn === UpdateMode.change) {
-      this.control?.setValue(value);
-      this.chageValueRoutine(value);
+      this.control?.setValue(unmasked);
+      this.chageValueRoutine(value, unmasked);
     }
   }
 
@@ -111,10 +114,14 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     this.required = this.control?.hasValidator(Validators.required) as boolean;
   }
 
-  private getMaskPattern(_mask: string): (string | RegExp)[] {
+  private toMask(_mask: string): (string | RegExp)[] {
     return Object.values(_mask).map(value => {
       return value.toLowerCase() === 'x' ? /\d/ : value;
     });
+  }
+
+  private unMask(_mask: string): string {
+    return _mask.replace(/\D/g, '');
   }
 
   private createButtons(actions: ButtonActionType | ButtonActionType[] | null): void {
@@ -157,9 +164,9 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     this.control.reset();
   }
 
-  private chageValueRoutine(value: string): void {
+  private chageValueRoutine(value: string, unmasked: string): void {
     this.value = value;
-    this.onChange(value);
+    this.onChange(unmasked || value);
     this.onTouch();
     this.cdr.markForCheck();
   }

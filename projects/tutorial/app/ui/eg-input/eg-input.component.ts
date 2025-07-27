@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxEgButton, REQ_EMAIL, REQ_NAME, VALID_DATE } from 'ngx-eg-app';
+import { Subscription } from 'rxjs';
 
 import { NgxEgInput } from '../../../../ngx-eg-app/src/public-api';
 import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-eg-input',
