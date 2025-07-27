@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgInput, REQ_EMAIL, REQ_NAME } from 'ngx-eg-app';
-import { VALID_DATE } from '../../../../ngx-eg-app/src/public-api';
+import { NgxEgButton, NgxEgInput, REQ_EMAIL, REQ_NAME, VALID_DATE } from 'ngx-eg-app';
 
 @Component({
   selector: 'app-eg-input',
@@ -17,6 +16,7 @@ export class EgInputComponent {
     this.form = this.fb.group({
       email: new FormControl('', { validators: REQ_EMAIL }),
       pass: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
       name: new FormControl('', { validators: REQ_NAME }),
       date: new FormControl('', { validators: [VALID_DATE()] })
     }, { updateOn: 'blur' });

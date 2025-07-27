@@ -3,6 +3,8 @@ import { CommonModule, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
+import { MaskitoDirective } from '@maskito/angular';
+import { MaskitoElementPredicate, MaskitoOptions } from '@maskito/core';
 import { addIcons } from 'ionicons';
 import { close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline } from 'ionicons/icons';
 import { noop, Subscription } from 'rxjs';
@@ -14,7 +16,7 @@ import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type'
 import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
 
 @Component({
-  imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdGenerator, IonNote, IonButton],
+  imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdGenerator, IonNote, IonButton, MaskitoDirective],
   selector: 'ngx-eg-input',
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss',
@@ -34,6 +36,11 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
   @Input() public ableSearchPasswordButton = false;
   @Input() public fill: 'outline' | 'solid' = 'solid';
   @Input() public labelPlacement: 'stacked' | 'floating' = 'floating';
+  @Input() public set mask(_mask: string) {
+    this._mask = {
+      mask: this.getMaskPattern(_mask)
+    };
+  };
   @Input() public set buttonAction(actions: ButtonActionType | ButtonActionType[] | null) {
     this.createButtons(actions);
   };
@@ -44,6 +51,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
 
   public override value = '';
   public actions: ButtonAction[] = [];
+  public _mask: MaskitoOptions | null = null;
   private readonly subscription$ = new Subscription();
 
   public get control(): AbstractControl {
@@ -97,8 +105,16 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     return action !== 'clearAction' ? true : !!this.control?.value?.length || !!this.value?.length;
   }
 
+  public readonly maskPredicate: MaskitoElementPredicate = (el) => (el as HTMLIonInputElement).getInputElement();
+
   private setRequiredInput(): void {
     this.required = this.control?.hasValidator(Validators.required) as boolean;
+  }
+
+  private getMaskPattern(_mask: string): (string | RegExp)[] {
+    return Object.values(_mask).map(value => {
+      return value.toLowerCase() === 'x' ? /\d/ : value;
+    });
   }
 
   private createButtons(actions: ButtonActionType | ButtonActionType[] | null): void {
