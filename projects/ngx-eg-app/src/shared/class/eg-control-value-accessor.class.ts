@@ -32,8 +32,12 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
     return !!this.ngControl?.touched;
   }
 
+  public get isDirty(): boolean {
+    return !!this.ngControl?.dirty;
+  }
+
   public get showError(): boolean {
-    return this.hasErrors && this.isTouched;
+    return this.hasErrors && (this.isTouched || this.isDirty);
   }
 
   public get errorMessage(): string {

@@ -1,6 +1,6 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
@@ -22,7 +22,7 @@ import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
   styleUrl: './eg-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnInit {
+export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnInit, DoCheck {
 
   @Input() public prefixIcon = '';
   @Input() public suffixIcon = '';
@@ -70,6 +70,10 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     this.setRequiredInput();
   }
 
+  public ngDoCheck(): void {
+    this.cdr.markForCheck();
+  }
+
   public ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
@@ -92,6 +96,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     if (this.control?.updateOn === UpdateMode.blur) {
       this.control?.setValue(unmasked);
     }
+    this.onTouch();
     this.chageValueRoutine(value, unmasked);
   }
 
@@ -167,7 +172,6 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
   private chageValueRoutine(value: string, unmasked: string): void {
     this.value = value;
     this.onChange(unmasked || value);
-    this.onTouch();
     this.cdr.markForCheck();
   }
 }
