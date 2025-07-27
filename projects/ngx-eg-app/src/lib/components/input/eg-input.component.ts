@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 import { AbstractControl, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
-import { MaskitoElementPredicate, MaskitoOptions } from '@maskito/core';
+import { MaskitoElementPredicate, MaskitoOptions, maskitoTransform } from '@maskito/core';
 import { addIcons } from 'ionicons';
 import { close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline } from 'ionicons/icons';
 import { noop, Subscription } from 'rxjs';
@@ -68,7 +68,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
   }
 
   public ngOnInit(): void {
-    this.value = this.control.value;
+    this.value = this._mask ? maskitoTransform(this.control.value, this._mask) : this.control.value;
     this.setRequiredInput();
   }
 

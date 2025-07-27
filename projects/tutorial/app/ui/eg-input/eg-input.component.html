@@ -1,11 +1,48 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-    <ngx-eg-input [label]="'Nome'" [hint]="'Seu nome'" [errorMessage]="'campo obrigatório'" formControlName="name"></ngx-eg-input>
-    <ngx-eg-input  [label]="'Email'" [hint]="'Seu email registrado'" [errorMessage]="{pattern: 'email invalido', required: 'campo obrigatório'}" [buttonAction]="'clearAction'" formControlName="email"></ngx-eg-input>
-    <ngx-eg-input [label]="'Senha'" [hint]="'Senha numérica'" [prefixIcon]="'eye-off-outline'" [errorMessage]="'campo obrigatório'" [buttonAction]="'togglePasswordAction'" formControlName="pass"></ngx-eg-input>
-    <ngx-eg-input [mask]="'(XX) X XXXX-XXXX'" [label]="'phone'" [hint]="'phone'" [errorMessage]="'campo obrigatório'" formControlName="phone"></ngx-eg-input>
-    <ngx-eg-input type="date" [label]="'data de nascimento'" [hint]="'data de nascimento'" [errorMessage]="{ required: 'campo obrigatório', invaliddate: 'data inválida', invalidage: 'menor de 18 anos'}" formControlName="date"></ngx-eg-input>
-    <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="clear()"></ngx-eg-button>
-    <ngx-eg-button [type]="'submit'" [label]="'Submit'" (click)="submit()"></ngx-eg-button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ngx-eg-input 
+        [label]="'Nome'" 
+        [hint]="'Seu nome'" 
+        [errorMessage]="'campo obrigatório'" 
+        formControlName="name">
+    </ngx-eg-input>
+    <ngx-eg-input 
+        [label]="'Email'" 
+        [hint]="'Seu email registrado'" 
+        [errorMessage]="{pattern: 'email invalido', required: 'campo obrigatório'}"
+        [buttonAction]="'clearAction'" 
+        formControlName="email">
+    </ngx-eg-input>
+    <ngx-eg-input 
+        [label]="'Senha'" 
+        [hint]="'Senha numérica'" 
+        [prefixIcon]="'eye-off-outline'" 
+        [errorMessage]="'campo obrigatório'"
+        [buttonAction]="'togglePasswordAction'" 
+        formControlName="pass">
+    </ngx-eg-input>
+    <ngx-eg-input 
+        [mask]="'(XX) X XXXX-XXXX'"
+        [label]="'phone'" 
+        [hint]="'phone'" 
+        [errorMessage]="'campo obrigatório'" 
+        formControlName="phone">
+    </ngx-eg-input>
+    <ngx-eg-input 
+        type="date" [label]="'data de nascimento'" 
+        [hint]="'data de nascimento'" 
+        [errorMessage]="{ required: 'campo obrigatório', invaliddate: 'data inválida', invalidage: 'menor de 18 anos'}" 
+        formControlName="date">
+    </ngx-eg-input>
+    <ngx-eg-button
+        [fill]="'outline'"
+        [label]="'Clear'"
+        (click)="onClear()"
+    ></ngx-eg-button>
+    <ngx-eg-button
+        [type]="'submit'"
+        [label]="'Submit'"
+        (click)="onSubmit()"
+    ></ngx-eg-button>
 </form>
 
 

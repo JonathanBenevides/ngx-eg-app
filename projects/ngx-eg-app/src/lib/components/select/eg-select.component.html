@@ -1,27 +1,29 @@
-<form-control-wrapper
-  [id]="_id"
-  [label]="label"
-  [showError]="showError"
-  [errorMessage]="errorMessage"
-  >
-  <ion-select
-      [id]="(_id || label) | idGenerator:'select'"
-      [value]="value"
-      [label]="label"
-      [fill]="appearance"
-      interface="popover"
-      label-placement="floating"
-      [placeholder]="placeholder"
-      [ngClass]="{'error': showError}"
-      [helperText]="hint"
-      [attr.aria-label]="ariaLabel || label"
-      [attr.aria-describedby]="(_id || label) | idGenerator:'alert'"
-      (ionCancel)="onTouch()"
-      (ionDismiss)="onTouch()"
-      (ionChange)="handleChange($event)"
-      >
-        @for (option of options; track option) {
-            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
-        }
-  </ion-select>
-</form-control-wrapper>
+@if(label) {
+  <form-control-wrapper
+    [id]="_id"
+    [label]="label"
+    [showError]="showError"
+    [errorMessage]="errorMessage"
+    >
+    <ion-select
+        [id]="(_id || label) | idGenerator:'select'"
+        [value]="value"
+        [label]="label"
+        [fill]="appearance"
+        interface="popover"
+        label-placement="floating"
+        [placeholder]="placeholder"
+        [ngClass]="{'error': showError}"
+        [helperText]="hint"
+        [attr.aria-label]="ariaLabel || label"
+        [attr.aria-describedby]="(_id || label) | idGenerator:'alert'"
+        (ionCancel)="onTouch()"
+        (ionDismiss)="onTouch()"
+        (ionChange)="handleChange($event)"
+        >
+          @for (option of options; track option) {
+              <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          }
+    </ion-select>
+  </form-control-wrapper>
+}

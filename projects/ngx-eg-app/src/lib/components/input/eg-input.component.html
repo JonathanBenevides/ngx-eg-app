@@ -1,4 +1,5 @@
-<ion-input
+@if (label) {
+    <ion-input
         #ionInput
         [id]="(_id || label) | idGenerator:'input'"
         [fill]="fill"
@@ -17,16 +18,17 @@
         (ionBlur)="onBlur($event)"
         (ionInput)="handleChange($event)"
         (ionChange)="handleChange($event)"
-    >
-    <ng-container *ngTemplateOutlet="prefixIconContainer"></ng-container>
-    <ng-container *ngTemplateOutlet="buttonAcionContainer"></ng-container>
-    <ng-container *ngTemplateOutlet="suffixIconContainer"></ng-container>
-</ion-input>
-<div class="input-alert">
-    <ion-note [ngClass]="{ 'input-alert-hint': !showError }" [id]="(_id || label) | idGenerator:'alert'" [color]="showError ? 'danger' : 'default'">
-        {{ showError ? errorMessage : hint }}
-    </ion-note>
-</div>
+        >
+            <ng-container *ngTemplateOutlet="prefixIconContainer"></ng-container>
+            <ng-container *ngTemplateOutlet="buttonAcionContainer"></ng-container>
+            <ng-container *ngTemplateOutlet="suffixIconContainer"></ng-container>
+    </ion-input>
+    <div class="input-alert">
+        <ion-note [ngClass]="{ 'input-alert-hint': !showError }" [id]="(_id || label) | idGenerator:'alert'" [color]="showError ? 'danger' : 'default'">
+            {{ showError ? errorMessage : hint }}
+        </ion-note>
+    </div>
+}
 
 <ng-template #prefixIconContainer>
     @if(prefixIcon) {
