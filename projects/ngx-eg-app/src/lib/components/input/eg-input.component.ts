@@ -6,7 +6,7 @@ import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone
 import { MaskitoDirective } from '@maskito/angular';
 import { MaskitoElementPredicate, MaskitoOptions, maskitoTransform } from '@maskito/core';
 import { addIcons } from 'ionicons';
-import { close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline } from 'ionicons/icons';
+import { call, close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, person, searchOutline } from 'ionicons/icons';
 import { noop, Subscription } from 'rxjs';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
@@ -62,7 +62,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     protected override readonly cdr: ChangeDetectorRef
   ) {
     super(ngControl, cdr);
-    addIcons({ eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline, copyOutline, close });
+    addIcons({ eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline, copyOutline, close, person, call });
   }
 
   public ngOnInit(): void {

@@ -3,12 +3,14 @@ import moment from 'moment';
 
 import { FIVE, MAX_NUMBER, ONE, TWO, ZERO } from './magic-number';
 
-const regex = new RegExp(
+export const EMAIL_REGEX = new RegExp(
   '^[A-Za-zÀ-ÖØ-öø-ÿ0-9.!#$%&\'*+/=?^_`{|}~-]+@[A-Za-zÀ-ÖØ-öø-ÿ0-9-]+\\.[A-Za-zÀ-ÖØ-öø-ÿ]{2,}$',
   'u'
 );
 
-export const REQ_EMAIL = [Validators.required, Validators.pattern(regex)];
+export const NUMBERS_REGEX = new RegExp('^[0-9]+$');
+
+export const REQ_EMAIL = [Validators.required, Validators.pattern(EMAIL_REGEX)];
 export const REQ_LETTERS = [Validators.required, Validators.pattern('^[a-zA-Zà-ÿÀ-ŸçÇ\\s]+$')];
 export const REQ_NUMBER = [Validators.required, Validators.pattern('^[0-9]+$')];
 export const REQ_NAME = [...REQ_LETTERS, Validators.minLength(TWO)];
