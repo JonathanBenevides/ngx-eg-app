@@ -1,12 +1,15 @@
 <ion-button
-    [id]="(id || label) | idGenerator:'button'"
-    [type]="type"
-    [fill]="fill"
+    [attr.aria-role]="type === 'link' ? type : 'button'"
+    [id]="(id || label) | idGenerator: type === 'link' ? type : 'button'"
+    [type]="type === 'link' ? 'button' : type"
+    [fill]="type === 'link' ? 'clear' : fill"
     [size]="size"
     [shape]="shape"
     [ngClass]="size+label+'-button'"
     [class.disabled]="disabled"
+    [class.link]="type === 'link'"
     [attr.aria-label]="ariaLabel || label"
+    [attr.data-ripple]="type === 'link' ? 'off' : 'on'"
     [attr.aria-disabled]="disabled"
     [expand]="expand"
 >

@@ -52,7 +52,16 @@ ion-button {
 }
 
 .disabled {
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+
+.link {
+    &:hover {
+        text-decoration: underline;
+    }
+
+    --ripple-color: transparent;
+    --background-hover: transparent;
 }

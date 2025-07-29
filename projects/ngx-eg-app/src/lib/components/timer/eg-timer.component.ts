@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { ONE_SECOND, SIXTY, ZERO } from '../../utils/magic-number';
 
 @Component({

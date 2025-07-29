@@ -20,6 +20,6 @@ export class AppComponent {
     { name: 'select', route: '/select' },
     { name: 'form', route: '/form' },
     { name: 'timer', route: '/timer' },
-    { name: 'pipe-mask', route: '/pipe-mask' },
+    { name: 'pipe-mask', route: '/pipe-mask' }
   ];
 }

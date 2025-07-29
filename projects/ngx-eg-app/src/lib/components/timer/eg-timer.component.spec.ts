@@ -10,7 +10,7 @@ describe('TimerComponent', () => {
     await TestBed.configureTestingModule({
       imports: [TimerComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TimerComponent);
     component = fixture.componentInstance;

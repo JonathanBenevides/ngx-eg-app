@@ -8,8 +8,8 @@ import { EgInputComponent } from './ui/eg-input/eg-input.component';
 import { EgSelectComponent } from './ui/eg-select/eg-select.component';
 import { EgToastComponent } from './ui/eg-toast/eg-toast.component';
 import { HomeComponent } from './ui/home/home.component';
-import { TimerComponent } from './ui/timer/timer.component';
 import { PipeMaskComponent } from './ui/pipe-mask/pipe-mask.component';
+import { TimerComponent } from './ui/timer/timer.component';
 
 export const routes: Routes = [
   {

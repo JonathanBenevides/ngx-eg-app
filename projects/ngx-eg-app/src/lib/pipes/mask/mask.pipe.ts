@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FOUR, ONE, TWO } from '../../utils/magic-number';
+
+import { FOUR, ONE, TWO, ZERO } from '../../utils/magic-number';
 
 @Pipe({ name: 'mask' })
 export class MaskPipe implements PipeTransform {
@@ -13,7 +14,7 @@ export class MaskPipe implements PipeTransform {
       case 'email':
         const [email, dominium] = (value as string).split('@');
         const [name, rest] = dominium.split('.');
-        value = `${email[0]}${'*'.repeat(email.length - TWO)}${email[email.length - ONE]}@${name}.${'*'.repeat(rest.length)}`;
+        value = `${email[ZERO]}${'*'.repeat(email.length - TWO)}${email[email.length - ONE]}@${name}.${'*'.repeat(rest.length)}`;
         break;
       case 'phone':
         value = '*'.repeat((value as string).length - FOUR) + (value as string).slice(-FOUR);

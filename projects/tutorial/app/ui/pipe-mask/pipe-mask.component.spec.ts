@@ -10,7 +10,7 @@ describe('PipeMaskComponent', () => {
     await TestBed.configureTestingModule({
       imports: [PipeMaskComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PipeMaskComponent);
     component = fixture.componentInstance;
