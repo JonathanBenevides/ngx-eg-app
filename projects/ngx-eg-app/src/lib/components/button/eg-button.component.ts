@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
 
 import { IMPORTS } from '../../../shared/module/eg-button.module';
 import { ButtonFill, ButtonShape, ButtonSize, ButtonType } from '../../../shared/type/eg-button.type';
@@ -26,4 +26,11 @@ export class NgxEgButton {
   @Input() public shape: ButtonShape = 'default';
   @Input() public iconSide: 'left' | 'right' = 'left';
 
+  constructor(private readonly element: ElementRef, private readonly renderer: Renderer2) { }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if ('disabled' in changes) {
+      this.renderer.setAttribute(this.element.nativeElement, 'aria-disabled', this.disabled ? 'true' : 'false');
+    }
+  }
 }

@@ -3,6 +3,7 @@
  */
 
 export * from './lib/utils/validators';
+export * from './lib/utils/magic-number';
 export * from './lib/services/toast.service';
 export * from './lib/components/menu/eg-menu.component';
 export * from './lib/components/input/eg-input.component';
