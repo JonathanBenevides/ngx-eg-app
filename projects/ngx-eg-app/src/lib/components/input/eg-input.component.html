@@ -17,7 +17,6 @@
         [ngClass]="{ 'input-error': showError, 'label-required': required }"
         (ionBlur)="onBlur($event)"
         (ionInput)="handleChange($event)"
-        (ionChange)="handleChange($event)"
         >
             <ng-container *ngTemplateOutlet="prefixIconContainer"></ng-container>
             <ng-container *ngTemplateOutlet="buttonAcionContainer"></ng-container>

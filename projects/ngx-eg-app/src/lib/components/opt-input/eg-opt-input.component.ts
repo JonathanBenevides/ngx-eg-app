@@ -90,7 +90,7 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
         this.control.setErrors({ required: true });
         return;
       }
-      if (this.value.length !== this.digits) {
+      if (this.value?.length !== this.digits) {
         this.control.setErrors({ minlength: true });
         return;
       }

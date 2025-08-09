@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { NgxEgButton, NgxEgOptInput, TEN } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
 
-import { NgxEgTimer } from '../../../../ngx-eg-app/src/public-api';
+import { FOUR, NgxEgTimer } from '../../../../ngx-eg-app/src/public-api';
 import { DefaultForm } from '../../shared/interface/custom-form.interface';
 
 @Component({
@@ -50,7 +50,7 @@ export class EgOptComponent implements DefaultForm, OnInit {
 
   public createForm(): void {
     this.form = this.fb.group({
-      opt: new FormControl('', Validators.required)
+      opt: new FormControl('', [Validators.required, Validators.minLength(FOUR)])
     });
   }
 }

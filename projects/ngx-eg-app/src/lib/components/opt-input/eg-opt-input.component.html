@@ -3,12 +3,11 @@
     #opt
     [value]="value"
     [length]="digits"
-    [class.error]="showError"
+    [class.error]="hasErrors && isTouched"
     (ionBlur)="onBlur($event)"
     (ionComplete)="complete.emit()"
     (ionInput)="handleChange($event)"
-    (ionChange)="handleChange($event)"
 ></ion-input-otp>
-@if (showError) {
+@if (hasErrors && isTouched) {
     <ion-note role="alert" color="danger"> {{ errorMessage }} </ion-note>
 }
