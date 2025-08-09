@@ -18,7 +18,7 @@ export const routes: Routes = [
   },
   {
     loadComponent: () => import('./ui/header/header.component').then(c => c.HeaderComponent),
-    path: Route.HOME
+    path: Route.HEADER
   },
   {
     loadComponent: () => import('./ui/input/input.component').then(c => c.InputComponent),

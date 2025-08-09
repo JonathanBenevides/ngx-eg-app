@@ -16,6 +16,7 @@ export class CountDownService {
       return;
     }
 
+    this.stop();
     secondsLeft.set(seconds);
     this.secondsLeft = seconds;
     timerIsRunning.set(true);

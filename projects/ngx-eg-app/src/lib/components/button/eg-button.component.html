@@ -11,6 +11,7 @@
     [attr.aria-label]="ariaLabel || label"
     [attr.data-ripple]="type === 'link' ? 'off' : 'on'"
     [expand]="expand"
+    (click)="click()"
 >
     @if (icon && iconSide === 'left') {
         <mat-icon [ngClass]="[label ? iconSide : '', size + '-icon']" [attr.aria-hidden]="true">{{icon}}</mat-icon>

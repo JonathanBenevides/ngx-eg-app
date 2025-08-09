@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgOptInput, TEN } from 'ngx-eg-app';
+import { FOUR, NgxEgButton, NgxEgOptInput, NgxEgTimer, TEN } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
 
-import { FOUR, NgxEgTimer } from '../../../../ngx-eg-app/src/public-api';
 import { DefaultForm } from '../../shared/interface/custom-form.interface';
 
 @Component({
@@ -42,7 +41,9 @@ export class OptComponent implements DefaultForm, OnInit {
     this.timer.start();
   }
 
-  public onSubmit(): void { }
+  public onSubmit(): void {
+    console.log(this.form)
+  }
 
   public onClear(): void {
     this.form.reset();

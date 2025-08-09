@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
         <ngx-eg-opt
             [time]="5"
@@ -17,12 +17,12 @@
                 [disabled]="!timeout"
                 [fill]="'clear'"
                 [label]="'resend code'"
-                (click)="resend()"
+                (onClick)="resend()"
             ></ngx-eg-button>
         </div>
         <div>
             <ngx-eg-timer #timer [label]="'Seconds Left'" [time]="5" (timeOut)="timeOut()"></ngx-eg-timer>
         </div>
     </div>
-    <ngx-eg-button [disabled]="!form.valid || timeout" [label]="'Validate'"></ngx-eg-button>
+    <ngx-eg-button [type]="'submit'" [disabled]="!!form.get('opt')!.errors" [label]="'Validate'"></ngx-eg-button>
 </form>

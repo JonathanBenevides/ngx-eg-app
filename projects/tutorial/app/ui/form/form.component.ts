@@ -21,8 +21,8 @@ function passwordMatchValidator(): ValidatorFn {
 @Component({
   selector: 'app-form',
   imports: [ReactiveFormsModule, NgxEgInput, NgxEgSelect, NgxEgCheckBox, NgxEgButton],
-  templateUrl: '.form.component.html',
-  styleUrl: '.form.component.scss'
+  templateUrl: './form.component.html',
+  styleUrl: './form.component.scss'
 })
 export class FormComponent implements ObservableForm, DefaultForm {
   public form!: FormGroup;
