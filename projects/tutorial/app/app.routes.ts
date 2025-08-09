@@ -5,11 +5,11 @@ import { EgCheckboxComponent } from './ui/eg-checkbox/eg-checkbox.component';
 import { EgFormComponent } from './ui/eg-form/eg-form.component';
 import { EgHeaderComponent } from './ui/eg-header/eg-header.component';
 import { EgInputComponent } from './ui/eg-input/eg-input.component';
+import { EgOptComponent } from './ui/eg-opt/eg-opt.component';
 import { EgSelectComponent } from './ui/eg-select/eg-select.component';
 import { EgToastComponent } from './ui/eg-toast/eg-toast.component';
+import { GeneralComponent } from './ui/general/general.component';
 import { HomeComponent } from './ui/home/home.component';
-import { PipeMaskComponent } from './ui/pipe-mask/pipe-mask.component';
-import { TimerComponent } from './ui/timer/timer.component';
 
 export const routes: Routes = [
   {
@@ -50,11 +50,11 @@ export const routes: Routes = [
     path: 'form'
   },
   {
-    component: TimerComponent,
-    path: 'timer'
+    component: EgOptComponent,
+    path: 'input-opt'
   },
   {
-    component: PipeMaskComponent,
-    path: 'pipe-mask'
+    component: GeneralComponent,
+    path: 'general'
   }
 ];

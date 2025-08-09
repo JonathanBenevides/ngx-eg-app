@@ -13,10 +13,12 @@ import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.
 })
 export class EgInputComponent implements ObservableForm, DefaultForm {
 
-  public form: FormGroup;
+  public form!: FormGroup;
   public subscription: Subscription = new Subscription();
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder) {}
+
+  public createForm(): void {
     this.form = this.fb.group({
       email: new FormControl('', { validators: REQ_EMAIL }),
       pass: new FormControl('', Validators.required),

@@ -2,7 +2,11 @@
     <ngx-eg-input 
         [label]="'Nome'" 
         [hint]="'Seu nome'" 
-        [errorMessage]="'campo obrigatório'" 
+        [errorMessage]="{
+            pattern: 'nome inválido',
+            required: 'campo obrigatório',
+            minlength: 'minimo de 2 caracteres',
+        }" 
         formControlName="name">
     </ngx-eg-input>
     <ngx-eg-input 

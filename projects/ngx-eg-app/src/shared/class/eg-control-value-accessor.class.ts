@@ -1,11 +1,11 @@
-import { ChangeDetectorRef, Directive, Input, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ChangeDetectorRef, Directive, Input, OnInit, Optional, Self } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { noop } from 'rxjs';
 
-const ZERO = 0;
+import { ZERO } from '../../lib/utils/magic-number';
 
 @Directive()
-export abstract class EgControlValueAccessor implements ControlValueAccessor {
+export abstract class EgControlValueAccessor implements ControlValueAccessor, OnInit {
 
   @Input() public hint: string = '';
   @Input({ required: true }) public label: string = '';
@@ -23,6 +23,10 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
   public required = false;
   public disabled = false;
   public _errorMessage: string | { [key: string]: string } = '';
+
+  public get control(): AbstractControl {
+    return this.ngControl.control!;
+  }
 
   public get hasErrors(): boolean {
     return !!this.ngControl?.errors;
@@ -44,7 +48,7 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
     if (typeof this._errorMessage === 'string') {
       return this._errorMessage;
     }
-    const key = Object.keys(this.ngControl.control?.errors! || [])[ZERO]?.toLowerCase();
+    const key = Object.keys(this.control?.errors || [])[ZERO]?.toLowerCase();
     return this._errorMessage[key];
   }
 
@@ -55,6 +59,10 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
+  }
+
+  public ngOnInit(): void {
+    this.setRequiredInput();
   }
 
   public onTouch: () => void = noop;
@@ -75,5 +83,9 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor {
 
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  protected setRequiredInput(): void {
+    this.required = this.control?.hasValidator(Validators.required) as boolean;
   }
 }

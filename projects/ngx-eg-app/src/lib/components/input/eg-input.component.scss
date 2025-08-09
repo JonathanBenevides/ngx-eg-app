@@ -1,7 +1,4 @@
-:host(eg-input) ::ng-deep .required .input-wrapper .label-text-wrapper .label-text::after {
-    content: '*';
-    margin-left: 1px;
-}
+@use '../../../shared/styles/required.scss';
 
 :host {
     ion-item {
@@ -37,8 +34,9 @@ ion-input ion-button {
             color: var(--ion-color-step-600, var(--ion-text-color-step-300, #4d4d4d));
         }
     }
-    
-    &-error, &-error-icon {
+
+    &-error,
+    &-error-icon {
         color: var(--ion-color-danger);
     }
 

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PipeMaskComponent } from './pipe-mask.component';
+import { EgOptComponent } from './eg-opt-input.component';
 
-describe('PipeMaskComponent', () => {
-  let component: PipeMaskComponent;
-  let fixture: ComponentFixture<PipeMaskComponent>;
+describe('EgOptComponent', () => {
+  let component: EgOptComponent;
+  let fixture: ComponentFixture<EgOptComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PipeMaskComponent]
+      imports: [EgOptComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(PipeMaskComponent);
+    fixture = TestBed.createComponent(EgOptComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

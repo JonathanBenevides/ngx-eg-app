@@ -14,7 +14,7 @@ import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.
 })
 export class EgSelectComponent implements ObservableForm, DefaultForm {
 
-  public form: FormGroup;
+  public form!: FormGroup;
 
   public options: Select[] = [
     { label: 'Option 1', value: 'string' },
@@ -27,10 +27,14 @@ export class EgSelectComponent implements ObservableForm, DefaultForm {
   public subscription: Subscription = new Subscription();
 
   constructor(private readonly fb: FormBuilder) {
+    this.createForm();
+    this.formChanges();
+  }
+
+  public createForm(): void {
     this.form = this.fb.group({
       option: new FormControl(null, Validators.required)
     });
-    this.formChanges();
   }
 
   public ngOnDestroy(): void {

@@ -4,7 +4,11 @@
       id="firstName"
       [label]="'First Name'"
       formControlName="firstName"
-      [errorMessage]="{required: 'First name is required.', minlength: 'Please enter a valid name.'}"
+      [errorMessage]="{
+        required: 'First name is required.',
+        pattern: 'Invalid patter',
+        minlength: 'Please enter a valid name.'
+      }"
     ></ngx-eg-input>
   </div>
 

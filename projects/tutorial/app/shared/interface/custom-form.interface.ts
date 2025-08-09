@@ -11,4 +11,5 @@ export interface DefaultForm {
   form: FormGroup;
   onSubmit(): void;
   onClear(): void;
+  createForm(): void;
 }

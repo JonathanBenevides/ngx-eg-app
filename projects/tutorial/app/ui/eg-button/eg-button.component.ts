@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxEgButton } from 'ngx-eg-app';
+import { NgxEgButton } from '../../../../ngx-eg-app/src/public-api';
 
 @Component({
   selector: 'app-eg-button',

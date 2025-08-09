@@ -58,10 +58,22 @@ ion-button {
 }
 
 .link {
-    &:hover {
+
+    &:hover,
+    &:focus {
         text-decoration: underline;
     }
 
     --ripple-color: transparent;
     --background-hover: transparent;
+    --background-focused: transparent;
+}
+
+ion-button.link::part(native) {
+    padding: 0px 4px;
+}
+
+ion-button.link.ion-focused {
+    outline: 2px solid black;
+    outline-style: auto;
 }

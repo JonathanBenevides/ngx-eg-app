@@ -5,7 +5,7 @@ import { FOUR, ONE, TWO, ZERO } from '../../utils/magic-number';
 @Pipe({ name: 'mask' })
 export class MaskPipe implements PipeTransform {
 
-  public transform(value: string | number, type: 'currency' | 'email' | 'phone'): string | number {
+  public transform(value: string | number, type?: 'currency' | 'email' | 'phone'): string | number {
     switch (type) {
       case 'currency':
         value = value.toString().replaceAll(',', '').replaceAll('.', '');

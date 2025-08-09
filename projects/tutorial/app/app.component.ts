@@ -19,7 +19,7 @@ export class AppComponent {
     { name: 'toast', route: '/toast' },
     { name: 'select', route: '/select' },
     { name: 'form', route: '/form' },
-    { name: 'timer', route: '/timer' },
-    { name: 'pipe-mask', route: '/pipe-mask' }
+    { name: 'general', route: '/general' },
+    { name: 'opt', route: '/input-opt' }
   ];
 }

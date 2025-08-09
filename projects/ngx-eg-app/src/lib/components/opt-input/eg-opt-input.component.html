@@ -1,0 +1,14 @@
+
+<ion-input-otp
+    #opt
+    [value]="value"
+    [length]="digits"
+    [class.error]="showError"
+    (ionBlur)="onBlur($event)"
+    (ionComplete)="complete.emit()"
+    (ionInput)="handleChange($event)"
+    (ionChange)="handleChange($event)"
+></ion-input-otp>
+@if (showError) {
+    <ion-note role="alert" color="danger"> {{ errorMessage }} </ion-note>
+}

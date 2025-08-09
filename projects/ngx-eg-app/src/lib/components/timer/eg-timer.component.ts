@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
-import { ONE_SECOND, SIXTY, ZERO } from '../../utils/magic-number';
+import { CountDownService, secondsLeft, timerIsRunning } from '../../../shared/services/count-down.service';
+import { SIXTY } from '../../utils/magic-number';
 
 @Component({
   selector: 'ngx-eg-timer',
@@ -8,37 +9,35 @@ import { ONE_SECOND, SIXTY, ZERO } from '../../utils/magic-number';
   templateUrl: './eg-timer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxEgTimer {
+export class NgxEgTimer implements OnInit, OnDestroy {
 
   @Output() public timeOut: EventEmitter<void> = new EventEmitter();
 
   @Input() public label = '';
-  @Input() public initialTime: number = SIXTY;
+  @Input() public time: number = SIXTY;
 
   public secondsLeft = SIXTY;
-  private timerInterval: any;
+  private readonly countDown = new CountDownService();
 
-  constructor(private readonly cdr: ChangeDetectorRef) { }
+  constructor(private readonly cdr: ChangeDetectorRef) {
+    effect(() => {
+      this.secondsLeft = secondsLeft();
+      this.cdr.markForCheck();
+      if (!timerIsRunning()) {
+        this.timeOut.emit();
+      }
+    });
+  }
 
   public ngOnInit(): void {
-    this.startCountdown();
+    this.start();
   }
 
   public ngOnDestroy(): void {
-    clearInterval(this.timerInterval);
+    this.countDown.stop();
   }
 
-  public startCountdown(): void {
-    this.secondsLeft = this.initialTime || this.secondsLeft;
-
-    this.timerInterval = setInterval(() => {
-      this.secondsLeft--;
-
-      if (this.secondsLeft <= ZERO) {
-        clearInterval(this.timerInterval);
-        this.timeOut.emit();
-      }
-      this.cdr.markForCheck();
-    }, ONE_SECOND);
+  public start(): void {
+    this.countDown.start(this.time);
   }
 }

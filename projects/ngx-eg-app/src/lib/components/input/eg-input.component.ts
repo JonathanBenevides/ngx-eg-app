@@ -1,17 +1,17 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
-import { AbstractControl, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
 import { MaskitoElementPredicate, MaskitoOptions, maskitoTransform } from '@maskito/core';
 import { addIcons } from 'ionicons';
 import { call, close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, person, searchOutline } from 'ionicons/icons';
-import { noop, Subscription } from 'rxjs';
+import { noop } from 'rxjs';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
-import { ButtonAction } from '../../../shared/interface/eg-input.interface';
+import { ButtonAction, EgInputValueAccessor } from '../../../shared/interface/eg-input.interface';
 import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
 import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
 
@@ -22,7 +22,7 @@ import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
   styleUrl: './eg-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnInit, DoCheck {
+export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoCheck, EgInputValueAccessor {
 
   @Input() public prefixIcon = '';
   @Input() public suffixIcon = '';
@@ -50,11 +50,6 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
   public override value = '';
   public actions: ButtonAction[] = [];
   public _mask: MaskitoOptions | null = null;
-  private readonly subscription$ = new Subscription();
-
-  public get control(): AbstractControl {
-    return this.ngControl.control!;
-  }
 
   constructor(
     @Optional() @Self() protected override ngControl: NgControl,
@@ -65,17 +60,13 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
     addIcons({ eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline, copyOutline, close, person, call });
   }
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
     this.value = this._mask ? maskitoTransform(this.control.value, this._mask) : this.control.value;
     this.setRequiredInput();
   }
 
   public ngDoCheck(): void {
     this.cdr.markForCheck();
-  }
-
-  public ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
   }
 
   public override onChange: (value: string) => void = noop;
@@ -114,10 +105,6 @@ export class NgxEgInput extends EgControlValueAccessor implements OnDestroy, OnI
   }
 
   public readonly maskPredicate: MaskitoElementPredicate = (el) => (el as HTMLIonInputElement).getInputElement();
-
-  private setRequiredInput(): void {
-    this.required = this.control?.hasValidator(Validators.required) as boolean;
-  }
 
   private toMask(_mask: string): (string | RegExp)[] {
     return Object.values(_mask).map(value => {

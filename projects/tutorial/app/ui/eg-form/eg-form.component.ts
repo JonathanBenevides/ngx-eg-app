@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgCheckBox, NgxEgInput, NgxEgSelect, REQ_EMAIL, REQ_NAME, REQ_NUMBER } from 'ngx-eg-app';
+import { NgxEgButton, NgxEgCheckBox, NgxEgInput, NgxEgSelect, REQ_EMAIL, REQ_NAME, REQ_NUMBER, SIX } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
 
 import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
-
-const SIX = 6;
 
 function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -27,7 +25,7 @@ function passwordMatchValidator(): ValidatorFn {
   styleUrl: './eg-form.component.scss'
 })
 export class EgFormComponent implements ObservableForm, DefaultForm {
-  public form: FormGroup;
+  public form!: FormGroup;
   public genderOptions = [
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' }
@@ -35,6 +33,10 @@ export class EgFormComponent implements ObservableForm, DefaultForm {
   public subscription: Subscription = new Subscription();
 
   constructor(private readonly fb: FormBuilder) {
+    this.createForm();
+  }
+
+  public createForm(): void {
     this.form = this.fb.group({
       firstName: ['', REQ_NAME],
       lastName: ['', REQ_NAME],

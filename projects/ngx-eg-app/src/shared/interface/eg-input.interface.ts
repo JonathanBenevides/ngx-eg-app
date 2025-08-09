@@ -6,3 +6,8 @@ export interface ButtonAction {
   click: Function,
   ariaLabel?: string
 }
+
+export interface EgInputValueAccessor {
+  onBlur(event: CustomEvent): void;
+  handleChange({ detail: { value } }: CustomEvent): void;
+}

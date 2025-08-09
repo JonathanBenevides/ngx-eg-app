@@ -14,14 +14,18 @@ import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.
 })
 export class EgCheckboxComponent implements ObservableForm, DefaultForm {
 
-  public form: FormGroup;
+  public form!: FormGroup;
   public subscription: Subscription = new Subscription();
 
   constructor(private readonly fb: FormBuilder) {
+    this.createForm();
+    this.formChanges();
+  }
+
+  public createForm(): void {
     this.form = this.fb.group({
       check: new FormControl(null, Validators.requiredTrue)
     });
-    this.formChanges();
   }
 
   public ngOnDestroy(): void {

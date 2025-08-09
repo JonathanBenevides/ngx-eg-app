@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+    <div>
+        <ngx-eg-opt
+            [time]="5"
+            [errorMessage]="{
+                timeout: 'tempo excedido',
+                required: 'campo obrigatório',
+                minlength: 'mínimo de 5 dígitos',
+            }"
+            formControlName="opt"
+        ></ngx-eg-opt>
+        <div>
+            <span>Din't get a code ?</span>
+            <ngx-eg-button
+                [type]="'link'"
+                [size]="'small'"
+                [disabled]="!timeout"
+                [fill]="'clear'"
+                [label]="'resend code'"
+                (click)="resend()"
+            ></ngx-eg-button>
+        </div>
+        <div>
+            <ngx-eg-timer #timer [label]="'Seconds Left'" [time]="5" (timeOut)="timeOut()"></ngx-eg-timer>
+        </div>
+    </div>
+    <ngx-eg-button [disabled]="!form.valid || timeout" [label]="'Validate'"></ngx-eg-button>
+</form>
