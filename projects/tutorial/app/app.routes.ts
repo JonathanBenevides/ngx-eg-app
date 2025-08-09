@@ -1,60 +1,51 @@
 import { Routes } from '@angular/router';
 
-import { EgButtonComponent } from './ui/eg-button/eg-button.component';
-import { EgCheckboxComponent } from './ui/eg-checkbox/eg-checkbox.component';
-import { EgFormComponent } from './ui/eg-form/eg-form.component';
-import { EgHeaderComponent } from './ui/eg-header/eg-header.component';
-import { EgInputComponent } from './ui/eg-input/eg-input.component';
-import { EgOptComponent } from './ui/eg-opt/eg-opt.component';
-import { EgSelectComponent } from './ui/eg-select/eg-select.component';
-import { EgToastComponent } from './ui/eg-toast/eg-toast.component';
-import { GeneralComponent } from './ui/general/general.component';
-import { HomeComponent } from './ui/home/home.component';
+import { Route } from './shared/enum/route.enum';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: `/${Route.HOME}`,
     pathMatch: 'full'
   },
   {
-    component: HomeComponent,
-    path: 'home'
+    loadComponent: () => import('./ui/home/home.component').then(c => c.HomeComponent),
+    path: Route.HOME
   },
   {
-    component: EgButtonComponent,
-    path: 'button'
+    loadComponent: () => import('./ui/button/button.component').then(c => c.ButtonComponent),
+    path: Route.BUTTON
   },
   {
-    component: EgHeaderComponent,
-    path: 'header'
+    loadComponent: () => import('./ui/header/header.component').then(c => c.HeaderComponent),
+    path: Route.HOME
   },
   {
-    component: EgInputComponent,
-    path: 'input'
+    loadComponent: () => import('./ui/input/input.component').then(c => c.InputComponent),
+    path: Route.INPUT
   },
   {
-    component: EgCheckboxComponent,
-    path: 'checkbox'
+    loadComponent: () => import('./ui/checkbox/checkbox.component').then(c => c.CheckboxComponent),
+    path: Route.CHECKBOX
   },
   {
-    component: EgToastComponent,
-    path: 'toast'
+    loadComponent: () => import('./ui/toast/toast.component').then(c => c.ToastComponent),
+    path: Route.TOAST
   },
   {
-    component: EgSelectComponent,
-    path: 'select'
+    loadComponent: () => import('./ui/select/select.component').then(c => c.SelectComponent),
+    path: Route.SELECT
   },
   {
-    component: EgFormComponent,
-    path: 'form'
+    loadComponent: () => import('./ui/form/form.component').then(c => c.FormComponent),
+    path: Route.FORM
   },
   {
-    component: EgOptComponent,
-    path: 'input-opt'
+    loadComponent: () => import('./ui/opt/opt.component').then(c => c.OptComponent),
+    path: Route.OPTINPUT
   },
   {
-    component: GeneralComponent,
-    path: 'general'
+    loadComponent: () => import('./ui/utils/utils.component').then(c => c.UtilsComponent),
+    path: Route.UTILS
   }
 ];
