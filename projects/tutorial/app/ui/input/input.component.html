@@ -37,6 +37,15 @@
         [errorMessage]="{ required: 'campo obrigatório', invaliddate: 'data inválida', invalidage: 'menor de 18 anos'}" 
         formControlName="date">
     </ngx-eg-input>
+    <ngx-eg-input
+        [mask]="showMask ? phoneMask : ''"
+        [label]="'elemento hibrido'" 
+        [hint]="'elemento hibrido'" 
+        [errorMessage]="'campo obrigatório'" 
+        (blur)="focusStatusChange(false)"
+        (focus)="focusStatusChange(true)"
+        formControlName="hybrid"
+    ></ngx-eg-input>
     <ngx-eg-button
         [fill]="'outline'"
         [label]="'Clear'"

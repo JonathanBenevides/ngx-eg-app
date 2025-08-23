@@ -42,7 +42,7 @@ export class OptComponent implements DefaultForm, OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.form)
+    console.log(this.form);
   }
 
   public onClear(): void {

@@ -36,13 +36,24 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   @Input() public ableSearchPasswordButton = false;
   @Input() public fill: 'outline' | 'solid' = 'solid';
   @Input() public labelPlacement: 'stacked' | 'floating' = 'floating';
+
   @Input() public set mask(_mask: string) {
-    this._mask = { mask: this.toMask(_mask) };
+
+    this._mask = _mask ? { mask: this.toMask(_mask) } : null;
+
+    // atualiza máscara caso aconteça alguma mudança
+    if (this.ionInput?.value) {
+      this.ionInput.value = this._mask ? maskitoTransform(this.value, this._mask) : this.unMask(this.ionInput?.value.toString());
+      this.cdr.markForCheck();
+    }
   };
+
   @Input() public set buttonAction(actions: ButtonActionType | ButtonActionType[] | null) {
     this.createButtons(actions);
   };
 
+  @Output() public blur = new EventEmitter<void>();
+  @Output() public focus = new EventEmitter<void>();
   @Output() public search = new EventEmitter<string>();
 
   @ViewChild('ionInput', { static: false }) public ionInput!: IonInput;
@@ -76,17 +87,25 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
     this.cdr.markForCheck();
   }
 
+  public onFocus(): void {
+    this.focus.emit();
+  }
+
   public onBlur(event: CustomEvent): void {
     const { value, localName } = event.target as HTMLInputElement;
+
     if (localName === 'ion-button') {
       return;
     }
+
+    this.blur.emit();
 
     const unmasked = this._mask ? this.unMask(value) : value;
 
     if (this.control?.updateOn === UpdateMode.blur) {
       this.control?.setValue(unmasked);
     }
+
     this.onTouch();
     this.chageValueRoutine(value, unmasked);
   }
@@ -104,7 +123,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
     return action !== 'clearAction' ? true : !!this.control?.value?.length || !!this.value?.length;
   }
 
-  public readonly maskPredicate: MaskitoElementPredicate = (el) => (el as HTMLIonInputElement).getInputElement();
+  public readonly maskPredicate: MaskitoElementPredicate = (el) => (el as unknown as HTMLIonInputElement).getInputElement();
 
   private toMask(_mask: string): (string | RegExp)[] {
     return Object.values(_mask).map(value => {

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { IonButton } from '@ionic/angular/standalone';
 
 import { IMPORTS } from '../../../shared/module/eg-button.module';
 import { ButtonFill, ButtonShape, ButtonSize, ButtonType } from '../../../shared/type/eg-button.type';
-import { IonButton } from '@ionic/angular/standalone';
 
 @Component({
   imports: IMPORTS,

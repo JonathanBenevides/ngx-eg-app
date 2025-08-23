@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxEgButton, NgxEgInput, REQ_EMAIL, REQ_NAME, validDate } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
@@ -13,9 +13,14 @@ import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.
 export class InputComponent implements ObservableForm, DefaultForm {
 
   public form!: FormGroup;
+  public showMask = false;
+  public phoneMask = '(XX) X XXXX-XXXX';
   public subscription: Subscription = new Subscription();
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly cdr: ChangeDetectorRef
+  ) {
     this.createForm();
   }
 
@@ -25,7 +30,8 @@ export class InputComponent implements ObservableForm, DefaultForm {
       pass: new FormControl('', Validators.required),
       phone: new FormControl('11953564438', Validators.required),
       name: new FormControl('', { validators: REQ_NAME }),
-      date: new FormControl('', { validators: [validDate()] })
+      date: new FormControl('', { validators: [validDate()] }),
+      hybrid: new FormControl('', Validators.required)
     }, { updateOn: 'change' });
     this.formChanges();
   }
@@ -48,5 +54,9 @@ export class InputComponent implements ObservableForm, DefaultForm {
 
   public onClear(): void {
     this.form.reset();
+  }
+
+  public focusStatusChange(hasFocus: boolean): void {
+    this.showMask = this.form.get('hybrid')!.valid && !isNaN(this.form.get('hybrid')!.value) && !hasFocus;
   }
 }

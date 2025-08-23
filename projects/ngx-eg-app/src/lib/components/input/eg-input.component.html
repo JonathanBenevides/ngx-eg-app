@@ -15,6 +15,7 @@
         [attr.aria-describedby]="(_id || label) | idGenerator:'alert'"
         [attr.autocomplete]="autocomplete"
         [ngClass]="{ 'input-error': showError, 'label-required': required }"
+        (ionFocus)="onFocus()"
         (ionBlur)="onBlur($event)"
         (ionInput)="handleChange($event)"
         >
