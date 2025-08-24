@@ -1,6 +1,6 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule, NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
 import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
@@ -22,7 +22,7 @@ import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
   styleUrl: './eg-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoCheck, EgInputValueAccessor {
+export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoCheck, EgInputValueAccessor, AfterViewInit {
 
   @Input() public prefixIcon = '';
   @Input() public suffixIcon = '';
@@ -30,6 +30,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   @Input() public placeholder = '';
   @Input() public autocomplete = false;
   @Input() public ableCopyButton = false;
+  @Input() public showCustomError = false;
   @Input() public ableCleanButton = false;
   @Input() public type: InputType = 'text';
   @Input() public ableShowPasswordButton = false;
@@ -69,6 +70,12 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   ) {
     super(ngControl, cdr);
     addIcons({ eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline, copyOutline, close, person, call });
+  }
+  
+  public ngAfterViewInit(): void {
+    this.parentErrors = {};
+    this.checkParentErrors(this.control);
+    this.cdr.markForCheck();
   }
 
   public override ngOnInit(): void {
@@ -178,6 +185,8 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   private chageValueRoutine(value: string, unmasked: string): void {
     this.value = value;
     this.onChange(unmasked || value);
+    this.parentErrors = {};
+    this.checkParentErrors(this.control);
     this.cdr.markForCheck();
   }
 }

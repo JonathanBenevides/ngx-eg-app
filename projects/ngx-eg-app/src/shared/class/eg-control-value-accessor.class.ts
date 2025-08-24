@@ -8,6 +8,7 @@ import { ZERO } from '../../lib/utils/magic-number';
 export abstract class EgControlValueAccessor implements ControlValueAccessor, OnInit {
 
   @Input() public hint: string = '';
+  @Input() public showParentError = false;
   @Input({ required: true }) public label: string = '';
 
   @Input() public set id(_id: string) {
@@ -22,6 +23,7 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
   public touched = false;
   public required = false;
   public disabled = false;
+  public parentErrors = {};
   public _errorMessage: string | { [key: string]: string } = '';
 
   public get control(): AbstractControl {
@@ -29,7 +31,7 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
   }
 
   public get hasErrors(): boolean {
-    return !!this.ngControl?.errors;
+    return !!this.ngControl?.errors || (this.showParentError && !!Object.keys(this.parentErrors).length);
   }
 
   public get isTouched(): boolean {
@@ -48,7 +50,8 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
     if (typeof this._errorMessage === 'string') {
       return this._errorMessage;
     }
-    const key = Object.keys(this.control?.errors || [])[ZERO]?.toLowerCase();
+
+    const key = Object.keys(this.control?.errors || this.parentErrors || [])[ZERO]?.toLowerCase();
     return this._errorMessage[key];
   }
 
@@ -87,5 +90,16 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
 
   protected setRequiredInput(): void {
     this.required = this.control?.hasValidator(Validators.required) as boolean;
+  }
+
+  protected checkParentErrors(control: AbstractControl): void {
+    if (!this.showParentError || !control.parent) return;
+
+    if (control.errors) {
+      Object.entries(control.errors).forEach(([key, value]) => {
+        this.parentErrors = { ...this.parentErrors, [key]: value };
+      });
+    }
+    this.checkParentErrors(control.parent);
   }
 }

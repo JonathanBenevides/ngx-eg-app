@@ -1,13 +1,14 @@
-
-<ion-input-otp
-    #opt
-    [value]="value"
-    [length]="digits"
-    [class.error]="hasErrors && isTouched"
-    (ionBlur)="onBlur($event)"
-    (ionComplete)="complete.emit()"
-    (ionInput)="handleChange($event)"
-></ion-input-otp>
-@if (hasErrors && isTouched) {
-    <ion-note role="alert" color="danger"> {{ errorMessage }} </ion-note>
-}
+<div>
+    <ion-input-otp
+        #opt
+        [value]="value"
+        [length]="digits"
+        [class.error]="hasErrors && isTouched"
+        (ionBlur)="onBlur($event)"
+        (ionComplete)="complete.emit()"
+        (ionInput)="handleChange($event)"
+    ></ion-input-otp>
+    @if (hasErrors && isTouched) {
+        <ion-note role="alert" color="danger"> {{ errorMessage }} </ion-note>
+    }
+</div>
