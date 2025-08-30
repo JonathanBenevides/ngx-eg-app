@@ -1,4 +1,4 @@
-<div>
+<div class="opt">
     <ion-input-otp
         #opt
         [value]="value"
@@ -8,7 +8,9 @@
         (ionComplete)="complete.emit()"
         (ionInput)="handleChange($event)"
     ></ion-input-otp>
-    @if (hasErrors && isTouched) {
-        <ion-note role="alert" color="danger"> {{ errorMessage }} </ion-note>
-    }
+    <div>
+        @if (hasErrors && isTouched) {
+            <ion-note role="alert" color="danger"> {{ errorMessage }} </ion-note>
+        }
+    </div>
 </div>
