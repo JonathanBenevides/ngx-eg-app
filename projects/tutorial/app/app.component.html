@@ -1,4 +1,5 @@
 <ion-app>
+
   <ngx-eg-menu [title]="'Ngx Example App'">
     <ul>
       @for (link of links; track link) {
@@ -8,9 +9,11 @@
       }
     </ul>
   </ngx-eg-menu>
-  <ngx-eg-header [title]="'Ngx Example App'" [hasMenuButton]="true"
-  ></ngx-eg-header>
+
+  <ngx-eg-header [title]="'Ngx Example App'" [hasMenuButton]="true"></ngx-eg-header>
+
   <ion-content [fullscreen]="true" class="ion-padding">
     <router-outlet/>
   </ion-content>
+
 </ion-app>

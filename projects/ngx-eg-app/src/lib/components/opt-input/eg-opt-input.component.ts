@@ -5,9 +5,9 @@ import { IonInputOtp, IonNote } from '@ionic/angular/standalone';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { UpdateMode } from '../../../shared/enum/eg-input.enum';
-import { EgInputValueAccessor } from '../../../shared/interface/eg-input.interface';
 import { CountDownService, timerIsRunning } from '../../../shared/services/count-down.service';
 import { FOUR, ZERO } from '../../utils/magic-number';
+import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
 
 @Component({
   selector: 'ngx-eg-opt',

@@ -1,0 +1,10 @@
+<fieldset [id]="( id || label ) | idGenerator:'fieldset'" [ngClass]="{ 'no-border' : !border }" class="flex-grid radius" formGroupName="personal" [attr.aria-describedby]="( id || label ) | idGenerator:'legend'">
+    <legend class="flex-box" [id]="( id || label ) | idGenerator:'legend'">
+        {{ label }}
+        &nbsp;
+        @if(icon) {
+            <ion-icon aria-hidden="true" [name]="icon"></ion-icon>
+        }
+    </legend>
+    <ng-content></ng-content>
+</fieldset>

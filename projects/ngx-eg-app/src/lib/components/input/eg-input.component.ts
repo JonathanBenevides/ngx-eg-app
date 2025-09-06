@@ -11,9 +11,10 @@ import { noop } from 'rxjs';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
-import { ButtonAction, EgInputValueAccessor } from '../../../shared/interface/eg-input.interface';
 import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
 import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
+import { InputButtonAction } from '../../interfaces/eg-input.interface';
+import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
 
 @Component({
   imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdGenerator, IonNote, IonButton, MaskitoDirective],
@@ -60,7 +61,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   @ViewChild('ionInput', { static: false }) public ionInput!: IonInput;
 
   public override value = '';
-  public actions: ButtonAction[] = [];
+  public actions: InputButtonAction[] = [];
   public _mask: MaskitoOptions | null = null;
 
   constructor(
@@ -71,7 +72,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
     super(ngControl, cdr);
     addIcons({ eye, eyeOff, eyeOffOutline, eyeOutline, searchOutline, copyOutline, close, person, call });
   }
-  
+
   public ngAfterViewInit(): void {
     this.parentErrors = {};
     this.checkParentErrors(this.control);
@@ -162,7 +163,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   }
 
   private togglePasswordAction(): void {
-    const passwordButtonIndex = this.actions.findIndex((action: ButtonAction) => action.action === 'togglePasswordAction');
+    const passwordButtonIndex = this.actions.findIndex((action: InputButtonAction) => action.action === 'togglePasswordAction');
     const isVisible = this.actions[passwordButtonIndex].icon === ButtonIcon.togglePasswordAction;
     this.actions[passwordButtonIndex].icon = isVisible ? `eye-off-outline` : ButtonIcon.togglePasswordAction;
     this.type = isVisible ? 'text' : 'password';

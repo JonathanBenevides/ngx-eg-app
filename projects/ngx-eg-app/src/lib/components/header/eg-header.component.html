@@ -14,14 +14,19 @@
         @if (!!actions.length) {
             <ion-buttons slot="end">
                 @for (action of actions; track action) {
-                    <ion-button role="link" [attr.aria-label]="action?.ariaLabel" (click)="action?.click($event)">
-                        <mat-icon [attr.aria-hidden]="true">{{action.icon}}</mat-icon>
+                    <ion-button
+                        slot="end"
+                        fill="clear"
+                        type="button"
+                        [attr.aria-role]="action?.role ?? 'link'"
+                        [attr.aria-label]="action?.ariaLabel"
+                        (click)="action?.click($event)"
+                    >
+                        <ion-icon slot="icon-only" [name]="action?.icon" aria-hidden="true"></ion-icon>
                     </ion-button>
                 }
             </ion-buttons>
         }
     </ion-toolbar>
-    @if (isLoading) {
-        <ion-progress-bar type="indeterminate"></ion-progress-bar>
-    }
+    <ion-progress-bar class="loading-{{ _isLoading }}" type="indeterminate"></ion-progress-bar>
 </ion-header>

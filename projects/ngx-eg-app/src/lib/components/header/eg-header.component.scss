@@ -1,0 +1,8 @@
+.loading {
+    &-true {
+        opacity: 1;
+    }
+    &-false {
+        opacity: 0;
+    }
+}

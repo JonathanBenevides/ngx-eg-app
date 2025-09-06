@@ -4,7 +4,7 @@
 2 - cd dist/ngx-eg-app
 3 - npm pack
 4 - voltar para pasta do projeto
-5 - npm install ./dist/ngx-eg-app/ngx-eg-app-X.X.X.tgz
+5 - npm install ./dist/ngx-eg-app/ngx-eg-app-0.X.X.tgz
 
 # Paths to publish the lib
 

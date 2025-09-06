@@ -1,8 +1,23 @@
-import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { IonBackButton, IonButton, IonButtons, IonHeader, IonMenuButton, IonProgressBar, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonBackButton, IonButton, IonButtons, IonHeader, IonIcon, IonMenuButton, IonProgressBar, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { logOut, logOutOutline, notifications, notificationsOutline, settings, settingsOutline } from 'ionicons/icons';
 
-const MODULES = [IonHeader, IonToolbar, IonButtons, IonButton, IonBackButton, IonTitle, IonProgressBar, MatIconModule, IonMenuButton];
+export const IMPORTS = [
+  IonIcon,
+  IonTitle,
+  IonHeader,
+  IonButton,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonBackButton,
+  IonProgressBar
+];
 
-@NgModule({ imports: MODULES, exports: MODULES })
-export class EgHeaderModule { }
+export const ICONS = {
+  settings,
+  settingsOutline,
+  notifications,
+  notificationsOutline,
+  logOut,
+  logOutOutline
+};
