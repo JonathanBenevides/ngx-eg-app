@@ -18,7 +18,7 @@
                         slot="end"
                         fill="clear"
                         type="button"
-                        [attr.aria-role]="action?.role ?? 'link'"
+                        [attr.role]="action?.role ?? 'link'"
                         [attr.aria-label]="action?.ariaLabel"
                         (click)="action?.click($event)"
                     >

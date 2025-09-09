@@ -1,6 +1,6 @@
 {
   "name": "ngx-eg-app",
-  "version": "0.20.2",
+  "version": "0.20.3",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0",

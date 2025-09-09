@@ -14,14 +14,13 @@ export class HeaderComponent {
     {
       icon: 'notifications',
       click: () => this.action(),
-      ariaLabel: 'string',
-      role: 'link'
+      ariaLabel: 'string'
     },
     {
       icon: 'settings',
       click: () => this.action(),
       ariaLabel: 'string',
-      role: 'link'
+      role: 'button'
     }
   ];
 
