@@ -35,7 +35,7 @@ export class FormControlWrapperComponent implements OnChanges {
         ?.shadowRoot
         ?.querySelector('[part="supporting-text helper-text"]') as HTMLElement;
       if (hint) {
-        hint.style.visibility = this.showError ? 'hidden' : 'unset';
+        hint.style.visibility = this.showError && this.errorMessage ? 'hidden' : 'unset';
       }
     });
   }

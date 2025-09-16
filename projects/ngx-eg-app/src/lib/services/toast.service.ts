@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular/standalone';
 
-import { ToastConfig, ToastType } from '../types/eg-toast.type';
+import { ToastConfig } from '../types/eg-toast.type';
 import { FIVE_SECONDS, ZERO } from '../utils/magic-number';
-
-enum ToastThemes {
-  success = 'success',
-  danger = 'danger',
-  warning = 'warning',
-  info = 'info'
-};
+import { Theming } from '../interfaces/theming.interface';
+import { ThemingType } from '../types/theming.type';
 
 @Injectable()
 export class NgxEgToastService {
@@ -27,15 +22,15 @@ export class NgxEgToastService {
       duration: duration || FIVE_SECONDS,
       keyboardClose: true,
       position: position || 'bottom',
-      color: type === 'info' ? 'primary' : type,
+      color: type,
       id: id || message.split(' ').map(word => word.charAt(ZERO).toLowerCase()).join('') + '-toast'
     });
     await toast.present();
   }
 
-  private getClass(cssClass: string | string[] = '', type: ToastType = 'info'): string | string[] {
+  private getClass(cssClass: string | string[] = '', type: ThemingType = 'primary'): string | string[] {
     if (Array.isArray(cssClass)) {
-      return [...cssClass, 'generic', ToastThemes[type]];
+      return [...cssClass, 'generic', Theming[type]];
     } else {
       return cssClass ? `${cssClass} generic ${type}` : `generic ${type}`;
     }

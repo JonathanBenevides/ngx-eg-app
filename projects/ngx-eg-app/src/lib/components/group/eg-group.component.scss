@@ -1,6 +1,20 @@
+@use '../../styles/variables.scss' as *;
+
 .no-border {
     border: none;
     padding-top: 2rem;
     padding-left: 0;
     padding-right: 0;
+}
+
+fieldset {
+    margin: $default-space*$double 0;
+    gap: $default-space;
+    border-color: rgba(0, 0, 0, 0.1);
+
+    legend {
+        padding: 0 4px;
+        margin-left: -4px;
+        font-weight: 500;
+    }
 }

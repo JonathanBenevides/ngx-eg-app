@@ -1,0 +1,1 @@
+export type ThemingType = 'warning' | 'danger' | 'success' | 'primary';

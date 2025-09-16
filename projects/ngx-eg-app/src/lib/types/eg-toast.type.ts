@@ -1,11 +1,10 @@
+import { ThemingType } from "./theming.type";
 
 export type ToastConfig = Partial<ToastConfigBase> & { message: string };
 
-export type ToastType = 'warning' | 'danger' | 'success' | 'info';
-
 type ToastConfigBase = {
   status: number,
-  type: ToastType,
+  type: ThemingType,
   duration: number,
   id: string,
   header: string,

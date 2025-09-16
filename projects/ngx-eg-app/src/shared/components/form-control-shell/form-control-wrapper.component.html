@@ -1,6 +1,6 @@
 <div class="control">
     <ng-content></ng-content>
-    <div [ngClass]="class ? 'control__error-'+class : 'control__error'">
+    <div class="{{class}}">
         <ion-note
             role="alert"
             [id]="(id || label) | idGenerator:'alert'"

@@ -1,16 +1,33 @@
 .control {
     display: grid;
-    &__error,
-    &__error-checkbox {
-        height: 18.54px;
-        margin-top: -18.54px;
-        padding-left: 16px;
-    }
-    &__error-checkbox {
-        padding-left: 34.5px;
-    }
 }
 
 ion-note {
     font-size: 12px;
+}
+
+.select {
+    &-hint {
+        margin-top: -18.54px;
+    }
+
+    &-error,
+    &-hint {
+        padding-left: 16px;
+        height: 18.54px;
+    }
+}
+
+.checkbox {
+
+    &-hint,
+    &-error {
+        height: 18.54px;
+        padding-left: 34.5px;
+        margin-top: -9px;
+    }
+    
+    &-error {
+        margin-top: 0px;
+    }
 }
