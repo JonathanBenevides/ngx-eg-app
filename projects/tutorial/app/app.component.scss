@@ -10,3 +10,12 @@ div {
     top: 56px;
     display: flex;
 }
+
+ul {
+    padding: 0;
+
+    ngx-eg-button {
+        display: flex;
+        width: 100%;
+    }
+}

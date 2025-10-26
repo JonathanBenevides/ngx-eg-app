@@ -1,16 +1,14 @@
 <ion-app>
 
-  <ngx-eg-menu [title]="'Ngx Example App'">
+  <ngx-eg-menu [title]="'Components'">
     <ul>
       @for (link of links; track link) {
-        <li>
-          <a [routerLink]="link.route">{{ link.name }}</a>
-        </li>
+        <ngx-eg-button [type]="'link'" [size]="'small'" [label]="link.name" (click)="navigate(link)"></ngx-eg-button>
       }
     </ul>
   </ngx-eg-menu>
 
-  <ngx-eg-header [title]="'Ngx Example App'" [hasMenuButton]="true"></ngx-eg-header>
+  <ngx-eg-header [title]="pageTitle" [hasMenuButton]="true"></ngx-eg-header>
 
   <ion-content [fullscreen]="true" class="ion-padding">
     <router-outlet/>

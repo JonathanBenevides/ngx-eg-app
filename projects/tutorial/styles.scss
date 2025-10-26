@@ -26,3 +26,27 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+label, h2, h3, h4, h5, h6, p, span, a, button {
+  color: #404040;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+.doc-section {
+  padding: 1rem 0;
+}

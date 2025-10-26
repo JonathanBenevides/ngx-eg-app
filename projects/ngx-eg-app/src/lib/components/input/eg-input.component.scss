@@ -1,5 +1,3 @@
-@use '../../../shared/styles/required.scss';
-
 :host {
     ion-item {
         --inner-padding-end: unset;
@@ -7,11 +5,9 @@
         --border-color: transparent;
     }
 
-    ::ng-deep {
-        ion-input {
-            div {
-                height: 20px;
-            }
+    ion-input {
+        div {
+            height: 20px;
         }
     }
 }
@@ -37,12 +33,55 @@ ion-input ion-button {
 
     &-error,
     &-error-icon {
-        color: var(--ion-color-danger);
+        .input-wrapper {
+            .label-text-wrapper .label-text {
+                color: var(--ion-color-danger) !important;
+            }
+
+            .native-wrapper ion-icon {
+                color: var(--ion-color-danger) !important;
+            }
+        }
     }
 
     &-error {
-        --highlight-color: var(--ion-color-danger);
-        --border-color: var(--ion-color-danger) !important;
-        color: var(--ion-color-danger);
+        .input-wrapper {
+            --highlight-color: var(--ion-color-danger);
+            --border-color: var(--ion-color-danger) !important;
+        }
     }
+}
+
+.label-required .input-wrapper .label-text-wrapper .label-text::after {
+    content: '*';
+    margin-left: 1.5px;
+}
+
+.USD .input-wrapper .native-wrapper::before {
+    content: 'US$';
+}
+
+.GBP .input-wrapper .native-wrapper::before {
+    content: '£';
+}
+
+.BRL .input-wrapper .native-wrapper::before {
+    content: 'R$';
+}
+
+.EUR .input-wrapper .native-wrapper::before {
+    content: '€';
+}
+
+.show-currency .native-wrapper::before {
+    display: block;
+    margin-right: 5px;
+}
+
+.native-wrapper::before {
+    display: none;
+}
+
+.native-wrapper {
+    height: 37px;
 }

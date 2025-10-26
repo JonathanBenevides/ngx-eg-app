@@ -1,0 +1,4 @@
+<form [formGroup]="form" (ngSubmit)="dismiss()">
+    <ngx-eg-input [label]="'nome'" formControlName="name"></ngx-eg-input>
+    <ngx-eg-button [label]="'Close'" (click)="dismiss()"></ngx-eg-button>
+</form>

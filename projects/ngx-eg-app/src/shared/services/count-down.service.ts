@@ -9,7 +9,7 @@ export const secondsLeft = signal(ZERO);
 export class CountDownService {
 
   public secondsLeft = ZERO;
-  private interval: any = null;
+  private interval: any | null = null;
 
   public start(seconds: number): void {
     if (!!!seconds) {

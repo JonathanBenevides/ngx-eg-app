@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxEgButton, NgxEgInput, REQ_EMAIL, REQ_NAME, validDate } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
@@ -17,10 +17,7 @@ export class InputComponent implements ObservableForm, DefaultForm {
   public phoneMask = '(XX) X XXXX-XXXX';
   public subscription: Subscription = new Subscription();
 
-  constructor(
-    private readonly fb: FormBuilder,
-    private readonly cdr: ChangeDetectorRef
-  ) {
+  constructor(private readonly fb: FormBuilder) {
     this.createForm();
   }
 

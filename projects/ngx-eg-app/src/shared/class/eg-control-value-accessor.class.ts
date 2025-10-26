@@ -21,6 +21,7 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
   public _id = '';
   public value: any;
   public touched = false;
+  public hasFocus = false;
   public required = false;
   public disabled = false;
   public parentErrors = {};
@@ -89,7 +90,7 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
   }
 
   protected setRequiredInput(): void {
-    this.required = this.control?.hasValidator(Validators.required) as boolean;
+    this.required = (this.control?.errors as any)?.required;
   }
 
   protected checkParentErrors(control: AbstractControl): void {

@@ -44,6 +44,7 @@ export class FormComponent implements ObservableForm, DefaultForm {
       birthDate: ['', Validators.required],
       email: ['', REQ_EMAIL],
       phoneNumber: ['', REQ_NUMBER],
+      value: ['', REQ_NUMBER],
       password: ['', [Validators.required, Validators.minLength(SIX)]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { addIcons } from 'ionicons';
 
-import { HeaderButtonAction } from '../../interfaces/eg-input.interface';
 import { ICONS, IMPORTS } from '../../../shared/module/eg-header.module';
+import { HeaderButtonAction } from '../../interfaces/eg-input.interface';
 
 @Component({
   selector: 'ngx-eg-header',
@@ -15,12 +15,6 @@ export class NgxEgHeader {
 
   public _isLoading = false;
 
-  constructor() {
-    addIcons(ICONS);
-  }
-
-  public get isLoading(): boolean { return this._isLoading }
-
   @Input() public title = '';
   @Input() public menuAriaLabel = '';
   @Input() public hasBackButton = false;
@@ -29,5 +23,13 @@ export class NgxEgHeader {
   @Input() public set isLoading(value: boolean) {
     this._isLoading = value;
   };
+
+  constructor() {
+    addIcons(ICONS);
+  }
+
+  public get isLoading(): boolean {
+    return this._isLoading;
+  }
 
 }

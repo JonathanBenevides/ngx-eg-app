@@ -1,3 +1,6 @@
-@use '../../../shared/styles/required.scss';
 @use '../../../shared/styles/error.scss';
 
+:host ::ng-deep .label-required::part(label)::after {
+  content: '*';
+  margin-left: 1.5px;
+}

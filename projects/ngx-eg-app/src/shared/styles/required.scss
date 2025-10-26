@@ -1,5 +1,0 @@
-:host ::ng-deep .label-required::part(label)::after,
-:host ::ng-deep .label-required .input-wrapper .label-text-wrapper .label-text::after {
-  content: '*';
-  margin-left: 1.5px;
-}

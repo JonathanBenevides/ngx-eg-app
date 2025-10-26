@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular/standalone';
 
-import { ToastConfig } from '../types/eg-toast.type';
-import { FIVE_SECONDS, ZERO } from '../utils/magic-number';
 import { Theming } from '../interfaces/theming.interface';
+import { ToastConfig } from '../types/eg-toast.type';
 import { ThemingType } from '../types/theming.type';
+import { FIVE_SECONDS, ZERO } from '../utils/magic-number';
 
 @Injectable()
 export class NgxEgToastService {

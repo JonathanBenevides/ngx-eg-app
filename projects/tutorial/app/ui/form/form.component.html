@@ -16,6 +16,7 @@
     <ngx-eg-input
       id="lastName"
       [label]="'Last Name'"
+      [suffixIcon]="'person'"
       formControlName="lastName"
       [errorMessage]="{required: 'Last name is required.', minlength: 'Please enter a valid last name.'}"
     ></ngx-eg-input>
@@ -58,6 +59,17 @@
       [label]="'Phone Number'"
       formControlName="phoneNumber"
       [errorMessage]="{required: 'Phone number is required.', pattern: 'Please enter a valid phone number.'}"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-input
+      id="value"
+      type="tel"
+      [label]="'Valor'"
+      [currency]="'BRL'"
+      formControlName="value"
+      [errorMessage]="{required: 'Field required.', pattern: 'Please enter a valid value.'}"
     ></ngx-eg-input>
   </div>
 

@@ -3,8 +3,8 @@ import { IonButton } from '@ionic/angular/standalone';
 
 import { IMPORTS } from '../../../shared/module/eg-button.module';
 import { ButtonFill, ButtonShape, ButtonSize, ButtonType } from '../../../shared/type/eg-button.type';
-import { ThemingType } from '../../types/theming.type';
 import { Theming } from '../../interfaces/theming.interface';
+import { ThemingType } from '../../types/theming.type';
 
 @Component({
   imports: IMPORTS,
@@ -30,7 +30,7 @@ export class NgxEgButton implements OnChanges {
   @Input() public iconSide: 'left' | 'right' = 'left';
   @Input() public color: ThemingType = Theming.primary;
 
-  @Output() onClick = new EventEmitter<Event>();
+  @Output() public onClick = new EventEmitter<Event>();
 
   constructor(private readonly element: ElementRef<IonButton>, private readonly renderer: Renderer2) { }
 

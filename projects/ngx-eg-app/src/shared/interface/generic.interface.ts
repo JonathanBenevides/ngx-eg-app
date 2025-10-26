@@ -1,10 +1,10 @@
-import { ButtonActionRoleType } from "../type/eg-input.type";
+import { ButtonActionRoleType } from '../type/eg-input.type';
 
 export interface ButtonAction {
-    icon: string,
-    click: Function,
-    ariaLabel?: string;
-    role?: ButtonActionRoleType
+  icon: string,
+  click: Function,
+  ariaLabel?: string;
+  role?: ButtonActionRoleType
 }
 
 export interface EgInputValueAccessor {

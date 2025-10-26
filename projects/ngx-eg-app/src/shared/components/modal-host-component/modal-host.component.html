@@ -1,0 +1,19 @@
+@if(desktop) {
+  <div class="head ion-padding">
+    <h1> {{ settings.title }} </h1>
+    <ngx-eg-button (click)="dismiss()" [size]="'small'" [icon]="'close'" [color]="'danger'"></ngx-eg-button>
+  </div>
+} @else {
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons></ion-buttons>
+      <ion-title> {{ settings.title }}</ion-title>
+      <ion-buttons slot="end">
+        <ngx-eg-button [fill]="'clear'" [label]="settings.closeButton" (click)="dismiss()"></ngx-eg-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+}
+<ion-content class="ion-padding">
+  <ng-template #container></ng-template>
+</ion-content>

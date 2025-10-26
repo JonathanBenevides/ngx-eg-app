@@ -1,6 +1,6 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule, NgClass } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
@@ -11,22 +11,24 @@ import { noop } from 'rxjs';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
-import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
-import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
-import { InputButtonAction } from '../../interfaces/eg-input.interface';
 import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
+import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
+import { InputButtonAction } from '../../interfaces/eg-input.interface';
+import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
 
 @Component({
   imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdGenerator, IonNote, IonButton, MaskitoDirective],
   selector: 'ngx-eg-input',
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoCheck, EgInputValueAccessor, AfterViewInit {
 
   @Input() public prefixIcon = '';
   @Input() public suffixIcon = '';
+  @Input() public currency = '';
   @Input() public maxlength = null;
   @Input() public placeholder = '';
   @Input() public autocomplete = false;
@@ -96,6 +98,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   }
 
   public onFocus(): void {
+    this.hasFocus = true;
     this.focus.emit();
   }
 
@@ -106,6 +109,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
       return;
     }
 
+    this.hasFocus = false;
     this.blur.emit();
 
     const unmasked = this._mask ? this.unMask(value) : value;
@@ -132,6 +136,10 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   }
 
   public readonly maskPredicate: MaskitoElementPredicate = (el) => (el as unknown as HTMLIonInputElement).getInputElement();
+
+  public get hasCurrencyClass(): boolean {
+    return !!this.control?.value?.length || this.hasFocus;
+  }
 
   private toMask(_mask: string): (string | RegExp)[] {
     return Object.values(_mask).map(value => {

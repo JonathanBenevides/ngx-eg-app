@@ -1,4 +1,4 @@
-import { ThemingType } from "./theming.type";
+import { ThemingType } from './theming.type';
 
 export type ToastConfig = Partial<ToastConfigBase> & { message: string };
 

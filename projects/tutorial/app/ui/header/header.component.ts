@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { HeaderButtonAction, NgxEgHeader } from 'ngx-eg-app';
 
 @Component({
@@ -9,8 +8,8 @@ import { HeaderButtonAction, NgxEgHeader } from 'ngx-eg-app';
 })
 export class HeaderComponent {
 
-  isLoading = true;
-  actions: HeaderButtonAction[] = [
+  public isLoading = true;
+  public actions: HeaderButtonAction[] = [
     {
       icon: 'notifications',
       click: () => this.action(),
