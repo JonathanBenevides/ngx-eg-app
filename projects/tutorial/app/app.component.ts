@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule, RouterOutlet, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { IonApp, IonContent } from '@ionic/angular/standalone';
 import { NgxEgButton, NgxEgHeader, NgxEgMenu } from 'ngx-eg-app';
+import { filter } from 'rxjs';
 
 import { Route } from './shared/enum/route.enum';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +36,7 @@ export class AppComponent {
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(event => {
+      .subscribe(_ => {
         let route = this.activatedRoute;
         while (route.firstChild) {
           route = route.firstChild;

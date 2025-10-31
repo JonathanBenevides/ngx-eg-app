@@ -10,7 +10,7 @@ describe('SubTitleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SubTitleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SubTitleComponent);
     component = fixture.componentInstance;

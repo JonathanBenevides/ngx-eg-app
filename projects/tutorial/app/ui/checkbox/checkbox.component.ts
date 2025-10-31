@@ -1,49 +1,32 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgCheckBox } from 'ngx-eg-app';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
+import { IMPORTS } from './checkbox.module';
+import { CHECKBOX_MAIN_FILES } from './files/checkbox-main.constant';
+import { EVERYTHING_FILE } from './files/everything.constant';
 
 @Component({
   selector: 'app-checkbox',
-  imports: [NgxEgCheckBox, NgxEgButton, ReactiveFormsModule],
+  imports: [IMPORTS],
   templateUrl: './checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CheckboxComponent implements ObservableForm, DefaultForm {
+export class CheckboxComponent {
 
   public form!: FormGroup;
   public subscription: Subscription = new Subscription();
+  public everythingFile = EVERYTHING_FILE;
+  public checkboxMainFiles = CHECKBOX_MAIN_FILES;
+  public showCheckboxEverythingDoc: boolean = false;
 
   constructor(private readonly fb: FormBuilder) {
     this.createForm();
-    this.formChanges();
   }
 
   public createForm(): void {
     this.form = this.fb.group({
       check: new FormControl(null, Validators.requiredTrue)
     });
-  }
-
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  public formChanges(): void {
-    this.subscription.add(
-      this.form.valueChanges.subscribe(console.log)
-    );
-  }
-
-  public onSubmit(): void {
-    this.form.get('check')!.markAsTouched();
-    console.log(this.form.get('check'));
-  }
-
-  public onClear(): void {
-    this.form.reset();
-    console.log(this.form.get('check'));
   }
 }

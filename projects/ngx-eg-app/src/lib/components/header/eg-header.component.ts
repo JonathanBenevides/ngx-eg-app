@@ -24,12 +24,11 @@ export class NgxEgHeader {
     this._isLoading = value;
   };
 
-  constructor() {
-    addIcons(ICONS);
-  }
-
   public get isLoading(): boolean {
     return this._isLoading;
   }
 
+  constructor() {
+    addIcons(ICONS);
+  }
 }

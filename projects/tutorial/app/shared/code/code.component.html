@@ -6,22 +6,32 @@
         <img [src]="'../../../assets/'+ file.name.split('.').pop()+ '.svg'" alt="icon" style="margin-right: 5px;">
         {{ file.name }}
       </ng-template>
-      <div class="black">
+      <div class="flexbox end copy-button">
         <ngx-eg-button [size]="'small'" [color]="'danger'" [icon]="'content_copy'"></ngx-eg-button>
-        @for(content of file.content; track content) {
-          <p [style.margin-left.px]="content.indentation" class="line">{{ content.value }}</p>
-        }
+      </div>
+      <div class="code">
+        <div class="w-100 correction-right">
+          @for(content of file.content; track content) {
+            <div [style.margin-left.px]="content.indentation" class="line" [innerHTML]="content.value"></div>
+          }
+        </div>
       </div>
     </mat-tab>
     }
   </mat-tab-group>
 } @else {
-  <div class="black">
-    @for(file of files; track file.name) {
+  <div class="black" style="display: grid; overflow: auto;">
+    <div class="flexbox end copy-button">
       <ngx-eg-button [size]="'small'" [color]="'danger'" [icon]="'content_copy'"></ngx-eg-button>
-      @for(content of file.content; track content) {
-        <p [style.margin-left.px]="content.indentation" class="line">{{ content.value }}</p>
-      }
-    }
+    </div>
+    <div class="code">
+      <div class="w-100 correction-right">
+        @for(file of files; track file.name) {
+          @for(content of file.content; track content) {
+            <p [style.margin-left.px]="content.indentation" class="line" [innerHTML]="content.value"></p>
+          }
+        }
+      </div>
+    </div>
   </div>
 }

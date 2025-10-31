@@ -1,10 +1,10 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgxEgButton } from 'ngx-eg-app';
 
 import { NgxModalService } from '../../../../ngx-eg-app/src/lib/services/modal.service';
 
 import { ContentComponent } from './content/content.component';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-modal',

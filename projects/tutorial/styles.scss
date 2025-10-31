@@ -39,6 +39,10 @@ hr {
   display: flex;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -48,5 +52,21 @@ hr {
 }
 
 .doc-section {
+  padding: 1rem 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.black {
+  background-color: #000;
+}
+
+.def-padding {
+  padding: 1rem;  
+}
+
+.horizontal-padding {
   padding: 1rem 0;
 }

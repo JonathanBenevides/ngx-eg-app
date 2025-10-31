@@ -1,58 +1,45 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgSelect, Select } from 'ngx-eg-app';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Select } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
 
-import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
+import { CHECKBOX_MAIN_FILES } from './files/checkbox-main.constant';
+import { EVERYTHING_FILE } from './files/everything.constant';
+import { IMPORTS } from './select.module';
 
 @Component({
   selector: 'app-select',
-  imports: [NgxEgSelect, ReactiveFormsModule, NgxEgButton],
+  imports: [IMPORTS],
   templateUrl: './select.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SelectComponent implements ObservableForm, DefaultForm {
+export class SelectComponent {
 
   public form!: FormGroup;
 
   public options: Select[] = [
-    { label: 'Option 1', value: 'string' },
-    { label: 'Option 2', value: 'string2' },
-    { label: 'Option 3', value: 'string3' },
-    { label: 'Option 5', value: 'string5' },
-    { label: 'Option 4', value: 'string4' }
+    { value: 'br', label: 'Brasil' },
+    { value: 'us', label: 'Estados Unidos' },
+    { value: 'es', label: 'Espanha' }
   ];
 
   public subscription: Subscription = new Subscription();
 
+  public everythingFile = EVERYTHING_FILE;
+  public checkboxMainFiles = CHECKBOX_MAIN_FILES;
+  public showCheckboxEverythingDoc: boolean = false;
+
   constructor(private readonly fb: FormBuilder) {
     this.createForm();
-    this.formChanges();
   }
 
   public createForm(): void {
     this.form = this.fb.group({
-      option: new FormControl(null, Validators.required)
+      select: new FormControl(null, Validators.required)
     });
-  }
-
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  public formChanges(): void {
-    this.subscription.add(
-      this.form.valueChanges.subscribe(console.log)
-    );
-  }
-
-  public onSubmit(): void {
-    this.form.get('option')!.markAsTouched();
-    console.log(this.form.get('option'));
   }
 
   public onClear(): void {
     this.form.reset();
-    console.log(this.form.get('option'));
   }
 }

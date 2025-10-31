@@ -1,12 +1,20 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <ngx-eg-select
-        [label]="'Países'"
-        [options]="options"
-        [hint]="'escolha um país'"
-        [errorMessage]="'Escolha uma opção'"
-        formControlName="option"
-    ></ngx-eg-select>
-    <br>
-    <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="onClear()"></ngx-eg-button>
-    <ngx-eg-button [type]="'submit'" [label]="'Submit'" [disabled]="form.invalid"></ngx-eg-button>
+<app-title [title]="'Select'"></app-title>
+<p>Para utilizar o componente de select, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
+<app-code [files]="checkboxMainFiles"></app-code>
+<form [formGroup]="form">
+    <app-sub-title [subTitle]="'Geral'" (event)="showCheckboxEverythingDoc = !showCheckboxEverythingDoc"></app-sub-title>
+    <div class="flexbox wrap end horizontal-padding">
+        <ngx-eg-select
+            [label]="'Países'"
+            [options]="options"
+            class="w-100"
+            [hint]="'Selecione um país'"
+            [errorMessage]="'Escolha um país'"
+            formControlName="select"
+        ></ngx-eg-select>
+        <ngx-eg-button [fill]="'outline'" [label]="'Clear'" (click)="onClear()"></ngx-eg-button>
+    </div>
+    @if (showCheckboxEverythingDoc) {
+        <app-code [files]="everythingFile"></app-code>
+    }
 </form>

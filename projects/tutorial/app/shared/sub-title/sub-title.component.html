@@ -1,1 +1,6 @@
-<h3>{{ subTitle }}</h3>
+<div class="flexbox wrap space-between horizontal-padding">
+    <h3>{{ subTitle }}</h3>
+    <ngx-eg-button [size]="'small'" [label]="'Ver'"
+        [icon]="!visible ? 'visibility' : 'visibility_off'" [fill]="'outline'"
+        (click)="event.emit(); visible = !visible;"></ngx-eg-button>
+</div>

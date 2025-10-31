@@ -32,7 +32,8 @@
               }
             ],
             "styles": [
-              "projects/tutorial/styles.scss"
+              "projects/tutorial/styles.scss",
+              "node_modules/highlight.js/styles/vs2015.css"
             ],
             "scripts": []
           },
@@ -91,7 +92,8 @@
               }
             ],
             "styles": [
-              "projects/tutorial/styles.scss"
+              "projects/tutorial/styles.scss",
+              "node_modules/highlight.js/styles/vs2015.css"
             ],
             "scripts": []
           }
