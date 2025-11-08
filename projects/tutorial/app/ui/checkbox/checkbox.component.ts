@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs';
 
 import { IMPORTS } from './checkbox.module';
-import { CHECKBOX_MAIN_FILES } from './files/checkbox-main.constant';
 import { EVERYTHING_FILE } from './files/everything.constant';
+import { INITIAL_PRESENTATION } from './files/initial-presentation.constant';
 
 @Component({
   selector: 'app-checkbox',
@@ -17,7 +17,7 @@ export class CheckboxComponent {
   public form!: FormGroup;
   public subscription: Subscription = new Subscription();
   public everythingFile = EVERYTHING_FILE;
-  public checkboxMainFiles = CHECKBOX_MAIN_FILES;
+  public initialPresentation = INITIAL_PRESENTATION;
   public showCheckboxEverythingDoc: boolean = false;
 
   constructor(private readonly fb: FormBuilder) {

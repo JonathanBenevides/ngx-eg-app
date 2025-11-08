@@ -5,10 +5,10 @@ import { BUTTON_COLOR_FILES } from './files/button-color.constant';
 import { BUTTON_DISABLED_FILES } from './files/button-disabled.constant';
 import { BUTTON_FORMAT_FILES } from './files/button-format.constant';
 import { BUTTON_ICON_FILES } from './files/button-icon.constant';
-import { BUTTON_MAIN_FILES } from './files/button-main.constant';
 import { BUTTON_SIZE_FILES } from './files/button-size.constant';
 import { BUTTON_STRETCHED_FILES } from './files/button-stretched.constant';
 import { BUTTON_STYLE_FILES } from './files/button-style.constant';
+import { INITIAL_PRESENTATION } from './files/initial-presentation.constant';
 import { LINK_FILES } from './files/link-files.constant';
 
 @Component({
@@ -26,7 +26,7 @@ export class ButtonComponent {
   public buttonStretchedFiles = BUTTON_STRETCHED_FILES;
   public buttonColorFiles = BUTTON_COLOR_FILES;
   public buttonStyleFiles = BUTTON_STYLE_FILES;
-  public buttonMainFiles = BUTTON_MAIN_FILES;
+  public buttonMainFiles = INITIAL_PRESENTATION;
 
   public showLinkDoc: boolean = false;
   public showBtnSizeDoc: boolean = false;

@@ -1,15 +1,19 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { ONE_SECOND, ZERO } from '../../public-api';
-
-export const timerIsRunning = signal(false);
-export const secondsLeft = signal(ZERO);
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class CountDownService {
 
-  public secondsLeft = ZERO;
+  public _timing = ZERO;
+  public _secondsLeft = ZERO;
+  public timerIsRunning = new BehaviorSubject<boolean | null>(null);
   private interval: any | null = null;
+
+  public get secondsLeft(): number {
+    return this._secondsLeft;
+  }
 
   public start(seconds: number): void {
     if (!!!seconds) {
@@ -17,14 +21,14 @@ export class CountDownService {
     }
 
     this.stop();
-    secondsLeft.set(seconds);
-    this.secondsLeft = seconds;
-    timerIsRunning.set(true);
+    this._secondsLeft = seconds;
+    this._timing = seconds;
+    this.timerIsRunning.next(true);
 
     this.interval = setInterval(() => {
-      this.secondsLeft--;
-      secondsLeft.set(this.secondsLeft);
-      if (this.secondsLeft <= ZERO) {
+      this._timing--;
+      this._secondsLeft = this._timing;
+      if (this._timing <= ZERO) {
         this.stop();
       }
     }, ONE_SECOND);
@@ -35,7 +39,7 @@ export class CountDownService {
       clearInterval(this.interval);
       this.interval = null;
     }
-    timerIsRunning.set(false);
-    secondsLeft.set(ZERO);
+    this.timerIsRunning.next(false);
+    this._secondsLeft = ZERO;
   }
 }

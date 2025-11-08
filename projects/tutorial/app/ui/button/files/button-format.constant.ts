@@ -15,12 +15,13 @@ export const BUTTON_FORMAT_FILES = [
   {
     name: 'example.component.ts',
     content: [
+      'import { Component } from \'@angular/core\';',
       'import { NgxEgButton } from \'ngx-eg-app\';',
       '',
       '@Component({',
-      'selector: \'app-button\',',
+      'selector: \'app-example\',',
       'imports: [NgxEgButton],',
-      'templateUrl: \'./button.component.html\'',
+      'templateUrl: \'./example.component.html\'',
       '})',
       'export class ExampleComponent {',
       '',

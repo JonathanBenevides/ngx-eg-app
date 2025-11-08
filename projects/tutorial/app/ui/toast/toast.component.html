@@ -1,1 +1,61 @@
-<ngx-eg-button [size]="'large'" [label]="'Mostrar'" (click)="show()"></ngx-eg-button>
+<app-title [title]="'Toast'"></app-title>
+<p class="horizontal-padding">Para utilizar o componente de toast, é necessário importar o serviço correspondente e adicioná-lo ao array de providers.</p>
+<app-code [files]="initialPresentation"></app-code>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Default'" (event)="showDefToastDoc = !showDefToastDoc"></app-sub-title>
+    <ngx-eg-button [label]="'Default'" (click)="showDefault()"></ngx-eg-button>
+    @if (showDefToastDoc) {
+        <app-code [files]="defaultToastDoc"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Theming'" (event)="showThemingToastDoc = !showThemingToastDoc"></app-sub-title>
+    <form class="flexbox" [formGroup]="form">
+        <ngx-eg-select
+            [label]="'Theming'"
+            [options]="options"
+            [hint]="'Escolha um tema'"
+            formControlName="theming"
+        ></ngx-eg-select>
+        <ngx-eg-button [label]="'Theming'" [disabled]="!theming" (click)="showTheming()"></ngx-eg-button>
+    </form>
+    @if (showThemingToastDoc) {
+        <app-code [files]="themingToastDoc"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Positioning'" (event)="showPositioningToastDoc = !showPositioningToastDoc"></app-sub-title>
+    <form class="flexbox" [formGroup]="form">
+        <ngx-eg-select
+            [label]="'Positioning'"
+            [options]="positions"
+            [hint]="'Escolha uma Posição'"
+            formControlName="position"
+        ></ngx-eg-select>
+        <ngx-eg-button [label]="'Positioning'" [disabled]="!positioning" (click)="showPositioning()"></ngx-eg-button>
+    </form>
+    @if (showPositioningToastDoc) {
+        <app-code [files]="positioningToastDoc"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Timing'" (event)="showTimerToastDoc = !showTimerToastDoc"></app-sub-title>
+    <ngx-eg-button [label]="'Timing'" (click)="showTiming()"></ngx-eg-button>
+    @if (showTimerToastDoc) {
+        <app-code [files]="timingToastDoc"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Header'" (event)="showHeaderToastDoc = !showHeaderToastDoc"></app-sub-title>
+    <ngx-eg-button [label]="'Header'" (click)="showHeader()"></ngx-eg-button>
+    @if (showHeaderToastDoc) {
+        <app-code [files]="headerToastDoc"></app-code>
+    }
+</section>
+<!-- <section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Custom Css - Em Construção'" (event)="showCustomCssToastDoc = !showCustomCssToastDoc"></app-sub-title>
+    <ngx-eg-button [label]="'Custom'" (click)="showCustomCss()"></ngx-eg-button>
+    @if (showCustomCssToastDoc) {
+        <app-code [files]="customCssToastDoc"></app-code>
+    }
+</section> -->

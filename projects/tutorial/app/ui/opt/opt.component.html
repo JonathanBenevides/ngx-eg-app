@@ -1,28 +1,74 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-        <ngx-eg-opt
-            [time]="5"
-            [errorMessage]="{
-                timeout: 'tempo excedido',
-                required: 'campo obrigatório',
-                minlength: 'mínimo de 5 dígitos',
-            }"
-            formControlName="opt"
-        ></ngx-eg-opt>
+<app-title [title]="'Input OPT'"></app-title>
+<p class="horizontal-padding">Para utilizar o componente Input OPT, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
+<app-code [files]="initialPresentation"></app-code>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Default'" (event)="showDefDoc = !showDefDoc"></app-sub-title>
+    <form [formGroup]="form3" (ngSubmit)="onSubmit()">
         <div>
-            <span>Din't get a code ?</span>
-            <ngx-eg-button
-                [type]="'link'"
-                [size]="'small'"
-                [disabled]="!timeout"
-                [fill]="'clear'"
-                [label]="'resend code'"
-                (onClick)="resend()"
-            ></ngx-eg-button>
+            <ngx-eg-opt
+                [errorMessage]="{
+                    required: 'campo obrigatório',
+                    minlength: 'mínimo de 4 dígitos',
+                }"
+                formControlName="opt"
+            ></ngx-eg-opt>
         </div>
+        <ngx-eg-button [type]="'submit'" [disabled]="!!form3.get('opt')!.errors" [label]="'Validate'"></ngx-eg-button>
+    </form>
+    @if (showDefDoc) {
+        <app-code [files]="defDoc"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Número de Digitos'" (event)="showNOfDigitsDoc = !showNOfDigitsDoc"></app-sub-title>
+    <form [formGroup]="form2" (ngSubmit)="onSubmit()">
         <div>
-            <ngx-eg-timer #timer [label]="'Seconds Left'" [time]="5" (timeOut)="timeOut()"></ngx-eg-timer>
+            <ngx-eg-opt
+                [digits]="6"
+                [errorMessage]="{
+                    required: 'campo obrigatório',
+                    minlength: 'mínimo de 6 dígitos',
+                }"
+                formControlName="opt"
+            ></ngx-eg-opt>
         </div>
-    </div>
-    <ngx-eg-button [type]="'submit'" [disabled]="!!form.get('opt')!.errors" [label]="'Validate'"></ngx-eg-button>
-</form>
+        <ngx-eg-button [type]="'submit'" [disabled]="!!form2.get('opt')!.errors" [label]="'Validate'"></ngx-eg-button>
+    </form>
+    @if (showNOfDigitsDoc) {
+        <app-code [files]="numOfDigitsDoc"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'OTP + Timer + Resend'" (event)="showGeralDoc = !showGeralDoc"></app-sub-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <ngx-eg-opt
+                [time]="5"
+                [errorMessage]="{
+                    timeout: 'tempo excedido',
+                    required: 'campo obrigatório',
+                    minlength: 'mínimo de 4 dígitos',
+                }"
+                formControlName="opt"
+            ></ngx-eg-opt>
+            <div>
+                <span>Din't get a code ?</span>
+                <ngx-eg-button
+                    [type]="'link'"
+                    [size]="'small'"
+                    [disabled]="!timeout"
+                    [fill]="'clear'"
+                    [label]="'resend code'"
+                    (onClick)="resend()"
+                ></ngx-eg-button>
+            </div>
+            <div>
+                <ngx-eg-timer #timer [label]="'Seconds Left'" [time]="5" (timeOut)="timeOut()"></ngx-eg-timer>
+            </div>
+        </div>
+        <ngx-eg-button [type]="'submit'" [disabled]="!!form.get('opt')!.errors" [label]="'Validate'"></ngx-eg-button>
+    </form>
+    @if (showGeralDoc) {
+        <app-code [files]="geralDoc"></app-code>
+    }
+</section>

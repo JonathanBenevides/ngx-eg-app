@@ -69,7 +69,7 @@ export class CodeComponent {
       case 'html':
         line = this.styleHtmlLine(line);
         break;
-      case 'scss':
+      case 'css':
         line = this.styleScssLine(line);
         break;
     }

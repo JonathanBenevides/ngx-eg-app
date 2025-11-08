@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
-import { CountDownService, secondsLeft, timerIsRunning } from '../../../shared/services/count-down.service';
+import { CountDownService } from '../../../shared/services/count-down.service';
 import { SIXTY } from '../../utils/magic-number';
 
 @Component({
   selector: 'ngx-eg-timer',
   imports: [],
   templateUrl: './eg-timer.component.html',
+  providers: [CountDownService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxEgTimer implements OnInit, OnDestroy {
@@ -17,13 +18,15 @@ export class NgxEgTimer implements OnInit, OnDestroy {
   @Input() public time: number = SIXTY;
 
   public secondsLeft = SIXTY;
-  private readonly countDown = new CountDownService();
-
-  constructor(private readonly cdr: ChangeDetectorRef) {
+  
+  constructor(
+    private readonly cdr: ChangeDetectorRef,
+    private readonly countDown: CountDownService
+  ) {
     effect(() => {
-      this.secondsLeft = secondsLeft();
+      this.secondsLeft = this.countDown.secondsLeft;
       this.cdr.markForCheck();
-      if (!timerIsRunning()) {
+      if (!this.countDown.timerIsRunning) {
         this.timeOut.emit();
       }
     });

@@ -1,14 +1,14 @@
-import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { NgxEgButton } from 'ngx-eg-app';
-
-import { NgxModalService } from '../../../../ngx-eg-app/src/lib/services/modal.service';
+import { NgxModalService } from 'ngx-eg-app';
 
 import { ContentComponent } from './content/content.component';
+import { EVERYTHING_FILE } from './files/everything.constant';
+import { MODAL_MAIN_FILES } from './files/modal-main.constant';
+import { IMPORTS } from './modal.module';
 
 @Component({
   selector: 'app-modal',
-  imports: [NgxEgButton, JsonPipe],
+  imports: [IMPORTS],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
   providers: [NgxModalService]
@@ -16,6 +16,10 @@ import { ContentComponent } from './content/content.component';
 export class ModalComponent {
 
   public data: any;
+  public showModalDoc = false;
+  public everythingFile = EVERYTHING_FILE;
+  public modalMainFiles = MODAL_MAIN_FILES;
+
   constructor(private readonly modalService: NgxModalService) { }
 
   public open(): void {

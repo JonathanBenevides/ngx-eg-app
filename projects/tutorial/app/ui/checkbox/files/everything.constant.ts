@@ -11,6 +11,7 @@ export const EVERYTHING_FILE = [
   {
     name: 'example.component.ts',
     content: [
+      'import { Component } from \'@angular/core\';',
       'import { NgxEgCheckBox } from \'ngx-eg-app\';',
       'import {',
       'FormBuilder,',
@@ -21,9 +22,9 @@ export const EVERYTHING_FILE = [
       '} from \'@angular/forms\';',
       '',
       '@Component({',
-      'selector: \'app-checkbox\',',
+      'selector: \'app-example\',',
       'imports: [NgxEgCheckBox, ReactiveFormsModule],',
-      'templateUrl: \'./checkbox.component.html\'',
+      'templateUrl: \'./example.component.html\'',
       '})',
       'export class ExampleComponent {',
       '',

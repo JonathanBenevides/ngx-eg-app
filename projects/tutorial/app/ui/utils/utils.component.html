@@ -1,12 +1,55 @@
-<section>
-    <p>Pipe</p>
-    &nbsp;
-    <p>{{ 'jonathanfbenevides@gmail.com' | mask:'email' }}</p>
-    <p>{{ '11953564438' | mask:'phone' }}</p>
-    <p>{{ '1.150,50' | mask:'currency' }}</p>
+<app-title [title]="'Utils'"></app-title>
+<p class="horizontal-padding">Para utilizar os componentes uteis, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
+<app-code [files]="initialPresentation"></app-code>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Pipe Mask'" (event)="showPipegDoc = !showPipegDoc"></app-sub-title>
+    <div class="flexbox wrap double-gap">
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> jonathan_benevides&#64;gmail.com</p>
+            <p><strong>Output:</strong> {{ 'jonathan_benevides@gmail.com' | mask:'email' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> jonathanfbenevides&#64;gmail.com</p>
+            <p><strong>Output:</strong> {{ 'jonathanfbenevides@gmail.com' | mask:'email' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> jonathanfbenevides&#64;f1rst.com.br</p>
+            <p><strong>Output:</strong> {{ 'jonathanfbenevides@f1rst.com.br' | mask:'email' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> (11) 9 5356-4438</p>
+            <p><strong>Output:</strong> {{ '(11) 9 5356-4438' | mask:'phone' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> +55 (11) 9 5356-4438</p>
+            <p><strong>Output:</strong> {{ '+55 (11) 9 5356-4438' | mask:'phone' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> 55 11 9 5356 4438</p>
+            <p><strong>Output:</strong> {{ '55 11 9 5356 4438' | mask:'phone' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> 1.150,50</p>
+            <p><strong>Output:</strong> {{ '1.150,50' | mask:'currency' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> 1,150.50</p>
+            <p><strong>Output:</strong> {{ '1,150.50' | mask:'currency' }}</p>
+        </div>
+        <div class="flexbox wrap gap w-100">
+            <p><strong>Input:</strong> 1 150.50</p>
+            <p><strong>Output:</strong> {{ '1 150.50' | mask:'currency' }}</p>
+        </div>
+    </div>
+    @if (showPipegDoc) {
+        <app-code [files]="pipeDoc"></app-code>
+    }
 </section>
-&nbsp;
-<section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Timer'" (event)="showTimerDoc = !showTimerDoc"></app-sub-title>
     <ngx-eg-timer #timer [time]="5" [label]="'Timer :'" (timeOut)="timeOut()"></ngx-eg-timer>
+    @if (showTimerDoc) {
+        <app-code [files]="timerDoc"></app-code>
+    }
 </section>
 

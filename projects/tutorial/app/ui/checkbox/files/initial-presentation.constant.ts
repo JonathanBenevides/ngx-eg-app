@@ -1,4 +1,4 @@
-export const CHECKBOX_MAIN_FILES = [
+export const INITIAL_PRESENTATION = [
   {
     name: 'example.component.ts',
     content: [

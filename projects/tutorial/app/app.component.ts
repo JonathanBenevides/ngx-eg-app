@@ -28,7 +28,7 @@ export class AppComponent {
     { name: Route.UTILS, route: Route.UTILS },
     { name: Route.OPTINPUT, route: Route.OPTINPUT },
     { name: Route.MODAL, route: Route.MODAL }
-  ];
+  ].sort((a, b) => a.name.localeCompare(b.name));
 
   constructor(
     private readonly router: Router,
@@ -36,7 +36,7 @@ export class AppComponent {
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(_ => {
+      .subscribe(() => {
         let route = this.activatedRoute;
         while (route.firstChild) {
           route = route.firstChild;

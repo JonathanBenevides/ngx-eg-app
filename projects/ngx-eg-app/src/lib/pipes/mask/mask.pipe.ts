@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { FOUR, ONE, TWO, ZERO } from '../../utils/magic-number';
+import { THREE, ZERO } from '../../utils/magic-number';
 
 @Pipe({ name: 'mask' })
 export class MaskPipe implements PipeTransform {
@@ -10,16 +10,29 @@ export class MaskPipe implements PipeTransform {
 
     switch (type) {
       case 'currency':
-        value = value.toString().replaceAll(',', '').replaceAll('.', '');
-        value = '*'.repeat(value.length);
+        value = value.toString().replaceAll(/[0-9]/g, '*');
         break;
       case 'email':
-        const [email, dominium] = (value as string).split('@');
-        const [name, rest] = dominium.split('.');
-        value = `${email[ZERO]}${'*'.repeat(email.length - TWO)}${email[email.length - ONE]}@${name}.${'*'.repeat(rest.length)}`;
+        value = value.toString().replace(
+          /^([^@])([^@]*)([^@])@([^.]+)\.([A-Za-z.]+)$/,
+          (_, first, middle, last, domain, tlds) => {
+            // Máscara do nome de usuário
+            const maskedUser = first + '*'.repeat(middle.length) + last;
+
+            // Máscara das letras após o domínio principal
+            const maskedTlds = tlds.replace(/[A-Za-z]/g, '*');
+
+            return `${maskedUser}@${domain}.${maskedTlds}`;
+          }
+        );
         break;
       case 'phone':
-        value = '*'.repeat((value as string).length - FOUR) + (value as string).slice(-FOUR);
+        const digits = value.toString().match(/[0-9]/g)?.length || ZERO;
+        let digitCount = 0;
+        value = value.toString().replace(/[0-9]/g, (_value) => {
+          digitCount++;
+          return digitCount < (digits - THREE) ? '*' : _value;
+        });
         break;
     }
 

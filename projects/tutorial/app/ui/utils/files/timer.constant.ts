@@ -1,27 +1,28 @@
-export const BUTTON_STRETCHED_FILES = [
+export const TIMER_FILE = [
   {
     name: 'example.component.html',
     content: [
-      '<ngx-eg-button [expand]="expand" [label]="label"></ngx-eg-button>',
-      ''
+      '<ngx-eg-timer #timer [time]="5" [label]=" \'Timer :\' " (timeOut)="timeOut()"></ngx-eg-timer>'
     ]
   },
   {
     name: 'example.component.ts',
     content: [
       'import { Component } from \'@angular/core\';',
-      'import { NgxEgButton } from \'ngx-eg-app\';',
+      'import { NgxEgTimer } from \'ngx-eg-app\';',
       '',
       '@Component({',
       'selector: \'app-example\',',
-      'imports: [NgxEgButton],',
+      'imports: [NgxEgTimer],',
       'templateUrl: \'./example.component.html\'',
       '})',
       'export class ExampleComponent {',
       '',
-      'public label = \'Botão\';',
-      'public expand = \'block\';',
+      '@ViewChild(\'timer\') public timer!: NgxEgTimer;',
       '',
+      'public timeOut():void {',
+      'this.timer.start();',
+      '}',
       '}'
     ]
   }

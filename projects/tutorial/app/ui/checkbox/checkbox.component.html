@@ -1,7 +1,7 @@
 <app-title [title]="'Checkbox'"></app-title>
-<p>Para utilizar o componente de select, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
-<app-code [files]="checkboxMainFiles"></app-code>
-<section class="doc-section">
+<p class="horizontal-padding">Para utilizar o componente de select, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
+<app-code [files]="initialPresentation"></app-code>
+<section class="horizontal-padding">
     <app-sub-title [subTitle]="'Geral'" (event)="showCheckboxEverythingDoc = !showCheckboxEverythingDoc"></app-sub-title>
     <form class="horizontal-padding" [formGroup]="form">
         <ngx-eg-checkbox [label]="'Aceitar termos e condições'" formControlName="check" [errorMessage]="'Marque esta caixa para aceitar'" [hint]="'aceite os termos'"></ngx-eg-checkbox>

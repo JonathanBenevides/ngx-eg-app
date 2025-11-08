@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, effect, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonInputOtp, IonNote } from '@ionic/angular/standalone';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { UpdateMode } from '../../../shared/enum/eg-input.enum';
 import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
-import { CountDownService, timerIsRunning } from '../../../shared/services/count-down.service';
+import { CountDownService } from '../../../shared/services/count-down.service';
 import { FOUR, ZERO } from '../../utils/magic-number';
+import { distinctUntilChanged, filter, skip } from 'rxjs';
 
 @Component({
   selector: 'ngx-eg-opt',
@@ -27,20 +28,24 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
 
   @ViewChild('opt', { static: false }) public opt!: IonInputOtp;
 
-  private readonly countDown = new CountDownService();
 
   constructor(
     @Optional() @Self() protected override ngControl: NgControl,
-    protected override readonly cdr: ChangeDetectorRef
+    protected override readonly cdr: ChangeDetectorRef,
+    private readonly countDown: CountDownService
   ) {
     super(ngControl, cdr);
-    effect(() => {
-      if (!timerIsRunning()) {
+    this.countDown.timerIsRunning
+      .pipe(
+        skip(2),
+        distinctUntilChanged(),
+        filter(isRunning => !isRunning)
+      )
+      .subscribe(() => {
         this.onTouch();
         this.checkErrors();
         this.cdr.markForCheck();
-      }
-    });
+      });
   }
 
   public ngOnDestroy(): void {
@@ -48,14 +53,14 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
   }
 
   public override ngOnInit(): void {
-    this.startCountDown();
+    if (!!this.time) {
+      this.startCountDown();
+    }
   }
 
   public override writeValue(value: any): void {
     if (value === null && this.control.errors!['timeout']) { // se deu reset, o value fica como null
-      this.control.markAsUntouched();
       this.startCountDown();
-      this.opt.setFocus(ZERO);
     }
     this.value = value;
     this.cdr.markForCheck();
@@ -81,7 +86,7 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
   }
 
   private checkErrors(): void {
-    if (!!this.time && !timerIsRunning()) {
+    if (!!this.time && !this.countDown.timerIsRunning.value) {
       this.control.setErrors({ timeout: true });
       return;
     }
@@ -101,6 +106,7 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
     if (!!this.time) {
       this.control.markAsUntouched();
       this.countDown.start(this.time);
+      this.opt?.setFocus(ZERO);
     }
   }
 }

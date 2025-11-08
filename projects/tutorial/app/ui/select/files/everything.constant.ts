@@ -13,6 +13,7 @@ export const EVERYTHING_FILE = [
   {
     name: 'example.component.ts',
     content: [
+      'import { Component } from \'@angular/core\';',
       'import { NgxEgSelect } from \'ngx-eg-app\';',
       'import {',
       'FormBuilder,',
@@ -23,9 +24,9 @@ export const EVERYTHING_FILE = [
       '} from \'@angular/forms\';',
       '',
       '@Component({',
-      'selector: \'app-select\',',
+      'selector: \'app-example\',',
       'imports: [NgxEgSelect, ReactiveFormsModule],',
-      'templateUrl: \'./select.component.html\'',
+      'templateUrl: \'./example.component.html\'',
       '})',
       'export class ExampleComponent {',
       '',
