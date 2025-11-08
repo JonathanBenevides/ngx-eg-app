@@ -1,0 +1,33 @@
+export const DOC_FILE = [
+    {
+        name: 'example.component.html',
+        content: [
+            '<form [formGroup]="form">',
+            '<ngx-eg-input [label]="\'Nome\'" formControlName="name">',
+            '</ngx-eg-input>',
+            '</form>',
+            '<div>{{ form.value | json }}</div>'
+        ]
+    },
+    {
+        name: 'example.component.ts',
+        content: [
+            'import { Component } from \'@angular/core\';',
+            'import { JsonPipe } from \'@angular/common\';',
+            'import { FormControl, FormGroup, ReactiveFormsModule } from \'@angular/forms\';',
+            'import { NgxEgInput } from \'ngx-eg-app\';',
+            '',
+            '@Component({',
+            'selector: \'app-example\',',
+            'imports: [NgxEgInput, ReactiveFormsModule],',
+            'templateUrl: \'./example.component.html\'',
+            '})',
+            'export class ExampleComponent {',
+            '',
+            'public form: FormGroup = new FormGroup({',
+            'name: new FormControl()',
+            '});',
+            '}'
+        ]
+    },
+]

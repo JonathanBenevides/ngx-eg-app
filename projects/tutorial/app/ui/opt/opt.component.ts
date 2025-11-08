@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgxEgTimer, TEN } from 'ngx-eg-app';
+import { FOUR, NgxEgTimer, SIX, TEN } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
 
 import { DefaultForm } from '../../shared/interface/custom-form.interface';
 
-import { INITIAL_PRESENTATION } from './files/initial-presentation.constant';
-import { IMPORTS } from './opt.module';
-import { GERAL_FILE } from './files/full-component.constant';
-import { N_OF_DIGITS_FILE } from './files/number-of-digits.constant';
 import { DEFAULT_FILE } from './files/default.constant';
+import { GERAL_FILE } from './files/full-component.constant';
+import { INITIAL_PRESENTATION } from './files/initial-presentation.constant';
+import { N_OF_DIGITS_FILE } from './files/number-of-digits.constant';
+import { IMPORTS } from './opt.module';
 
 @Component({
   selector: 'app-opt',
@@ -68,13 +68,13 @@ export class OptComponent implements DefaultForm, OnInit {
 
   public createForm(): void {
     this.form = this.fb.group({
-      opt: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      opt: new FormControl('', [Validators.required, Validators.minLength(FOUR)])
     });
     this.form2 = this.fb.group({
-      opt: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      opt: new FormControl('', [Validators.required, Validators.minLength(SIX)])
     });
     this.form3 = this.fb.group({
-      opt: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      opt: new FormControl('', [Validators.required, Validators.minLength(FOUR)])
     });
   }
 }

@@ -1,8 +1,8 @@
-export const LINK_FILES = [
+export const BASIC_BTN_FILES = [
   {
     name: 'example.component.html',
     content: [
-      '<ngx-eg-button [type]="\'link\'" [size]="\'small\'" [label]="\'Link\'" (onClick)="click()"></ngx-eg-button>'
+      '<ngx-eg-button [label]="\'Basic\'" (click)="click()"></ngx-eg-button>',
     ]
   },
   {

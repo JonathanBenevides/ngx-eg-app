@@ -2,7 +2,7 @@
 <p class="horizontal-padding">Para utilizar o componente de modal, é necessário importar o service correspondente e adicioná-lo ao array de providers.</p>
 <app-code [files]="modalMainFiles"></app-code>
 <section class="horizontal-padding">
-    <app-sub-title [subTitle]="'Geral'" (event)="showModalDoc = !showModalDoc"></app-sub-title>
+    <app-sub-title [subTitle]="'Basic'" (event)="showModalDoc = !showModalDoc"></app-sub-title>
     <div class="horizontal-padding">
         <div>Content: {{ data | json }}</div>
         <ngx-eg-button [label]="'Open'" (click)="open()"></ngx-eg-button>

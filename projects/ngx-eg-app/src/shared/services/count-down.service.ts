@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { ONE_SECOND, ZERO } from '../../public-api';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class CountDownService {
 
   public _timing = ZERO;
-  public _secondsLeft = ZERO;
-  public timerIsRunning = new BehaviorSubject<boolean | null>(null);
+  public secondsLeft = new BehaviorSubject<number>(ZERO);
   private interval: any | null = null;
-
-  public get secondsLeft(): number {
-    return this._secondsLeft;
-  }
 
   public start(seconds: number): void {
     if (!!!seconds) {
@@ -21,13 +16,12 @@ export class CountDownService {
     }
 
     this.stop();
-    this._secondsLeft = seconds;
+    this.secondsLeft.next(seconds);
     this._timing = seconds;
-    this.timerIsRunning.next(true);
 
     this.interval = setInterval(() => {
       this._timing--;
-      this._secondsLeft = this._timing;
+      this.secondsLeft.next(this._timing);
       if (this._timing <= ZERO) {
         this.stop();
       }
@@ -39,7 +33,6 @@ export class CountDownService {
       clearInterval(this.interval);
       this.interval = null;
     }
-    this.timerIsRunning.next(false);
-    this._secondsLeft = ZERO;
+    this.secondsLeft.next(ZERO);
   }
 }

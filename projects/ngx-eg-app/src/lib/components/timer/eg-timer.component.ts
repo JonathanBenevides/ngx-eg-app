@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { distinctUntilChanged } from 'rxjs';
 
 import { CountDownService } from '../../../shared/services/count-down.service';
 import { SIXTY } from '../../utils/magic-number';
@@ -18,18 +19,22 @@ export class NgxEgTimer implements OnInit, OnDestroy {
   @Input() public time: number = SIXTY;
 
   public secondsLeft = SIXTY;
-  
+
   constructor(
     private readonly cdr: ChangeDetectorRef,
     private readonly countDown: CountDownService
   ) {
-    effect(() => {
-      this.secondsLeft = this.countDown.secondsLeft;
-      this.cdr.markForCheck();
-      if (!this.countDown.timerIsRunning) {
-        this.timeOut.emit();
-      }
-    });
+    this.countDown.secondsLeft
+      .pipe(
+        distinctUntilChanged()
+      )
+      .subscribe((timing) => {
+        this.secondsLeft = timing;
+        this.cdr.markForCheck();
+        if (!timing) {
+          this.timeOut.emit();
+        }
+      });
   }
 
   public ngOnInit(): void {

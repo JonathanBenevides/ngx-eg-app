@@ -3,6 +3,16 @@
 <app-code [files]="buttonMainFiles"></app-code>
 <app-title [title]="'Buttons'"></app-title>
 <section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Basic'" (event)="showBtnBasicDoc = !showBtnBasicDoc"></app-sub-title>
+    <p><strong>Hint:</strong> Usar output "click" para eventos de click quando usando o botão</p>
+    <div class="horizontal-padding">
+        <ngx-eg-button [label]="'Basic'" (click)="click()"></ngx-eg-button>
+    </div>
+    @if (showBtnBasicDoc) {
+        <app-code [files]="buttonBasicFile"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
     <app-sub-title [subTitle]="'Size'" (event)="showBtnSizeDoc = !showBtnSizeDoc"></app-sub-title>
     <div class="horizontal-padding">
         <ngx-eg-button [size]="'small'" [label]="'Botão'"></ngx-eg-button>
@@ -87,9 +97,10 @@
 <hr>
 <section>
     <app-title [title]="'Link'"></app-title>
-    <app-sub-title [subTitle]="'Geral'" (event)="showLinkDoc = !showLinkDoc"></app-sub-title>
+    <app-sub-title [subTitle]="'Basic'" (event)="showLinkDoc = !showLinkDoc"></app-sub-title>
+    <p><strong>Hint:</strong> Usar output "onClick" para eventos de click quando usando link</p>
     <div class="horizontal-padding">
-        <ngx-eg-button [type]="'link'" [size]="'small'" [label]="'Link'"></ngx-eg-button>
+        <ngx-eg-button [type]="'link'" [size]="'small'" [label]="'Link'" (onClick)="click()"></ngx-eg-button>
     </div>
     @if (showLinkDoc) {
         <app-code [files]="linkFiles"></app-code>

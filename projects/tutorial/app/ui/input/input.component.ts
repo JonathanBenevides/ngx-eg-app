@@ -1,59 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxEgButton, NgxEgInput, REQ_EMAIL, REQ_NAME, validDate } from 'ngx-eg-app';
-import { Subscription } from 'rxjs';
-
-import { DefaultForm, ObservableForm } from '../../shared/interface/custom-form.interface';
+import { COMPONENTS } from './input.module';
+import { INITIAL_PRESENTATION } from './initial-presentation.constant';
 
 @Component({
   selector: 'app-input',
-  imports: [FormsModule, ReactiveFormsModule, NgxEgInput, NgxEgButton],
+  imports: [COMPONENTS],
   templateUrl: './input.component.html'
 })
-export class InputComponent implements ObservableForm, DefaultForm {
-
-  public form!: FormGroup;
-  public showMask = false;
-  public phoneMask = '(XX) X XXXX-XXXX';
-  public subscription: Subscription = new Subscription();
-
-  constructor(private readonly fb: FormBuilder) {
-    this.createForm();
-  }
-
-  public createForm(): void {
-    this.form = this.fb.group({
-      email: new FormControl('', { validators: REQ_EMAIL }),
-      pass: new FormControl('', Validators.required),
-      phone: new FormControl('11953564438', Validators.required),
-      name: new FormControl('', { validators: REQ_NAME }),
-      date: new FormControl('', { validators: [validDate()] }),
-      hybrid: new FormControl('', Validators.required)
-    }, { updateOn: 'change' });
-    this.formChanges();
-  }
-
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  public formChanges(): void {
-    this.form.valueChanges.subscribe(() => console.log(this.form));
-  }
-
-  public onSubmit(): void {
-    console.log(this.form.value);
-  }
-
-  public onSearch(): void {
-    console.log(this.form.value);
-  }
-
-  public onClear(): void {
-    this.form.reset();
-  }
-
-  public focusStatusChange(hasFocus: boolean): void {
-    this.showMask = this.form.get('hybrid')!.valid && !isNaN(this.form.get('hybrid')!.value) && !hasFocus;
-  }
+export class InputComponent {
+  public initialPresentation = INITIAL_PRESENTATION;
 }

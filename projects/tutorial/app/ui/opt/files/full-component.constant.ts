@@ -79,7 +79,7 @@ export const GERAL_FILE = [
       'width: 500px;',
       'margin: auto;',
       'gap: 1rem;',
-      '}',
+      '}'
     ]
   }
 ];

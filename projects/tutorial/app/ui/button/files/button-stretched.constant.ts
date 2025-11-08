@@ -1,28 +1,15 @@
+import { GENERIC } from "./button.constant";
+
 export const BUTTON_STRETCHED_FILES = [
   {
     name: 'example.component.html',
     content: [
-      '<ngx-eg-button [expand]="expand" [label]="label"></ngx-eg-button>',
+      '<ngx-eg-button [expand]="\'block\'" [label]="\'Botão\'"></ngx-eg-button>',
       ''
     ]
   },
   {
     name: 'example.component.ts',
-    content: [
-      'import { Component } from \'@angular/core\';',
-      'import { NgxEgButton } from \'ngx-eg-app\';',
-      '',
-      '@Component({',
-      'selector: \'app-example\',',
-      'imports: [NgxEgButton],',
-      'templateUrl: \'./example.component.html\'',
-      '})',
-      'export class ExampleComponent {',
-      '',
-      'public label = \'Botão\';',
-      'public expand = \'block\';',
-      '',
-      '}'
-    ]
+    content: GENERIC
   }
 ];

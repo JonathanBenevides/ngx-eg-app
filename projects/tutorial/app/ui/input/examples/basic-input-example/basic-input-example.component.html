@@ -1,0 +1,10 @@
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Basic'" (event)="showDoc = !showDoc"></app-sub-title>
+    <form [formGroup]="form">
+        <ngx-eg-input [label]="'Nome'" formControlName="name"></ngx-eg-input>
+    </form>
+    <div>{{ form.value | json }}</div>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</section>

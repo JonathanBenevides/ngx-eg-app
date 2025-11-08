@@ -10,6 +10,7 @@ import { BUTTON_STRETCHED_FILES } from './files/button-stretched.constant';
 import { BUTTON_STYLE_FILES } from './files/button-style.constant';
 import { INITIAL_PRESENTATION } from './files/initial-presentation.constant';
 import { LINK_FILES } from './files/link-files.constant';
+import { BASIC_BTN_FILES } from './files/button-basic.constant';
 
 @Component({
   selector: 'app-button',
@@ -27,6 +28,7 @@ export class ButtonComponent {
   public buttonColorFiles = BUTTON_COLOR_FILES;
   public buttonStyleFiles = BUTTON_STYLE_FILES;
   public buttonMainFiles = INITIAL_PRESENTATION;
+  public buttonBasicFile = BASIC_BTN_FILES;
 
   public showLinkDoc: boolean = false;
   public showBtnSizeDoc: boolean = false;
@@ -36,4 +38,9 @@ export class ButtonComponent {
   public showBtnStretchedDoc: boolean = false;
   public showBtnColorDoc: boolean = false;
   public showBtnStyleDoc: boolean = false;
+  public showBtnBasicDoc: boolean = false;
+
+  public click(): void {
+    console.log('clicou')
+  }
 }

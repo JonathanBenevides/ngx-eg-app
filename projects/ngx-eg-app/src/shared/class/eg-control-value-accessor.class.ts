@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Directive, Input, OnInit, Optional, Self } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { noop } from 'rxjs';
 
 import { ZERO } from '../../lib/utils/magic-number';

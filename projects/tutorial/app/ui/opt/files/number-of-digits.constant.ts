@@ -57,7 +57,7 @@ export const N_OF_DIGITS_FILE = [
       'width: 500px;',
       'margin: auto;',
       'gap: 1rem;',
-      '}',
+      '}'
     ]
   }
 ];

@@ -57,7 +57,7 @@ export const DEFAULT_FILE = [
       'width: 500px;',
       'margin: auto;',
       'gap: 1rem;',
-      '}',
+      '}'
     ]
   }
 ];

@@ -1,1 +1,31 @@
-<ngx-eg-header [title]="'Titulo aqui'" [isLoading]="isLoading" [actions]="actions"></ngx-eg-header>
+<app-title [title]="'Header'"></app-title>
+<p class="horizontal-padding">Para utilizar o componente de header, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
+<app-code [files]="initialPresentation"></app-code>
+<div class="horizontal-padding">
+    <app-sub-title [subTitle]="'Basic'" (event)="showDefaultDoc = !showDefaultDoc"></app-sub-title>
+    <ngx-eg-header [title]="'Title'"></ngx-eg-header>
+    @if (showDefaultDoc) {
+        <app-code [files]="defaultFile"></app-code>
+    }
+</div>
+<div class="horizontal-padding">
+    <app-sub-title [subTitle]="'Loading'" (event)="showLoadingDoc = !showLoadingDoc"></app-sub-title>
+    <ngx-eg-header [title]="'Title'" [isLoading]="true"></ngx-eg-header>
+    @if (showLoadingDoc) {
+        <app-code [files]="lodingFile"></app-code>
+    }
+</div>
+<div class="horizontal-padding">
+    <app-sub-title [subTitle]="'Back Button'" (event)="showBackButtonDoc = !showBackButtonDoc"></app-sub-title>
+    <ngx-eg-header [title]="'Title'" [hasBackButton]="true"></ngx-eg-header>
+    @if (showBackButtonDoc) {
+        <app-code [files]="backButtonFile"></app-code>
+    }
+</div>
+<div class="horizontal-padding">
+    <app-sub-title [subTitle]="'Button Actions'" (event)="showButtonActionsDoc = !showButtonActionsDoc"></app-sub-title>
+    <ngx-eg-header [title]="'Title'" [isLoading]="isLoading" [actions]="actions"></ngx-eg-header>
+    @if (showButtonActionsDoc) {
+        <app-code [files]="buttonActionFile"></app-code>
+    }
+</div>

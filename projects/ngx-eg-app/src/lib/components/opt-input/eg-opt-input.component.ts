@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, effect, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Optional, Output, Self, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
 import { FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonInputOtp, IonNote } from '@ionic/angular/standalone';
+import { distinctUntilChanged, filter } from 'rxjs';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { UpdateMode } from '../../../shared/enum/eg-input.enum';
 import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
 import { CountDownService } from '../../../shared/services/count-down.service';
 import { FOUR, ZERO } from '../../utils/magic-number';
-import { distinctUntilChanged, filter, skip } from 'rxjs';
 
 @Component({
   selector: 'ngx-eg-opt',
@@ -28,6 +28,7 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
 
   @ViewChild('opt', { static: false }) public opt!: IonInputOtp;
 
+  private timerIsRunning = false;
 
   constructor(
     @Optional() @Self() protected override ngControl: NgControl,
@@ -35,11 +36,13 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
     private readonly countDown: CountDownService
   ) {
     super(ngControl, cdr);
-    this.countDown.timerIsRunning
+    this.countDown.secondsLeft
       .pipe(
-        skip(2),
         distinctUntilChanged(),
-        filter(isRunning => !isRunning)
+        filter((seconds) => {
+          this.timerIsRunning = !!seconds;
+          return !seconds;
+        })
       )
       .subscribe(() => {
         this.onTouch();
@@ -86,7 +89,7 @@ export class NgxEgOptInput extends EgControlValueAccessor implements EgInputValu
   }
 
   private checkErrors(): void {
-    if (!!this.time && !this.countDown.timerIsRunning.value) {
+    if (!!this.time && !this.timerIsRunning) {
       this.control.setErrors({ timeout: true });
       return;
     }

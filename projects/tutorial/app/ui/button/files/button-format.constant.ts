@@ -1,36 +1,21 @@
+import { GENERIC } from "./button.constant";
+
 export const BUTTON_FORMAT_FILES = [
   {
     name: 'example.component.html',
     content: [
-      '<ngx-eg-button [shape]="def" [label]="label"></ngx-eg-button>',
+      '<ngx-eg-button [shape]="\'default\'" [label]="\'Botão\'"></ngx-eg-button>',
       '',
-      '<ngx-eg-button [shape]="round" [label]="label"></ngx-eg-button>',
+      '<ngx-eg-button [shape]="\'round\'" [label]="\'Botão\'"></ngx-eg-button>',
       '',
-      '<ngx-eg-button [shape]="def" [icon]="icon"></ngx-eg-button>',
+      '<ngx-eg-button [shape]="\'default\'" [icon]="\'content_copy\'"></ngx-eg-button>',
       '',
-      '<ngx-eg-button [shape]="round" [icon]="icon"></ngx-eg-button>',
+      '<ngx-eg-button [shape]="\'round\'" [icon]="\'content_copy\'"></ngx-eg-button>',
       ''
     ]
   },
   {
     name: 'example.component.ts',
-    content: [
-      'import { Component } from \'@angular/core\';',
-      'import { NgxEgButton } from \'ngx-eg-app\';',
-      '',
-      '@Component({',
-      'selector: \'app-example\',',
-      'imports: [NgxEgButton],',
-      'templateUrl: \'./example.component.html\'',
-      '})',
-      'export class ExampleComponent {',
-      '',
-      'public icon = \'content_copy\';',
-      'public label = \'Botão\';',
-      'public round = \'round\';',
-      'public def = \'default\';',
-      '',
-      '}'
-    ]
+    content: GENERIC
   }
 ];
