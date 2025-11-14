@@ -4,7 +4,7 @@ import moment from 'moment';
 import { FIVE, MAX_NUMBER, ONE, TWO, ZERO } from './magic-number';
 
 export const EMAIL_REGEX = new RegExp(
-  '^[A-Za-zÀ-ÖØ-öø-ÿ0-9.!#$%&\'*+/=?^_`{|}~-]+@[A-Za-zÀ-ÖØ-öø-ÿ0-9-]+\\.[A-Za-zÀ-ÖØ-öø-ÿ]{2,}$',
+  '^[A-Za-zÀ-ÖØ-öø-ÿ0-9.!#$%&\'*+/=?^_`{|}~-]+@[A-Za-zÀ-ÖØ-öø-ÿ0-9-]+\\.[A-Za-zÀ-ÖØ-öø-ÿ]{3,}$',
   'u'
 );
 

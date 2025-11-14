@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+    <app-sub-title [subTitle]="'Nome'" (event)="showDoc = !showDoc"></app-sub-title>
+    <ngx-eg-input [label]="'Nome'" formControlName="name" [errorMessage]="{required: 'campo obrigatório', pattern: 'somente letras', minlength: 'Mínimo 2 caracteres'}"></ngx-eg-input>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</form>

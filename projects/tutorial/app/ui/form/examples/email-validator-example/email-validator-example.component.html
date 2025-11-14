@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+    <app-sub-title [subTitle]="'Email'" (event)="showDoc = !showDoc"></app-sub-title>
+    <ngx-eg-input [label]="'email'" formControlName="email" [errorMessage]="{required: 'campo obrigatório', pattern: 'email inválido'}"></ngx-eg-input>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</form>

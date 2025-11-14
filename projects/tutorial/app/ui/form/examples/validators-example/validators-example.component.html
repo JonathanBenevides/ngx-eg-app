@@ -1,0 +1,115 @@
+<form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <ngx-eg-input
+      id="firstName"
+      [label]="'First Name'"
+      formControlName="firstName"
+      [errorMessage]="{
+        required: 'First name is required.',
+        pattern: 'Invalid patter',
+        minlength: 'Please enter a valid name.'
+      }"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-input
+      id="lastName"
+      [label]="'Last Name'"
+      [suffixIcon]="'person'"
+      formControlName="lastName"
+      [errorMessage]="{required: 'Last name is required.', minlength: 'Please enter a valid last name.'}"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-select
+      id="gender"
+      [label]="'Gender'"
+      [options]="genderOptions"
+      formControlName="gender"
+      [errorMessage]="'Please select a gender.'"
+    ></ngx-eg-select>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-input
+      id="birthDate"
+      [type]="'date'"
+      [label]="'Date of Birth'"
+      formControlName="birthDate"
+      [errorMessage]="'Date of birth is required.'"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-input
+      id="email"
+      type="email"
+      [label]="'Email'"
+      formControlName="email"
+      [errorMessage]="{required: 'Email is required.', pattern: 'Please enter a valid email address.'}"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-input
+      id="phoneNumber"
+      type="tel"
+      [label]="'Phone Number'"
+      formControlName="phoneNumber"
+      [errorMessage]="{required: 'Phone number is required.', pattern: 'Please enter a valid phone number.'}"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="form-group">
+    <ngx-eg-input
+      id="value"
+      type="tel"
+      [label]="'Valor'"
+      [currency]="'BRL'"
+      formControlName="value"
+      [errorMessage]="{required: 'Field required.', pattern: 'Please enter a valid value.'}"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="flex">
+    <ngx-eg-input
+      id="password"
+      [label]="'New Password'"
+      formControlName="password"
+      [buttonAction]="'togglePasswordAction'"
+      [errorMessage]="{required: 'Password is required.', minlength: 'Password must be at least 6 characters long.'}"
+    ></ngx-eg-input>
+
+    <ngx-eg-input
+      id="confirmPassword"
+      [label]="'Confirm Password'"
+      formControlName="confirmPassword"
+      [buttonAction]="'togglePasswordAction'"
+      [errorMessage]="{required: 'Please confirm your password.', passwordmismatch: 'Passwords do not match.'}"
+    ></ngx-eg-input>
+  </div>
+
+  <div class="terms-container">
+    <a href="#" (click)="openTerms($event)">Read the Terms of Use</a>
+    <ngx-eg-checkbox
+      formControlName="acceptTerms"
+      [label]="'I accept the terms'"
+      [errorMessage]="'You must accept the terms of use to proceed.'"
+    ></ngx-eg-checkbox>
+  </div>
+
+  <div class="form-button-action">
+      <ngx-eg-button
+        [fill]="'outline'"
+        [label]="'Clear'"
+        (click)="onClear()"
+      ></ngx-eg-button>
+      <ngx-eg-button
+        [type]="'submit'"
+        [label]="'Submit'"
+        [disabled]="form.invalid"
+      ></ngx-eg-button>
+  </div>
+</form>

@@ -61,7 +61,7 @@ export const routes: Routes = [
     loadComponent: () => import('./ui/form/form.component').then(c => c.FormComponent),
     path: Route.FORM.toLowerCase(),
     data: {
-      title: Route.FORM
+      title: `${Route.FORM} & Validators`
     }
   },
   {

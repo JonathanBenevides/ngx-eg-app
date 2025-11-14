@@ -1,0 +1,16 @@
+<form class="register-form" [formGroup]="form">
+  <app-sub-title [subTitle]="'Deep Form'" (event)="showDoc = !showDoc"></app-sub-title>
+  <ngx-eg-input
+    [label]="'Password'"
+    formControlName="password"
+    [errorMessage]="{ passwordmismatch: 'I dont have validators, but the form does.' }"
+  ></ngx-eg-input>
+  <ngx-eg-input
+    [label]="'Confirm Password'"
+    formControlName="confirmPassword"
+    [errorMessage]="{ passwordmismatch: 'I dont have validators, but the form does.' }"
+  ></ngx-eg-input>
+    @if (showDoc) {
+      <app-code [files]="docFile"></app-code>
+    }
+</form>

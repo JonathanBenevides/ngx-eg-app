@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+    <app-sub-title [subTitle]="'Data'" (event)="showDoc = !showDoc"></app-sub-title>
+    <ngx-eg-input [type]="'date'" [label]="'Data'" formControlName="date" [errorMessage]="{invaliddate: 'data inválida'}"></ngx-eg-input>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</form>
