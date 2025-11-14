@@ -82,7 +82,7 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   }
 
   public override ngOnInit(): void {
-    this.value = this._mask ? maskitoTransform(this.control.value, this._mask) : this.control.value;
+    this.value = this._mask ? maskitoTransform(this.control?.value || '', this._mask) : this.control.value;
     this.setRequiredInput();
   }
 
@@ -158,6 +158,8 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
     if (typeof buttonAction === 'string') {
       buttonAction = [buttonAction];
     }
+
+    this.type = (buttonAction as ButtonActionType[]).some((action) => action === 'togglePasswordAction') ? 'password' : this.type;
 
     if (!!buttonAction?.length) {
       this.actions = buttonAction.map((action: ButtonActionType) => {

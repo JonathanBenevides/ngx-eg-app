@@ -10,5 +10,7 @@ Fazer exemplo de usar parent erro (showParentError) no input e usar o erro custo
 
 # DOCUMENTAR
 
-- Input
 - Form
+
+# BUG
+Verificar porque, no componente de app-mask-input-example, o segundo input não funciona de primeira, ou seja, ao clicar no input e sair, não funciona a mascara na primeira tentativa

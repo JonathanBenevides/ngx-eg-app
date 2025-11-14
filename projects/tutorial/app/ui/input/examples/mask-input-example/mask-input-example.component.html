@@ -1,0 +1,10 @@
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Mascaras'" (event)="showDoc = !showDoc"></app-sub-title>
+    <form class="flexbox wrap gap" [formGroup]="form">
+        <ngx-eg-input [mask]="phoneMask" [label]="'Telefone'" formControlName="phone"></ngx-eg-input>
+        <ngx-eg-input [mask]="showMask ? phoneMask : ''" (blur)="focusStatusChange(false)" (focus)="focusStatusChange(true)" [label]="'Hybrid Mask'" formControlName="hybrid"></ngx-eg-input>
+    </form>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</section>

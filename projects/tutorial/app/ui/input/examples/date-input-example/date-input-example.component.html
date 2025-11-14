@@ -1,0 +1,9 @@
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Data'" (event)="showDoc = !showDoc"></app-sub-title>
+    <form [formGroup]="form">
+        <ngx-eg-input [label]="'Data'" [type]="'date'" formControlName="date"></ngx-eg-input>
+    </form>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</section>

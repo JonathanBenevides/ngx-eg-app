@@ -1,0 +1,9 @@
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Hint'" (event)="showDoc = !showDoc"></app-sub-title>
+    <form [formGroup]="form">
+        <ngx-eg-input [label]="'Nome'" [hint]="'My hint here'" formControlName="name"></ngx-eg-input>
+    </form>
+    @if (showDoc) {
+        <app-code [files]="docFile"></app-code>
+    }
+</section>

@@ -36,13 +36,13 @@
 
 <ng-template #prefixIconContainer>
     @if(prefixIcon) {
-        <ion-icon slot="start" [name]="prefixIcon" aria-hidden="true"></ion-icon>
+        <ion-icon class="prefix" slot="start" [name]="prefixIcon" aria-hidden="true"></ion-icon>
     }
 </ng-template>
 
 <ng-template #suffixIconContainer>
     @if (suffixIcon && !actions.length) {
-        <ion-icon slot="end" [name]="suffixIcon" aria-hidden="true"></ion-icon>
+        <ion-icon class="suffix" slot="end" [name]="suffixIcon" aria-hidden="true"></ion-icon>
     }
 </ng-template>
 

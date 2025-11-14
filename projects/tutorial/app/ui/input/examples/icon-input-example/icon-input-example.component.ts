@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { IMPORTS } from '../example.module';
-import { DOC_FILE } from './doc-file.constant';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DOC_FILE } from './doc-file.constant';
 
 @Component({
-  selector: 'app-basic-input-example',
+  selector: 'app-icon-input-example',
   imports: [IMPORTS],
-  templateUrl: './basic-input-example.component.html'
+  templateUrl: './icon-input-example.component.html'
 })
-export class BasicInputExampleComponent {
+export class IconInputExampleComponent {
 
   public form: FormGroup = new FormGroup({
     name: new FormControl()
