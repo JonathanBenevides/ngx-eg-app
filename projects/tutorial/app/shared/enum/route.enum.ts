@@ -9,5 +9,6 @@ export enum Route {
   FORM = 'Form',
   OPTINPUT = 'Input-opt',
   UTILS = 'Utils',
-  MODAL = 'Modal'
+  MODAL = 'Modal',
+  TOGGLE = 'Toggle'
 }

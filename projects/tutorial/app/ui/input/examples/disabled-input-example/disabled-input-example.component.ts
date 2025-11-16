@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IMPORTS } from '../example.module';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { IMPORTS } from '../example.module';
+
 import { DOC_FILE } from './doc-file.constant';
 
 @Component({
@@ -11,7 +13,7 @@ import { DOC_FILE } from './doc-file.constant';
 export class DisabledInputExampleComponent {
 
   public form: FormGroup = new FormGroup({
-    name: new FormControl({ value: 'Value', disabled: true }, Validators.required),
+    name: new FormControl({ value: 'Value', disabled: true }, Validators.required)
   });
 
   public showDoc = false;

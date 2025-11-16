@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DOC_FILE } from './doc-file.constant';
+
 import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 import { passwordMatchValidator } from './validator';
 
 @Component({
@@ -16,6 +18,6 @@ export class DeepFormExampleComponent {
 
   public form: FormGroup = new FormGroup({
     password: new FormControl(),
-    confirmPassword: new FormControl(),
+    confirmPassword: new FormControl()
   }, { validators: passwordMatchValidator() });
 }

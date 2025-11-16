@@ -1,4 +1,4 @@
-import { GENERIC } from "./button.constant";
+import { GENERIC } from './button.constant';
 
 export const BUTTON_STRETCHED_FILES = [
   {

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IMPORTS } from '../example.module';
-import { DOC_FILE } from './doc-file.constant';
 import { FormControl, FormGroup } from '@angular/forms';
 import { REQ_NAME } from 'ngx-eg-app';
+
+import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 
 @Component({
   selector: 'app-name-validator-example',
@@ -15,6 +17,6 @@ export class NameValidatorExampleComponent {
   public docFile = DOC_FILE;
 
   public form: FormGroup = new FormGroup({
-    name: new FormControl('', REQ_NAME),
+    name: new FormControl('', REQ_NAME)
   });
 }

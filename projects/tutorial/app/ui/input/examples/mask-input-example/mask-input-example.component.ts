@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DOC_FILE } from './doc-file.constant';
+
 import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 
 @Component({
   selector: 'app-mask-input-example',

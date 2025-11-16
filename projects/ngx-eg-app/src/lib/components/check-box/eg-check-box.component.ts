@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { noop } from 'rxjs';
 
 import { EgControlValueAccessor } from '../../../shared/class/eg-control-value-accessor.class';
 import { IMPORTS } from '../../../shared/module/eg-checkbox.module';
@@ -16,13 +15,6 @@ export class NgxEgCheckBox extends EgControlValueAccessor {
   @Input() public labelPlacement: 'start' | 'end' = 'end';
 
   public override value: boolean = false;
-
-  public override onChange: (value: boolean) => void = noop;
-
-  public override writeValue(value: boolean = false): void {
-    this.value = value;
-    this.cdr.markForCheck();
-  }
 
   public handleChange({ detail: { checked } }: CustomEvent<Pick<any, 'checked'>>): void {
     this.value = checked;

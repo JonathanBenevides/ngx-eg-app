@@ -1,0 +1,21 @@
+<app-title [title]="'Toggle'"></app-title>
+<p class="horizontal-padding">Para utilizar o componente de toggle, é necessário importar o módulo correspondente e adicioná-lo ao array de imports.</p>
+<app-code [files]="initialPresentation"></app-code>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Basic'" (event)="showBasicDoc = !showBasicDoc"></app-sub-title>
+    <ngx-eg-toggle [label]="'left'" [value]="selection" (change)="selection=$event"></ngx-eg-toggle>
+    <div style="margin-top: 1rem;">Value: {{ selection }}</div>
+    @if (showBasicDoc) {
+        <app-code [files]="basicDocFile"></app-code>
+    }
+</section>
+<section class="horizontal-padding">
+    <app-sub-title [subTitle]="'Uso no Form'" (event)="showFormDoc = !showFormDoc"></app-sub-title>
+    <form class="horizontal-padding" [formGroup]="form">
+        <ngx-eg-toggle [label]="'left\/right'" formControlName="toggle"></ngx-eg-toggle>
+        <div style="margin-top: 1rem;">Value: {{ form.value | json }}</div>
+    </form>
+    @if (showFormDoc) {
+        <app-code [files]="formDocFile"></app-code>
+    }
+</section>

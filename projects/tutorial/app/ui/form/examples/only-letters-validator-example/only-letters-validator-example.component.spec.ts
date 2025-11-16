@@ -10,7 +10,7 @@ describe('OnlyLettersValidatorExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [OnlyLettersValidatorExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(OnlyLettersValidatorExampleComponent);
     component = fixture.componentInstance;

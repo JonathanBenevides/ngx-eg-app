@@ -10,7 +10,7 @@ describe('ValidatorsExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ValidatorsExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ValidatorsExampleComponent);
     component = fixture.componentInstance;

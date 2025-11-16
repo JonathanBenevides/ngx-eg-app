@@ -1,0 +1,7 @@
+<ion-toggle
+    [id]="(_id || label) | idGenerator:'toggle'"
+    [checked]="value"
+    [disabled]="disabled"
+    [helperText]="hint"
+    (ionChange)="handleChange($event)"
+>{{ label.split('\/')[0] }}</ion-toggle><button (click)="handleChange({ detail: { checked: true }})">{{ label.split('\/')[1] }}</button>

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IMPORTS } from '../example.module';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FOUR } from 'ngx-eg-app';
+
+import { IMPORTS } from '../example.module';
+
 import { DOC_FILE } from './doc-file.constant';
 
 @Component({
@@ -12,7 +15,7 @@ export class ErrorInputExampleComponent {
 
   public form: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    value: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    value: new FormControl('', [Validators.required, Validators.minLength(FOUR)])
   });
 
   public showDoc = false;

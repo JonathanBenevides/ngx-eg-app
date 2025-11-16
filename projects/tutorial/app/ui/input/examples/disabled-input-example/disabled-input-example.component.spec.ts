@@ -10,7 +10,7 @@ describe('DisabledInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DisabledInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DisabledInputExampleComponent);
     component = fixture.componentInstance;

@@ -42,14 +42,15 @@ export class NgxEgInput extends EgControlValueAccessor implements OnInit, DoChec
   @Input() public labelPlacement: 'stacked' | 'floating' = 'floating';
 
   @Input() public set mask(_mask: string) {
-
     this._mask = _mask ? { mask: this.toMask(_mask) } : null;
 
-    // atualiza máscara caso aconteça alguma mudança
     if (this.ionInput?.value) {
-      this.ionInput.value = this._mask ? maskitoTransform(this.value, this._mask) : this.unMask(this.ionInput?.value.toString());
-      this.cdr.markForCheck();
+      const maskedValue = this._mask ? maskitoTransform(this.value, this._mask) : this.unMask(this.ionInput?.value.toString());
+      this.ionInput.value = maskedValue;
+      this.control.setValue(maskedValue, { emitEvent: false });
     }
+
+    this.cdr.markForCheck();
   };
 
   @Input() public set buttonAction(actions: ButtonActionType | ButtonActionType[] | null) {

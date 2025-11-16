@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { DOC_FILE } from './doc-file.constant';
 import { FormControl, FormGroup } from '@angular/forms';
 import { REQ_NUMBER } from 'ngx-eg-app';
+
 import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 
 @Component({
   selector: 'app-only-number-validator-example',
@@ -15,6 +17,6 @@ export class OnlyNumberValidatorExampleComponent {
   public docFile = DOC_FILE;
 
   public form: FormGroup = new FormGroup({
-    number: new FormControl('', REQ_NUMBER),
+    number: new FormControl('', REQ_NUMBER)
   });
 }

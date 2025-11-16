@@ -3,7 +3,7 @@ export const INITIAL_PRESENTATION = [
     name: 'example.component.ts',
     content: [
       'import {',
-      'NgxEgGroup', 
+      'NgxEgGroup',
       'EMAIL_REGEX,',
       'NUMBERS_REGEX,',
       'REQ_EMAIL,',

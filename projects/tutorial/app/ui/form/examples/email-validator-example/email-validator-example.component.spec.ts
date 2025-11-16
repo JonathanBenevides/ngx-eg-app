@@ -10,7 +10,7 @@ describe('EmailValidatorExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [EmailValidatorExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EmailValidatorExampleComponent);
     component = fixture.componentInstance;

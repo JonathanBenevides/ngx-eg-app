@@ -1,4 +1,5 @@
 import { BASE_IMPORTS } from '../../shared/module/base.module';
+
 import { AddressNumberValidatorExampleComponent } from './examples/address-number-validator-example/address-number-validator-example.component';
 import { DateValidatorExampleComponent } from './examples/date-validator-example/date-validator-example.component';
 import { DeepFormExampleComponent } from './examples/deep-form-example/deep-form-example.component';
@@ -19,5 +20,5 @@ export const IMPORTS = [
   OnlyNumberValidatorExampleComponent,
   NameValidatorExampleComponent,
   AddressNumberValidatorExampleComponent,
-  DateValidatorExampleComponent,
+  DateValidatorExampleComponent
 ];

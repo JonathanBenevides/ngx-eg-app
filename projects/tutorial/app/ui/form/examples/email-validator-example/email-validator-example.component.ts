@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { DOC_FILE } from './doc-file.constant';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IMPORTS } from '../example.module';
 import { REQ_EMAIL } from 'ngx-eg-app';
+
+import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 
 @Component({
   selector: 'app-email-validator-example',
@@ -15,6 +17,6 @@ export class EmailValidatorExampleComponent {
   public docFile = DOC_FILE;
 
   public form: FormGroup = new FormGroup({
-    email: new FormControl('', REQ_EMAIL),
+    email: new FormControl('', REQ_EMAIL)
   });
 }

@@ -10,7 +10,7 @@ describe('DateInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DateInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DateInputExampleComponent);
     component = fixture.componentInstance;

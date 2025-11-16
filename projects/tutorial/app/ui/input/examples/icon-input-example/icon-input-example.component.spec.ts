@@ -10,7 +10,7 @@ describe('IconInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [IconInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(IconInputExampleComponent);
     component = fixture.componentInstance;

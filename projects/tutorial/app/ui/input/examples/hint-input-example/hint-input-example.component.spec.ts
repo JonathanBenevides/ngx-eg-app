@@ -10,7 +10,7 @@ describe('HintInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HintInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HintInputExampleComponent);
     component = fixture.componentInstance;

@@ -10,7 +10,7 @@ describe('ActionsInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ActionsInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ActionsInputExampleComponent);
     component = fixture.componentInstance;

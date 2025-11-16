@@ -2,7 +2,7 @@ export const BASIC_BTN_FILES = [
   {
     name: 'example.component.html',
     content: [
-      '<ngx-eg-button [label]="\'Basic\'" (click)="click()"></ngx-eg-button>',
+      '<ngx-eg-button [label]="\'Basic\'" (click)="click()"></ngx-eg-button>'
     ]
   },
   {

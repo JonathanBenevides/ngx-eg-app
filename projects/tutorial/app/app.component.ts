@@ -27,7 +27,8 @@ export class AppComponent {
     { name: Route.FORM, route: Route.FORM },
     { name: Route.UTILS, route: Route.UTILS },
     { name: Route.OPTINPUT, route: Route.OPTINPUT },
-    { name: Route.MODAL, route: Route.MODAL }
+    { name: Route.MODAL, route: Route.MODAL },
+    { name: Route.TOGGLE, route: Route.TOGGLE }
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   constructor(

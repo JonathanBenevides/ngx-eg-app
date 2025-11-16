@@ -11,6 +11,7 @@ export * from './lib/components/menu/eg-menu.component';
 export * from './lib/components/opt-input/eg-opt-input.component';
 export * from './lib/components/select/eg-select.component';
 export * from './lib/components/timer/eg-timer.component';
+export * from './lib/components/toggle/eg-toggle.component';
 export * from './lib/interfaces/eg-input.interface';
 export * from './lib/interfaces/eg-select.interface';
 export * from './lib/interfaces/modal.interface';

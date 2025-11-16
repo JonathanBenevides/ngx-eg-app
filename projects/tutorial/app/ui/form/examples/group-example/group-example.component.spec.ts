@@ -10,7 +10,7 @@ describe('GroupExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [GroupExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(GroupExampleComponent);
     component = fixture.componentInstance;

@@ -10,7 +10,7 @@ describe('ErrorInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ErrorInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ErrorInputExampleComponent);
     component = fixture.componentInstance;

@@ -10,7 +10,7 @@ describe('OnlyNumberValidatorExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [OnlyNumberValidatorExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(OnlyNumberValidatorExampleComponent);
     component = fixture.componentInstance;

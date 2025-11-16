@@ -10,7 +10,7 @@ describe('DeepFormExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DeepFormExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DeepFormExampleComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { IMPORTS } from './button.module';
+import { BASIC_BTN_FILES } from './files/button-basic.constant';
 import { BUTTON_COLOR_FILES } from './files/button-color.constant';
 import { BUTTON_DISABLED_FILES } from './files/button-disabled.constant';
 import { BUTTON_FORMAT_FILES } from './files/button-format.constant';
@@ -10,7 +11,6 @@ import { BUTTON_STRETCHED_FILES } from './files/button-stretched.constant';
 import { BUTTON_STYLE_FILES } from './files/button-style.constant';
 import { INITIAL_PRESENTATION } from './files/initial-presentation.constant';
 import { LINK_FILES } from './files/link-files.constant';
-import { BASIC_BTN_FILES } from './files/button-basic.constant';
 
 @Component({
   selector: 'app-button',
@@ -41,6 +41,6 @@ export class ButtonComponent {
   public showBtnBasicDoc: boolean = false;
 
   public click(): void {
-    console.log('clicou')
+    console.log('clicou');
   }
 }

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { DOC_FILE } from './doc-file.constant';
-import { DefaultForm, ObservableForm } from '../../../../shared/interface/custom-form.interface';
 import { NgxEgCheckBox, NgxEgSelect, REQ_EMAIL, REQ_NAME, REQ_NUMBER, SIX, ZERO } from 'ngx-eg-app';
 import { Subscription } from 'rxjs';
+
+import { DefaultForm, ObservableForm } from '../../../../shared/interface/custom-form.interface';
 import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 
 function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -38,8 +40,6 @@ export class ValidatorsExampleComponent implements ObservableForm, DefaultForm {
     { label: 'Female', value: 'female' }
   ];
   public subscription: Subscription = new Subscription();
-
-
 
   constructor(private readonly fb: FormBuilder) {
     this.createForm();

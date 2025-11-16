@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DOC_FILE } from './doc-file.constant';
+
 import { IMPORTS } from '../example.module';
+
+import { DOC_FILE } from './doc-file.constant';
 
 @Component({
   selector: 'app-group-example',
   imports: [IMPORTS],
   templateUrl: './group-example.component.html',
-  styleUrl: './group-example.component.scss',
+  styleUrl: './group-example.component.scss'
 })
 export class GroupExampleComponent {
 
@@ -19,7 +21,7 @@ export class GroupExampleComponent {
     groupOne: new FormGroup({
       name: new FormControl(),
       groupTwo: new FormGroup({
-        lastname: new FormControl(),
+        lastname: new FormControl()
       })
     })
   });

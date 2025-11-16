@@ -84,5 +84,12 @@ export const routes: Routes = [
     data: {
       title: Route.MODAL
     }
+  },
+  {
+    loadComponent: () => import('./ui/toggle/toggle.component').then(c => c.ToggleComponent),
+    path: Route.TOGGLE.toLowerCase(),
+    data: {
+      title: Route.TOGGLE
+    }
   }
 ];

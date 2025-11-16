@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { INITIAL_PRESENTATION } from './initial-presentation.constant';
+
 import { IMPORTS } from './form.module';
+import { INITIAL_PRESENTATION } from './initial-presentation.constant';
 
 @Component({
   selector: 'app-form',

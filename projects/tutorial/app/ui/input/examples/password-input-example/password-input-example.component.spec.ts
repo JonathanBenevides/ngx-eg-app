@@ -10,7 +10,7 @@ describe('PasswordInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [PasswordInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PasswordInputExampleComponent);
     component = fixture.componentInstance;

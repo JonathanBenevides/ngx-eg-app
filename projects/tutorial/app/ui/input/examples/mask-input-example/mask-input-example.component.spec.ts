@@ -10,7 +10,7 @@ describe('MaskInputExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [MaskInputExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(MaskInputExampleComponent);
     component = fixture.componentInstance;

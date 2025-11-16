@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IMPORTS } from '../example.module';
 import { FormControl, FormGroup } from '@angular/forms';
+
+import { IMPORTS } from '../example.module';
+
 import { DOC_FILE } from './doc-file.constant';
 
 @Component({
@@ -12,7 +14,7 @@ export class ActionsInputExampleComponent {
 
   public form: FormGroup = new FormGroup({
     clear: new FormControl(),
-    multiple: new FormControl(),
+    multiple: new FormControl()
   });
 
   public showDoc = false;

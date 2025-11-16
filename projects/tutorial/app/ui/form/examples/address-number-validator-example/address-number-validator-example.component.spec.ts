@@ -10,7 +10,7 @@ describe('AddressNumberValidatorExampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AddressNumberValidatorExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AddressNumberValidatorExampleComponent);
     component = fixture.componentInstance;

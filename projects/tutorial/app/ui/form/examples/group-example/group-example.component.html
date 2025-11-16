@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <app-sub-title [subTitle]="'Group'" (event)="showDoc = !showDoc"></app-sub-title>
-    <ion-toggle (ionChange)="border=!border">No border</ion-toggle>&nbsp;&nbsp;&nbsp;Border
+    <ngx-eg-toggle [label]="'No border\/Border'" (change)="border=$event"></ngx-eg-toggle>
     <ngx-eg-group [border]="border" [label]="'Group 1'" formGroupName="groupOne" [icon]="'lock-closed'">
         <ngx-eg-input [label]="'Name'" formControlName="name"></ngx-eg-input>
         <ngx-eg-group [border]="border" [label]="'Group 2'" formGroupName="groupTwo" [icon]="'lock-closed'">

@@ -28,7 +28,7 @@ export abstract class EgControlValueAccessor implements ControlValueAccessor, On
   public _errorMessage: string | { [key: string]: string } = '';
 
   public get control(): AbstractControl {
-    return this.ngControl.control!;
+    return this.ngControl?.control!;
   }
 
   public get hasErrors(): boolean {

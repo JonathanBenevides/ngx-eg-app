@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IMPORTS } from '../example.module';
 import { FormControl, FormGroup } from '@angular/forms';
+
+import { IMPORTS } from '../example.module';
+
 import { DOC_FILE } from './doc-file.constant';
 
 @Component({
