@@ -1,9 +1,7 @@
 import { Clipboard } from '@angular/cdk/clipboard';
-import { CommonModule, NgClass } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
-import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
-import { MaskitoDirective } from '@maskito/angular';
+import { NgControl } from '@angular/forms';
+import { IonInput } from '@ionic/angular/standalone';
 import { MaskitoElementPredicate, MaskitoOptions, maskitoTransform } from '@maskito/core';
 import { addIcons } from 'ionicons';
 import { call, close, copyOutline, eye, eyeOff, eyeOffOutline, eyeOutline, person, searchOutline } from 'ionicons/icons';
@@ -14,10 +12,10 @@ import { ButtonIcon, UpdateMode } from '../../../shared/enum/eg-input.enum';
 import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
 import { ButtonActionType, InputType } from '../../../shared/type/eg-input.type';
 import { InputButtonAction } from '../../interfaces/eg-input.interface';
-import { IdGenerator } from '../../pipes/id-generator/id-generator.pipe';
+import { IMPORTS } from '../../../shared/module/eg-input.module';
 
 @Component({
-  imports: [IonIcon, FormsModule, ReactiveFormsModule, IonInput, NgClass, CommonModule, IdGenerator, IonNote, IonButton, MaskitoDirective],
+  imports: [IMPORTS],
   selector: 'ngx-eg-input',
   templateUrl: './eg-input.component.html',
   styleUrl: './eg-input.component.scss',

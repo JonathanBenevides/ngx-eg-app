@@ -9,10 +9,11 @@ import { UpdateMode } from '../../../shared/enum/eg-input.enum';
 import { EgInputValueAccessor } from '../../../shared/interface/generic.interface';
 import { CountDownService } from '../../../shared/services/count-down.service';
 import { FOUR, ZERO } from '../../utils/magic-number';
+import { IMPORTS } from '../../../shared/module/eg-input-opt.module';
 
 @Component({
   selector: 'ngx-eg-opt',
-  imports: [IonInputOtp, ReactiveFormsModule, CommonModule, FormsModule, IonNote],
+  imports: IMPORTS,
   templateUrl: './eg-opt-input.component.html',
   styleUrl: './eg-opt-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

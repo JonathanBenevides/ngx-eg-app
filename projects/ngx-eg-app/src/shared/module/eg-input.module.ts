@@ -1,19 +1,18 @@
 import { NgClass } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 
 import { IdGenerator } from '../../lib/pipes/id-generator/id-generator.pipe';
+import { IonButton, IonIcon, IonInput, IonNote } from '@ionic/angular/standalone';
+import { MaskitoDirective } from '@maskito/angular';
 
 export const IMPORTS = [
-  NgClass,
+  IonIcon,
   FormsModule,
-  MatIconModule,
-  MatInputModule,
-  MatButtonModule,
   ReactiveFormsModule,
-  MatFormFieldModule,
-  IdGenerator
+  IonInput,
+  NgClass,
+  IdGenerator,
+  IonNote,
+  IonButton,
+  MaskitoDirective
 ];
