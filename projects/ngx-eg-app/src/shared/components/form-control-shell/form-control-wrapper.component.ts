@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IonNote } from '@ionic/angular/standalone';
 
@@ -6,7 +6,7 @@ import { IdGenerator } from '../../../lib/pipes/id-generator/id-generator.pipe';
 
 @Component({
   selector: 'form-control-wrapper',
-  imports: [IonNote, IdGenerator, CommonModule],
+  imports: [IonNote, IdGenerator],
   templateUrl: './form-control-wrapper.component.html',
   styleUrl: './form-control-wrapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
